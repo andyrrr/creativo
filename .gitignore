@@ -57,3 +57,4 @@ Homestead.json
 .phpunit.result.cache
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,laravel
+*.vsidx
