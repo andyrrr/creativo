@@ -53,3 +53,40 @@
     transform: scale(1.1);
 }
 
+
+
+.titulo {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 10svh;
+    color: white;
+}
+
+
+.subtitulo {
+    text-align: center;
+    font-family: 'Noto';
+    font-size: 3svh;
+    color: white;
+}
+
+button {
+    border-radius: 43px;
+    font-family: 'Noto';
+    border: 0px;
+    width: fit-content;
+    padding: 10px 30px;
+    align-self: center;
+}
+
+.contenido {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    margin-bottom: 1%;
+    padding: 0% 4%;
+    overflow: hidden;
+}

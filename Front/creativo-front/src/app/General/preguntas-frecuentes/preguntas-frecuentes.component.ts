@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./preguntas-frecuentes.component.css']
 })
 export class PreguntasFrecuentesComponent {
-
+  redirigir(url:string) {
+    window.location.href = url;
+  }
 }

@@ -19,22 +19,6 @@ body {
     padding: 0% 20%;
 }
 
-
-.titulo {
-    text-align: center;
-    font-family: 'Roboto';
-    font-size: 10svh;
-    color: white;
-}
-
-
-.subtitulo {
-    text-align: center;
-    font-family: 'Noto';
-    font-size: 3svh;
-    color: white;
-}
-
 button {
     border-radius: 43px;
     background: #FF681D;
