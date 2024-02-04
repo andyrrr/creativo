@@ -9,6 +9,7 @@ import { RegistroSolicitudComponent } from './Emprendimiento/registro-solicitud/
 import { PreguntasFrecuentesComponent } from './General/preguntas-frecuentes/preguntas-frecuentes.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { InicioComponent } from './General/inicio/inicio.component';
 
 
 @NgModule({
@@ -17,12 +18,14 @@ import { FormsModule } from '@angular/forms';
     GestionAdministradoresComponent,
     GestionSolicitudesComponent,
     RegistroSolicitudComponent,
-    PreguntasFrecuentesComponent
+    PreguntasFrecuentesComponent,
+    InicioComponent,
   ],
   imports: [
     BrowserModule, 
     RouterModule.forRoot([
-      {path: "", component:PreguntasFrecuentesComponent},
+      {path: "", component:InicioComponent},
+      {path: "inicio", component:InicioComponent},
       {path: "preguntas", component:PreguntasFrecuentesComponent},
       {path: "solicitudes", component:GestionSolicitudesComponent},
       {path: "administradores", component:GestionAdministradoresComponent},

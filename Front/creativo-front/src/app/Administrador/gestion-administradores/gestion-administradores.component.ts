@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class GestionAdministradoresComponent {
 
+  redirigir(url:string) {
+    window.location.href = url;
+  }
 }
