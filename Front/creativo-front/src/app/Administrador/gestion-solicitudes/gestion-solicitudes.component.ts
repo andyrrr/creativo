@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./gestion-solicitudes.component.css']
 })
 export class GestionSolicitudesComponent {
-
+  redirigir(url:string) {
+    window.location.href = url;
+  }
 }

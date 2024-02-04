@@ -24,38 +24,17 @@
             Preguntas Frecuentes
         </div>
         <div class="preguntas">
-            <div class="card">
-                <div class="pregunta"> 
-                    <div class="texto"> preguntapreguntapreguntappreguntapreguntapreguntappreguntapreguntapreguntap</div>
+
+            <ng-template ngFor let-obj [ngForOf]="preguntas" ; let-i="index">
+                <div class="card">
+                    <div class="pregunta"> 
+                        <div class="texto"> {{obj.Pregunta1}}</div>
+                    </div>
+                    <div class="respuesta"> 
+                        <div class="texto"> {{obj.Respuesta}}</div>
+                    </div>
                 </div>
-                <div class="respuesta"> 
-                    <div class="texto"> pregunta</div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="pregunta"></div>
-                <div class="respuesta"></div>
-            </div>
-            <div class="card">
-                <div class="pregunta"></div>
-                <div class="respuesta"></div>
-            </div>
-            <div class="card">
-                <div class="pregunta"></div>
-                <div class="respuesta"></div>
-            </div>
-            <div class="card">
-                <div class="pregunta"></div>
-                <div class="respuesta"></div>
-            </div>
-            <div class="card">
-                <div class="pregunta"></div>
-                <div class="respuesta"></div>
-            </div>
-            <div class="card">
-                <div class="pregunta"></div>
-                <div class="respuesta"></div>
-            </div>
+            </ng-template>
         </div>
        
     </div>
