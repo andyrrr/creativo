@@ -24,6 +24,9 @@ export abstract class ConexionService<T> {
   getList() {
     return this.httpClient.get<T[]>(this.getRuta());
   }
+  getSelectedList(atributo: string) {
+    return this.httpClient.get<T[]>(this.getRuta() + "/" + atributo);
+  }
 
   get(id: string | number, marca?: string | number) {
     console.log(this.getRuta())
@@ -41,8 +44,8 @@ export abstract class ConexionService<T> {
     return this.httpClient.post<T>(this.getRuta() + "/" + ruta, resource);
   }
 
-  private update(resource: T): Observable<T> {
-    return this.httpClient.put<T>(this.getRuta(), resource);
+  update(id:number | string, resource: T): Observable<T> {
+    return this.httpClient.put<T>(this.getRuta()+ "/" + id, resource);
   }
 
   private delete(id: string | number) {
@@ -64,20 +67,7 @@ export abstract class ConexionService<T> {
     })
   }
 
-  onActualizar(objeto:T, nombre:string | number, recargar?:boolean){
-    console.log(objeto)
-    this.update(objeto).subscribe({
-      
-      next: (data) => {
-        if (recargar==undefined){
-          this.route.navigate([this.getHomePage()])}
-      },
 
-      error: (err) =>{
-        return false
-        }
-    })
-  }
 
   onNuevo(objeto:T, nombre:string | number,  recargar?:boolean){
     console.log(objeto)

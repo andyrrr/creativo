@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="creativoDBModelStoreContainer" CdmEntityContainer="creativoDBEntities">
-    <EntitySetMapping Name="ADMINs">
+    <EntitySetMapping Name="ADMINS">
       <EntityTypeMapping TypeName="creativoDBModel.ADMIN">
         <MappingFragment StoreEntitySet="ADMIN">
           <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
@@ -12,7 +12,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CLIENTEs">
+    <EntitySetMapping Name="CLIENTES">
       <EntityTypeMapping TypeName="creativoDBModel.CLIENTE">
         <MappingFragment StoreEntitySet="CLIENTE">
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
@@ -27,7 +27,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EMPRENDIMIENTOes">
+    <EntitySetMapping Name="EMPRENDIMIENTOS">
       <EntityTypeMapping TypeName="creativoDBModel.EMPRENDIMIENTO">
         <MappingFragment StoreEntitySet="EMPRENDIMIENTO">
           <ScalarProperty Name="IdEmprendimiento" ColumnName="IdEmprendimiento" />
@@ -45,7 +45,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PEDIDOes">
+    <EntitySetMapping Name="PEDIDOS">
       <EntityTypeMapping TypeName="creativoDBModel.PEDIDO">
         <MappingFragment StoreEntitySet="PEDIDO">
           <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
@@ -65,7 +65,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="REPARTIDORs">
+    <EntitySetMapping Name="REPARTIDORES">
       <EntityTypeMapping TypeName="creativoDBModel.REPARTIDOR">
         <MappingFragment StoreEntitySet="REPARTIDOR">
           <ScalarProperty Name="IdRepartidor" ColumnName="IdRepartidor" />
@@ -81,7 +81,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TALLERs">
+    <EntitySetMapping Name="TALLERES">
       <EntityTypeMapping TypeName="creativoDBModel.TALLER">
         <MappingFragment StoreEntitySet="TALLER">
           <ScalarProperty Name="IdEmprendimiento" ColumnName="IdEmprendimiento" />

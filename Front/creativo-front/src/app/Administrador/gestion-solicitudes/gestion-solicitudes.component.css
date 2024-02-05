@@ -26,6 +26,7 @@ body {
 .card {
     padding: 1% 7%;
     width: 100%;
+    min-height: 40%;
     aspect-ratio: 1/0.15;
     border: 0;
     background-color: white;
@@ -61,6 +62,19 @@ button {
 
 
 
+.aceptar-bttn{
+    color: #179602;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #179602;
+    background-color: white;
+}
+
 .rechazar-bttn {
     color: #DE2B2B;
     text-align: center;
@@ -87,18 +101,6 @@ button {
     background-color: #DE2B2B;
 }
 
-.aceptar-bttn{
-    color: #179602;
-    text-align: center;
-    font-family: "Noto";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    border-radius: 43px;
-    border: 1px solid #179602;
-    background-color: white;
-}
 
 .aceptar-bttn:hover{
     color: white;

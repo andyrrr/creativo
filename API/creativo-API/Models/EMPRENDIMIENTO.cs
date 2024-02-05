@@ -14,12 +14,6 @@ namespace creativo_API.Models
     
     public partial class EMPRENDIMIENTO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EMPRENDIMIENTO()
-        {
-            this.TALLERES = new HashSet<TALLER>();
-        }
-    
         public int IdEmprendimiento { get; set; }
         public string Usuario { get; set; }
         public string Pass { get; set; }
@@ -32,8 +26,5 @@ namespace creativo_API.Models
         public string Canton { get; set; }
         public string Distrito { get; set; }
         public string Estado { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TALLER> TALLERES { get; set; }
     }
 }

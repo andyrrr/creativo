@@ -260,7 +260,6 @@
           <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TALLERES" Relationship="Self.FK__TALLER__IdEmpren__3D5E1FD2" FromRole="EMPRENDIMIENTO" ToRole="TALLER" />
         </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
@@ -374,33 +373,33 @@
           <End Role="TALLER" Type="Self.TALLER" Multiplicity="*" />
         </Association>
         <EntityContainer Name="creativoDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
-          <EntitySet Name="CLIENTEs" EntityType="Self.CLIENTE" />
-          <EntitySet Name="EMPRENDIMIENTOes" EntityType="Self.EMPRENDIMIENTO" />
-          <EntitySet Name="PEDIDOes" EntityType="Self.PEDIDO" />
+          <EntitySet Name="ADMINS" EntityType="Self.ADMIN" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTE" />
+          <EntitySet Name="EMPRENDIMIENTOS" EntityType="Self.EMPRENDIMIENTO" />
+          <EntitySet Name="PEDIDOS" EntityType="Self.PEDIDO" />
           <EntitySet Name="PREGUNTAS" EntityType="Self.PREGUNTA" />
-          <EntitySet Name="REPARTIDORs" EntityType="Self.REPARTIDOR" />
-          <EntitySet Name="TALLERs" EntityType="Self.TALLER" />
+          <EntitySet Name="REPARTIDORES" EntityType="Self.REPARTIDOR" />
+          <EntitySet Name="TALLERES" EntityType="Self.TALLER" />
           <EntitySet Name="TALLER_FOTOS" EntityType="Self.TALLER_FOTOS" />
           <AssociationSet Name="FK__PEDIDO__IdClient__4BAC3F29" Association="Self.FK__PEDIDO__IdClient__4BAC3F29">
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
-            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+            <End Role="CLIENTE" EntitySet="CLIENTES" />
+            <End Role="PEDIDO" EntitySet="PEDIDOS" />
           </AssociationSet>
           <AssociationSet Name="FK__TALLER__IdEmpren__3D5E1FD2" Association="Self.FK__TALLER__IdEmpren__3D5E1FD2">
-            <End Role="EMPRENDIMIENTO" EntitySet="EMPRENDIMIENTOes" />
-            <End Role="TALLER" EntitySet="TALLERs" />
+            <End Role="EMPRENDIMIENTO" EntitySet="EMPRENDIMIENTOS" />
+            <End Role="TALLER" EntitySet="TALLERES" />
           </AssociationSet>
           <AssociationSet Name="FK__PEDIDO__IdRepart__4AB81AF0" Association="Self.FK__PEDIDO__IdRepart__4AB81AF0">
-            <End Role="REPARTIDOR" EntitySet="REPARTIDORs" />
-            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+            <End Role="REPARTIDOR" EntitySet="REPARTIDORES" />
+            <End Role="PEDIDO" EntitySet="PEDIDOS" />
           </AssociationSet>
           <AssociationSet Name="FK__TALLER_FO__Talle__4222D4EF" Association="Self.FK__TALLER_FO__Talle__4222D4EF">
-            <End Role="TALLER" EntitySet="TALLERs" />
+            <End Role="TALLER" EntitySet="TALLERES" />
             <End Role="TALLER_FOTOS" EntitySet="TALLER_FOTOS" />
           </AssociationSet>
           <AssociationSet Name="TALLER_CLIENTE" Association="Self.TALLER_CLIENTE">
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
-            <End Role="TALLER" EntitySet="TALLERs" />
+            <End Role="CLIENTE" EntitySet="CLIENTES" />
+            <End Role="TALLER" EntitySet="TALLERES" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -409,7 +408,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="creativoDBModelStoreContainer" CdmEntityContainer="creativoDBEntities">
-          <EntitySetMapping Name="ADMINs">
+          <EntitySetMapping Name="ADMINS">
             <EntityTypeMapping TypeName="creativoDBModel.ADMIN">
               <MappingFragment StoreEntitySet="ADMIN">
                 <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
@@ -420,7 +419,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CLIENTEs">
+          <EntitySetMapping Name="CLIENTES">
             <EntityTypeMapping TypeName="creativoDBModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
@@ -435,7 +434,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EMPRENDIMIENTOes">
+          <EntitySetMapping Name="EMPRENDIMIENTOS">
             <EntityTypeMapping TypeName="creativoDBModel.EMPRENDIMIENTO">
               <MappingFragment StoreEntitySet="EMPRENDIMIENTO">
                 <ScalarProperty Name="IdEmprendimiento" ColumnName="IdEmprendimiento" />
@@ -453,7 +452,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PEDIDOes">
+          <EntitySetMapping Name="PEDIDOS">
             <EntityTypeMapping TypeName="creativoDBModel.PEDIDO">
               <MappingFragment StoreEntitySet="PEDIDO">
                 <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
@@ -473,7 +472,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="REPARTIDORs">
+          <EntitySetMapping Name="REPARTIDORES">
             <EntityTypeMapping TypeName="creativoDBModel.REPARTIDOR">
               <MappingFragment StoreEntitySet="REPARTIDOR">
                 <ScalarProperty Name="IdRepartidor" ColumnName="IdRepartidor" />
@@ -489,7 +488,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TALLERs">
+          <EntitySetMapping Name="TALLERES">
             <EntityTypeMapping TypeName="creativoDBModel.TALLER">
               <MappingFragment StoreEntitySet="TALLER">
                 <ScalarProperty Name="IdEmprendimiento" ColumnName="IdEmprendimiento" />

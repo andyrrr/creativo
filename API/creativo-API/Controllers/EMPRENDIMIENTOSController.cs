@@ -24,6 +24,18 @@ namespace creativo_API.Controllers
             return db.EMPRENDIMIENTOS;
         }
 
+
+        // GET: api/EMPRENDIMIENTOS/Solicitudes
+        [HttpGet]
+        [Route("api/EMPRENDIMIENTOS/Solicitudes")]
+        public IQueryable<EMPRENDIMIENTO> GetSolicitudes()
+        {
+            return db.EMPRENDIMIENTOS.Where(e => e.Estado == "Pendiente");
+        }
+
+
+
+
         // GET: api/EMPRENDIMIENTOS/5
         [ResponseType(typeof(EMPRENDIMIENTO))]
         public IHttpActionResult GetEMPRENDIMIENTO(int id)
