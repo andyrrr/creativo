@@ -1,1 +1,80 @@
-<p>registro-solicitud works!</p>
+<body>
+  <div class="barra">
+    <div class="logo">
+      <img src="./assets/images/Club Creativo Logo Blanco.png" />
+    </div>
+    <div class="botones">
+      <div class="boton" (click)="redirigir('/inicio')">Inicio</div>
+      <div class="boton" (click)="redirigir('/nosotros')">Sobre Nosotros</div>
+      <div class="boton" (click)="redirigir('/preguntas')">Preguntas</div>
+      <div class="boton" (click)="redirigir('/registrarse')">Registrarse</div>
+    </div>
+  </div>
+  <div class="contenido">
+    <div class="titulo">Registro Emprendimiento</div>
+    <div class="card-formulario">
+      <form>
+        <div class="formu">
+            <div class = "col">
+                <div class="campo">
+                    <label for="IdEmprendimiento" class="texto">Id Emprendimiento:</label>
+                    <input type="number" id="IdEmprendimiento" name="IdEmprendimiento" [(ngModel)] = "objeto.IdEmprendimiento" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Usuario" class="texto">Usuario:</label>
+                    <input type="text" id="Usuario" name="Usuario" [(ngModel)] = "objeto.Usuario" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Pass" class="texto">Contraseña:</label>
+                    <input type="password" id="Pass" name="Pass" [(ngModel)] = "objeto.Pass" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Tipo" class="texto">Tipo:</label>
+                    <input type="text" id="Tipo" name="Tipo" [(ngModel)] = "objeto.Tipo" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Nombre" class="texto">Nombre:</label>
+                    <input type="text" id="Nombre" name="Nombre" [(ngModel)] = "objeto.Nombre" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Correo" class="texto">Correo:</label>
+                    <input type="email" id="Correo" name="Correo" [(ngModel)] = "objeto.Correo" required>
+                  </div>
+            </div>
+            <div class = "col">
+                <div class="campo">
+                    <label for="Sinpe" class="texto">Sinpe:</label>
+                    <input type="text" id="Sinpe" name="Sinpe" [(ngModel)] = "objeto.Sinpe" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Telefono" class="texto">Teléfono:</label>
+                    <input type="tel" id="Telefono" name="Telefono" [(ngModel)] = "objeto.Telefono" required>
+                  </div>
+          
+                  <div class="campo">
+                    <label for="Provincia" class="texto">Provincia:</label>
+                    <input type="text" id="Provincia" name="Provincia" [(ngModel)] = "objeto.Provincia" required>
+                  </div>
+                  <div class="campo">
+                    <label for="Canton" class="texto">Cantón:</label>
+                    <input type="text" id="Canton" name="Canton" [(ngModel)] = "objeto.Canton" required>
+                  </div>
+                  <div class="campo">
+                    <label for="Distrito" class="texto">Distrito:</label>
+                    <input type="text" id="Distrito" name="Distrito" [(ngModel)] = "objeto.Distrito" required>
+                  </div>
+            </div>
+        </div>
+        <div class="buton">
+            <button type="submit" class= "aceptar-bttn" (click)="guardar()">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

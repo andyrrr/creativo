@@ -33,7 +33,7 @@ import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pre
       {path: "preguntas", component:PreguntasFrecuentesComponent},
       {path: "solicitudes", component:GestionSolicitudesComponent},
       {path: "administradores", component:GestionAdministradoresComponent},
-      {path: "solicitud", component:RegistroSolicitudComponent},
+      {path: "registrarse", component:RegistroSolicitudComponent},
       {path: "gestion-preguntas", component:GestionPreguntasComponent},
       {path: "nueva-pregunta", component:NuevaPreguntaComponent},
       {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent}
