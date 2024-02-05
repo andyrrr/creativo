@@ -10,6 +10,8 @@ import { PreguntasFrecuentesComponent } from './General/preguntas-frecuentes/pre
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './General/inicio/inicio.component';
+import { GestionPreguntasComponent } from './Administrador/gestion-preguntas/gestion-preguntas.component';
+import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pregunta.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { InicioComponent } from './General/inicio/inicio.component';
     RegistroSolicitudComponent,
     PreguntasFrecuentesComponent,
     InicioComponent,
+    GestionPreguntasComponent,
+    NuevaPreguntaComponent,
   ],
   imports: [
     BrowserModule, 
@@ -30,6 +34,9 @@ import { InicioComponent } from './General/inicio/inicio.component';
       {path: "solicitudes", component:GestionSolicitudesComponent},
       {path: "administradores", component:GestionAdministradoresComponent},
       {path: "solicitud", component:RegistroSolicitudComponent},
+      {path: "gestion-preguntas", component:GestionPreguntasComponent},
+      {path: "nueva-pregunta", component:NuevaPreguntaComponent},
+      {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent}
     ]),
     FormsModule,
     HttpClientModule

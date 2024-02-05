@@ -90,3 +90,104 @@ button {
     padding: 0% 4%;
     overflow: hidden;
 }
+
+
+
+
+button {
+    padding: 2% 17%;
+}
+
+
+
+.aceptar-bttn{
+    color: #179602;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #179602;
+    background-color: white;
+}
+
+
+.aceptar-bttn:hover{
+    color: white;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #179602;
+    background-color: #179602;
+}
+
+.rechazar-bttn {
+    color: #DE2B2B;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #DE2B2B;
+    background-color: white;
+}
+
+.rechazar-bttn:hover {
+    color: white;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #DE2B2B;
+    background-color: #DE2B2B;
+}
+
+
+
+.editar-bttn {
+    color: #20207b;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #20207b;
+    background-color: white;
+}
+
+.editar-bttn:hover {
+    color: white;
+    text-align: center;
+    font-family: "Noto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43px;
+    border: 1px solid #20207b;
+    background-color: #20207b;
+}
+
+
+
+
+
+
+.texto {
+    font-family: 'Roboto';
+    position: relative;
+    text-align: center;
+}

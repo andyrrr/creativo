@@ -28,12 +28,9 @@ export abstract class ConexionService<T> {
     return this.httpClient.get<T[]>(this.getRuta() + "/" + atributo);
   }
 
-  get(id: string | number, marca?: string | number) {
+  get(id: string | number) {
     console.log(this.getRuta())
-    if (marca) {
-      return this.httpClient.get<T[]>(this.getRuta() + "/" + id + "/" + marca);
-    }
-    return this.httpClient.get<T[]>(this.getRuta() + "/" + id);
+    return this.httpClient.get<T>(this.getRuta() + "/" + id);
   }
 
   add(resource: T): Observable<T> {
@@ -48,7 +45,7 @@ export abstract class ConexionService<T> {
     return this.httpClient.put<T>(this.getRuta()+ "/" + id, resource);
   }
 
-  private delete(id: string | number) {
+  delete(id: string | number) {
     return this.httpClient.delete<T[]>(this.getRuta() + "/" + id);
   }
 

@@ -1,0 +1,48 @@
+<body>
+    <div class="barra">
+        <div class="logo">
+            <img src="./assets/images/Club Creativo Logo Blanco.png">
+        </div>
+        <div class="botones">
+            <div class="boton" (click)= "redirigir('/inicio')">
+                Inicio
+            </div>
+            <div class="boton" (click)= "redirigir('/solicitudes')">
+                Solicitudes
+            </div>
+            <div class="boton" (click)= "redirigir('/administradores')">
+                Administradores
+            </div>
+            <div class="boton" (click)= "redirigir('/gestion-preguntas')">
+                Preguntas
+            </div>
+        </div>
+    </div>
+
+    <div class="contenido">
+        <div class="titulo">
+            Gestion de Preguntas
+        </div>
+        <button class="info-button" (click)="redirigir('/nueva-pregunta')"> Agregar Nueva Pregunta </button>
+        
+
+        <ul class="list-group">
+            <ng-template ngFor let-obj [ngForOf]="preguntas" ; let-i="index">
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Pregunta:</strong> {{obj.Pregunta1}}
+                            <br>
+                            <strong>Respuesta:</strong> {{obj.Respuesta}}
+                        </div>
+                        <div>
+                            <button type="button" class="editar-bttn" [routerLink]="['/actualizar-pregunta',obj.IdPreguntas]">Editar</button>
+                            <button type="button" class="rechazar-bttn" (click) = "eliminarPregunta(obj.IdPreguntas)">Eliminar</button>
+                        </div>
+                    </div>
+                </li>
+            </ng-template>
+        </ul>
+    </div>
+    
+</body>
