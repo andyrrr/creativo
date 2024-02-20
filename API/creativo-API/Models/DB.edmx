@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="creativoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="creativoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADMIN">
           <Key>
             <PropertyRef Name="IdAdmin" />
@@ -78,6 +78,13 @@
           <Property Name="Canton" Type="varchar" MaxLength="50" />
           <Property Name="Distrito" Type="varchar" MaxLength="50" />
           <Property Name="Telefono" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="Usuario" />
+          </Key>
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TALLER">
           <Key>
@@ -185,6 +192,7 @@
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PREGUNTAS" EntityType="Self.PREGUNTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REPARTIDOR" EntityType="Self.REPARTIDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TALLER" EntityType="Self.TALLER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TALLER_CLIENTE" EntityType="Self.TALLER_CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TALLER_FOTOS" EntityType="Self.TALLER_FOTOS" Schema="dbo" store:Type="Tables" />
@@ -213,8 +221,7 @@
             <End Role="TALLER_FOTOS" EntitySet="TALLER_FOTOS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="creativoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -401,7 +408,15 @@
             <End Role="CLIENTE" EntitySet="CLIENTES" />
             <End Role="TALLER" EntitySet="TALLERES" />
           </AssociationSet>
+          <EntitySet Name="ROLES" EntityType="creativoDBModel.ROL" />
         </EntityContainer>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="Usuario" />
+          </Key>
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -516,6 +531,14 @@
               <ScalarProperty Name="Nombre" ColumnName="Taller" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="creativoDBModel.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

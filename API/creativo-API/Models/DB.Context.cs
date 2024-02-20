@@ -33,5 +33,6 @@ namespace creativo_API.Models
         public virtual DbSet<REPARTIDOR> REPARTIDORES { get; set; }
         public virtual DbSet<TALLER> TALLERES { get; set; }
         public virtual DbSet<TALLER_FOTOS> TALLER_FOTOS { get; set; }
+        public virtual DbSet<ROL> ROLES { get; set; }
     }
 }

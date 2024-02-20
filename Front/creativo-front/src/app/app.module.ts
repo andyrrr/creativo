@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './General/inicio/inicio.component';
 import { GestionPreguntasComponent } from './Administrador/gestion-preguntas/gestion-preguntas.component';
 import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pregunta.component';
+import { LoginComponent } from './General/login/login.component';
+import { NavBarComponent } from './General/nav-bar/nav-bar.component';
+
 
 
 @NgModule({
@@ -24,6 +27,8 @@ import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pre
     InicioComponent,
     GestionPreguntasComponent,
     NuevaPreguntaComponent,
+    LoginComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule, 

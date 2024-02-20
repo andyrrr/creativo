@@ -99,3 +99,36 @@ CREATE TABLE PEDIDO (
     FOREIGN KEY (IdRepartidor) REFERENCES REPARTIDOR(IdRepartidor),
     FOREIGN KEY (IdCliente) REFERENCES CLIENTE(IdCliente)
 );
+
+
+-- Crear la tabla ROL
+CREATE TABLE ROL (
+    Usuario VARCHAR(50) PRIMARY KEY,
+    Tipo VARCHAR(50)
+);
+
+
+
+
+CREATE TRIGGER add_admin_rol ON ADMIN FOR INSERT AS 
+BEGIN 
+    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'ADMIN' FROM inserted;
+END
+
+
+CREATE TRIGGER add_emprendimiento_rol ON EMPRENDIMIENTO FOR INSERT AS 
+BEGIN 
+    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'EMPRENDIMIENTO' FROM inserted;
+END
+
+
+CREATE TRIGGER add_cliente_rol ON CLIENTE FOR INSERT AS 
+BEGIN 
+    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'CLIENTE' FROM inserted;
+END
+
+
+CREATE TRIGGER add_repartidor_rol ON REPARTIDOR FOR INSERT AS 
+BEGIN 
+    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'REPARTIDOR' FROM inserted;
+END

@@ -183,5 +183,13 @@
       <End Role="CLIENTE" EntitySet="CLIENTES" />
       <End Role="TALLER" EntitySet="TALLERES" />
     </AssociationSet>
+    <EntitySet Name="ROLES" EntityType="creativoDBModel.ROL" />
   </EntityContainer>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="Usuario" />
+    </Key>
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

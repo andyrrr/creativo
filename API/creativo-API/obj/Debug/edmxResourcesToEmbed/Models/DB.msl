@@ -109,5 +109,13 @@
         <ScalarProperty Name="Nombre" ColumnName="Taller" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="creativoDBModel.ROL">
+        <MappingFragment StoreEntitySet="ROL">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
