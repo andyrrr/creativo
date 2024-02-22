@@ -13,45 +13,45 @@ using creativo_API.Models;
 
 namespace creativo_API.Controllers
 {
-    [EnableCors(origins:"*", headers:"*", methods:"*")]
-    public class PREGUNTASController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ClientsController : ApiController
     {
-        private creativoDBEntities db = new creativoDBEntities();
+        private creativoDBEntity db = new creativoDBEntity();
 
-        // GET: api/PREGUNTAS
-        public IQueryable<PREGUNTA> GetPREGUNTAS()
+        // GET: api/Clients
+        public IQueryable<Client> GetClients()
         {
-            return db.PREGUNTAS;
+            return db.Clients;
         }
 
-        // GET: api/PREGUNTAS/5
-        [ResponseType(typeof(PREGUNTA))]
-        public IHttpActionResult GetPREGUNTA(int id)
+        // GET: api/Clients/5
+        [ResponseType(typeof(Client))]
+        public IHttpActionResult GetClient(int id)
         {
-            PREGUNTA pregunta = db.PREGUNTAS.Find(id);
-            if (pregunta == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return Ok(pregunta);
+            return Ok(client);
         }
 
-        // PUT: api/PREGUNTAS/5
+        // PUT: api/Clients/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPREGUNTA(int id, PREGUNTA pregunta)
+        public IHttpActionResult PutClient(int id, Client client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pregunta.IdPreguntas)
+            if (id != client.IdClient)
             {
                 return BadRequest();
             }
 
-            db.Entry(pregunta).State = EntityState.Modified;
+            db.Entry(client).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace creativo_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PREGUNTAExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace creativo_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/PREGUNTAS
-        [ResponseType(typeof(PREGUNTA))]
-        public IHttpActionResult PostPREGUNTA(PREGUNTA pregunta)
+        // POST: api/Clients
+        [ResponseType(typeof(Client))]
+        public IHttpActionResult PostClient(Client client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.PREGUNTAS.Add(pregunta);
+            db.Clients.Add(client);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pregunta.IdPreguntas }, pregunta);
+            return CreatedAtRoute("DefaultApi", new { id = client.IdClient }, client);
         }
 
-        // DELETE: api/PREGUNTAS/5
-        [ResponseType(typeof(PREGUNTA))]
-        public IHttpActionResult DeletePREGUNTA(int id)
+        // DELETE: api/Clients/5
+        [ResponseType(typeof(Client))]
+        public IHttpActionResult DeleteClient(int id)
         {
-            PREGUNTA pregunta = db.PREGUNTAS.Find(id);
-            if (pregunta == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            db.PREGUNTAS.Remove(pregunta);
+            db.Clients.Remove(client);
             db.SaveChanges();
 
-            return Ok(pregunta);
+            return Ok(client);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +112,9 @@ namespace creativo_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PREGUNTAExists(int id)
+        private bool ClientExists(int id)
         {
-            return db.PREGUNTAS.Count(e => e.IdPreguntas == id) > 0;
+            return db.Clients.Count(e => e.IdClient == id) > 0;
         }
     }
 }

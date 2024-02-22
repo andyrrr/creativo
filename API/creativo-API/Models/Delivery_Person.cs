@@ -12,28 +12,26 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENTE
+    public partial class Delivery_Person
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CLIENTE()
+        public Delivery_Person()
         {
-            this.PEDIDOS = new HashSet<PEDIDO>();
-            this.TALLERES = new HashSet<TALLER>();
+            this.Orders = new HashSet<Order>();
         }
     
-        public int IdCliente { get; set; }
-        public string Usuario { get; set; }
-        public string Pass { get; set; }
-        public string Nombre { get; set; }
-        public string Apellidos { get; set; }
-        public string Telefono { get; set; }
-        public string Provincia { get; set; }
+        public int IdDeliveryPerson { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string State { get; set; }
+        public string Province { get; set; }
         public string Canton { get; set; }
-        public string Distrito { get; set; }
+        public string District { get; set; }
+        public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO> PEDIDOS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TALLER> TALLERES { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

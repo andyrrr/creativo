@@ -12,12 +12,9 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class Distric
     {
-        public int IdAdmin { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
+        public string Canton { get; set; }
     }
 }

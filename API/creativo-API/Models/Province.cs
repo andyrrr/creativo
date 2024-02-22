@@ -12,19 +12,8 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EMPRENDIMIENTO
+    public partial class Province
     {
-        public int IdEmprendimiento { get; set; }
-        public string Usuario { get; set; }
-        public string Pass { get; set; }
-        public string Tipo { get; set; }
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public string Sinpe { get; set; }
-        public string Telefono { get; set; }
-        public string Provincia { get; set; }
-        public string Canton { get; set; }
-        public string Distrito { get; set; }
-        public string Estado { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -31,18 +31,18 @@ export class GestionSolicitudesComponent {
 
   aceptarSolicitud(obj:Emprendimiento){
     this.objeto = obj;
-    this.objeto.Estado = "Aceptada";
+    this.objeto.State = "Aceptada";
     this.gestionarSolicitud();
   }
   rechazarSolicitud(obj:Emprendimiento){
     this.objeto = obj;
-    this.objeto.Estado = "Rechazada"
+    this.objeto.State = "Rechazada"
     this.gestionarSolicitud();
   }
 
   gestionarSolicitud(){
 
-    this.service.update(this.objeto.IdEmprendimiento, this.objeto).subscribe({
+    this.service.update(this.objeto.IdEntrepreneurship, this.objeto).subscribe({
       next:(data) => {
         window.location.reload();
       }, 

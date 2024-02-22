@@ -12,9 +12,16 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ROL
+    public partial class Client
     {
-        public string Usuario { get; set; }
-        public string Tipo { get; set; }
+        public int IdClient { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string Province { get; set; }
+        public string Canton { get; set; }
+        public string District { get; set; }
     }
 }

@@ -12,15 +12,12 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PEDIDO
+    public partial class Order
     {
-        public int IdPedido { get; set; }
-        public string Direccion { get; set; }
-        public string Estado { get; set; }
-        public Nullable<int> IdRepartidor { get; set; }
-        public Nullable<int> IdCliente { get; set; }
-    
-        public virtual CLIENTE CLIENTE { get; set; }
-        public virtual REPARTIDOR REPARTIDOR { get; set; }
+        public int IdOrder { get; set; }
+        public string Address { get; set; }
+        public string State { get; set; }
+        public Nullable<int> IdDeliveryPerson { get; set; }
+        public Nullable<int> IdClient { get; set; }
     }
 }

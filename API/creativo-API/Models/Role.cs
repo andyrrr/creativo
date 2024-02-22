@@ -12,11 +12,9 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TALLER_FOTOS
+    public partial class Role
     {
-        public string Taller { get; set; }
-        public string Foto { get; set; }
-    
-        public virtual TALLER TALLER1 { get; set; }
+        public string Username { get; set; }
+        public string Type { get; set; }
     }
 }

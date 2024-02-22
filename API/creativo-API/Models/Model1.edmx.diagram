@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91bbf2da92934b27a2e63516fb0e6f53" Name="Diagram1">
+        <EntityTypeShape EntityType="creativoDBModel.Admin" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Canton" Width="1.5" PointX="2.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Client" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Delivery_Person" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Distric" Width="1.5" PointX="4.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Order" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Province" Width="1.5" PointX="6.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Question" Width="1.5" PointX="8.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Role" Width="1.5" PointX="8.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Workshop" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Workshop_Photos" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="creativoDBModel.FK__Orders__IdClient__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="creativoDBModel.FK__Orders__IdDelive__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="creativoDBModel.FK__Workshop__IdEntr__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="creativoDBModel.FK__Workshop___Works__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="creativoDBModel.Workshop_Client" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

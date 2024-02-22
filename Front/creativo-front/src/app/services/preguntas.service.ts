@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PreguntasService extends ConexionService<PreguntaInterface> {
   getResourceURL(): string {
-    return '/PREGUNTAS';
+    return '/Questions';
   }
   getHomePage(): string {
     return 'preguntas';

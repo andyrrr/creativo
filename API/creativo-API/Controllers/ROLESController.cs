@@ -2,51 +2,42 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using creativo_API.Models;
 
 namespace creativo_API.Controllers
 {
-    public class ROLESController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class RolesController : ApiController
     {
-        private creativoDBEntities db = new creativoDBEntities();
+        private creativoDBEntity db = new creativoDBEntity();
 
-        // GET: api/ROLES
-        public IQueryable<ROL> GetROLES()
+        // GET: api/Roles
+        public IQueryable<Role> GetRoles()
         {
-            return db.ROLES;
+            return db.Roles;
         }
 
-        // GET: api/ROLES/5
-        [ResponseType(typeof(ROL))]
-        public IHttpActionResult GetROL(string id)
-        {
-            ROL rol = db.ROLES.Find(id);
-            if (rol == null)
-            {
-                return NotFound();
-            }
 
-            return Ok(rol);
-        }
-
-        // GET: api/ROL/Usuario/Pass
-        [ResponseType(typeof(ROL))]
-        [Route("api/ROL/{usuario}/{pass}")]
+        // GET: api/Roles/Usuario/Pass
+        [ResponseType(typeof(Role))]
+        [Route("api/Roles/{usuario}/{pass}")]
         public IHttpActionResult GetROL(string usuario, string pass)
         {
-           
+
             if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(pass))
             {
                 return BadRequest("Usuario y contraseña son requeridos");
             }
 
-            ROL rol = db.ROLES.FirstOrDefault(r => r.Usuario == usuario);
+            Role rol = db.Roles.FirstOrDefault(r => r.Username == usuario);
 
             if (rol == null)
             {
@@ -54,13 +45,13 @@ namespace creativo_API.Controllers
             }
 
 
-            if (db.ADMINS.FirstOrDefault(obj => obj.Usuario == usuario && obj.Pass == pass) != null)
+            if (db.Admins.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)
             {
                 return Ok(rol);
 
             };
 
-            if (db.EMPRENDIMIENTOS.FirstOrDefault(obj => obj.Usuario == usuario && obj.Pass == pass) != null)
+            if (db.Entrepreneurships.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)
             {
                 return Ok(rol);
 
@@ -69,22 +60,34 @@ namespace creativo_API.Controllers
             return BadRequest("Contraseña Incorrecta");
         }
 
+        // GET: api/Roles/5
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult GetRole(string id)
+        {
+            Role role = db.Roles.Find(id);
+            if (role == null)
+            {
+                return NotFound();
+            }
 
-        // PUT: api/ROLES/5
+            return Ok(role);
+        }
+
+        // PUT: api/Roles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutROL(string id, ROL rol)
+        public IHttpActionResult PutRole(string id, Role role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != rol.Usuario)
+            if (id != role.Username)
             {
                 return BadRequest();
             }
 
-            db.Entry(rol).State = EntityState.Modified;
+            db.Entry(role).State = EntityState.Modified;
 
             try
             {
@@ -92,7 +95,7 @@ namespace creativo_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ROLExists(id))
+                if (!RoleExists(id))
                 {
                     return NotFound();
                 }
@@ -105,16 +108,16 @@ namespace creativo_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ROLES
-        [ResponseType(typeof(ROL))]
-        public IHttpActionResult PostROL(ROL rol)
+        // POST: api/Roles
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult PostRole(Role role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ROLES.Add(rol);
+            db.Roles.Add(role);
 
             try
             {
@@ -122,7 +125,7 @@ namespace creativo_API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ROLExists(rol.Usuario))
+                if (RoleExists(role.Username))
                 {
                     return Conflict();
                 }
@@ -132,23 +135,23 @@ namespace creativo_API.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = rol.Usuario }, rol);
+            return CreatedAtRoute("DefaultApi", new { id = role.Username }, role);
         }
 
-        // DELETE: api/ROLES/5
-        [ResponseType(typeof(ROL))]
-        public IHttpActionResult DeleteROL(string id)
+        // DELETE: api/Roles/5
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult DeleteRole(string id)
         {
-            ROL rol = db.ROLES.Find(id);
-            if (rol == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return NotFound();
             }
 
-            db.ROLES.Remove(rol);
+            db.Roles.Remove(role);
             db.SaveChanges();
 
-            return Ok(rol);
+            return Ok(role);
         }
 
         protected override void Dispose(bool disposing)
@@ -160,9 +163,9 @@ namespace creativo_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ROLExists(string id)
+        private bool RoleExists(string id)
         {
-            return db.ROLES.Count(e => e.Usuario == id) > 0;
+            return db.Roles.Count(e => e.Username == id) > 0;
         }
     }
 }

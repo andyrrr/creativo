@@ -3,132 +3,153 @@
 USE creativoDB;
 
 -- Crear la tabla PREGUNTAS
-CREATE TABLE PREGUNTAS (
-    IdPreguntas INT IDENTITY(1,1) PRIMARY KEY,
-    Pregunta VARCHAR(255),
-    Respuesta VARCHAR(255)
+CREATE TABLE Question (
+    IdQuestion INT IDENTITY(1,1) PRIMARY KEY,
+    Question VARCHAR(255),
+    Answer VARCHAR(255)
 );
 
--- Crear la tabla REPARTIDOR
-CREATE TABLE REPARTIDOR (
-    IdRepartidor INT PRIMARY KEY,
-    Usuario VARCHAR(50),
-    Pass VARCHAR(50),
-    Nombre VARCHAR(100),
-    Apellidos VARCHAR(100),
-    Estado VARCHAR(50),
-    Provincia VARCHAR(50),
-    Canton VARCHAR(50),
-    Distrito VARCHAR(50),
-    Telefono VARCHAR(20)
+-- Create the table DELIVERY_PERSON
+CREATE TABLE Delivery_Person (
+	IdDeliveryPerson INT PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(50),
+	Firstname VARCHAR(100),
+	Lastname VARCHAR(100),
+	State VARCHAR(50),
+	Province VARCHAR(50),
+	Canton VARCHAR(50),
+	District VARCHAR(50),
+	Phone VARCHAR(20)
 );
 
--- Crear la tabla EMPRENDIMIENTO
-CREATE TABLE EMPRENDIMIENTO (
-    IdEmprendimiento INT PRIMARY KEY,
-    Usuario VARCHAR(50),
-    Pass VARCHAR(50),
-    Tipo VARCHAR(50),
-    Nombre VARCHAR(100),
-    Correo VARCHAR(100),
-    Sinpe VARCHAR(20),
-    Telefono VARCHAR(20),
-    Provincia VARCHAR(50),
-    Canton VARCHAR(50),
-    Distrito VARCHAR(50),
-    Estado VARCHAR(50)
-);
-
--- Crear la tabla TALLER
-CREATE TABLE TALLER (
-    IdEmprendimiento INT,
-    Nombre VARCHAR(100) PRIMARY KEY,
-    Precio DECIMAL(10, 2),
-    Descripcion TEXT,
-    Link VARCHAR(255),
-    Tipo VARCHAR(50),
-    FOREIGN KEY (IdEmprendimiento) REFERENCES EMPRENDIMIENTO(IdEmprendimiento)
-);
-
--- Crear la tabla CLIENTE
-CREATE TABLE CLIENTE (
-    IdCliente INT IDENTITY(1,1) PRIMARY KEY,
-    Usuario VARCHAR(50),
-    Pass VARCHAR(50),
-    Nombre VARCHAR(100),
-    Apellidos VARCHAR(100),
-    Telefono VARCHAR(20),
-    Provincia VARCHAR(50),
-    Canton VARCHAR(50),
-    Distrito VARCHAR(50)
-);
-
--- Crear la tabla TALLER_FOTOS
-CREATE TABLE TALLER_FOTOS (
-    Taller VARCHAR(100),
-    Foto VARCHAR(255),
-    PRIMARY KEY (Taller, Foto),
-    FOREIGN KEY (Taller) REFERENCES TALLER(Nombre)
-);
-
--- Crear la tabla TALLER_CLIENTE
-CREATE TABLE TALLER_CLIENTE (
-    Taller VARCHAR(100),
-    IdCliente INT,
-    PRIMARY KEY (Taller, IdCliente),
-    FOREIGN KEY (Taller) REFERENCES TALLER(Nombre),
-    FOREIGN KEY (IdCliente) REFERENCES CLIENTE(IdCliente)
-);
-
--- Crear la tabla ADMIN
-CREATE TABLE ADMIN (
-    IdAdmin INT PRIMARY KEY,
-    Usuario VARCHAR(50),
-    Pass VARCHAR(50),
-    Nombre VARCHAR(100),
-    Apellidos VARCHAR(100)
-);
-
--- Crear la tabla PEDIDO
-CREATE TABLE PEDIDO (
-    IdPedido INT IDENTITY(1,1) PRIMARY KEY,
-    Direccion VARCHAR(255),
-    Estado VARCHAR(50),
-    IdRepartidor INT,
-    IdCliente INT,
-    FOREIGN KEY (IdRepartidor) REFERENCES REPARTIDOR(IdRepartidor),
-    FOREIGN KEY (IdCliente) REFERENCES CLIENTE(IdCliente)
+-- Create the table ENTREPRENEURSHIP
+CREATE TABLE Entrepreneurship (
+	IdEntrepreneurship INT PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(50),
+	Type VARCHAR(50),
+	Name VARCHAR(100),
+	Email VARCHAR(100),
+	Sinpe VARCHAR(20),
+	Phone VARCHAR(20),
+	Province VARCHAR(50),
+	Canton VARCHAR(50),
+	District VARCHAR(50),
+	State VARCHAR(50)
 );
 
 
--- Crear la tabla ROL
-CREATE TABLE ROL (
-    Usuario VARCHAR(50) PRIMARY KEY,
-    Tipo VARCHAR(50)
+-- Create the table WORKSHOP
+CREATE TABLE Workshop (
+	IdEntrepreneurship INT,
+	Name VARCHAR(100) PRIMARY KEY,
+	Price DECIMAL(10, 2),
+	Description TEXT,
+	Link VARCHAR(255),
+	Type VARCHAR(50),
+	FOREIGN KEY (IdEntrepreneurship) REFERENCES EntrepreneurshiP(IdEntrepreneurship)
+);
+
+
+-- Create the table CLIENT
+CREATE TABLE Client (
+	IdClient INT IDENTITY(1,1) PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(50),
+	FirstName VARCHAR(100),
+	LastName VARCHAR(100),
+	Phone VARCHAR(20),
+	Province VARCHAR(50),
+	Canton VARCHAR(50),
+	District VARCHAR(50)
+);
+
+
+-- Create the table WORKSHOP_PHOTOS
+CREATE TABLE Workshop_Photos (
+	Workshop VARCHAR(100),
+	Photo VARCHAR(255),
+	PRIMARY KEY (Workshop, Photo),
+	FOREIGN KEY (Workshop) REFERENCES Workshop(Name)
+);
+
+
+-- Create the table WORKSHOP_CLIENT
+CREATE TABLE Workshop_Client (
+	Workshop VARCHAR(100),
+	IdClient INT,
+	PRIMARY KEY (Workshop, IdClient),
+	FOREIGN KEY (Workshop) REFERENCES Workshop(Name),
+	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
+);
+
+
+-- Create the table ADMIN
+CREATE TABLE Admins (
+	IdAdmin INT PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(50),
+	FirstName VARCHAR(100),
+	LastName VARCHAR(100)
+);
+
+
+-- Create the table ORDER
+CREATE TABLE Orders (
+	IdOrder INT IDENTITY(1,1) PRIMARY KEY,
+	Address VARCHAR(255),
+	State VARCHAR(50),
+	IdDeliveryPerson INT,
+	IdClient INT,
+	FOREIGN KEY (IdDeliveryPerson) REFERENCES Delivery_Person(IdDeliveryPerson),
+	FOREIGN KEY (IdClient) REFERENCES CLIENT(IdClient)
 );
 
 
 
+-- Create the table ROLE
+CREATE TABLE Role (
+	Username VARCHAR(50) PRIMARY KEY,
+	Type VARCHAR(50)
+);
 
-CREATE TRIGGER add_admin_rol ON ADMIN FOR INSERT AS 
+CREATE TABLE Province (
+	Name VARCHAR(50) PRIMARY KEY,
+);
+
+CREATE TABLE Canton (
+	Name VARCHAR(50),
+	Province VARCHAR(50),
+	PRIMARY KEY (Name, Province)
+);
+
+CREATE TABLE Distric (
+	Name VARCHAR(50),
+	Canton VARCHAR(50),
+	PRIMARY KEY (Name, Canton)
+);
+
+
+CREATE TRIGGER add_admin_rol ON Admins FOR INSERT AS 
 BEGIN 
-    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'ADMIN' FROM inserted;
+    INSERT INTO Role(Username, Type) SELECT Username, 'ADMIN' FROM inserted;
 END
 
 
-CREATE TRIGGER add_emprendimiento_rol ON EMPRENDIMIENTO FOR INSERT AS 
+CREATE TRIGGER add_emprendimiento_rol ON Entrepreneurship FOR INSERT AS 
 BEGIN 
-    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'EMPRENDIMIENTO' FROM inserted;
+    INSERT INTO Role(Username, Type) SELECT Username, 'EMPRENDIMIENTO' FROM inserted;
 END
 
 
-CREATE TRIGGER add_cliente_rol ON CLIENTE FOR INSERT AS 
+CREATE TRIGGER add_cliente_rol ON Client FOR INSERT AS 
 BEGIN 
-    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'CLIENTE' FROM inserted;
+    INSERT INTO Role(Username, Type) SELECT Username, 'CLIENTE' FROM inserted;
 END
 
 
-CREATE TRIGGER add_repartidor_rol ON REPARTIDOR FOR INSERT AS 
+CREATE TRIGGER add_repartidor_rol ON Delivery_Person FOR INSERT AS 
 BEGIN 
-    INSERT INTO ROL(Usuario, Tipo) SELECT Usuario, 'REPARTIDOR' FROM inserted;
+    INSERT INTO Role(Username, Type) SELECT Username, 'REPARTIDOR' FROM inserted;
 END

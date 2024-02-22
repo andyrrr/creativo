@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class EmprendimientoService extends ConexionService<EmprendimientoInterface> {
   getResourceURL(): string {
-    return '/EMPRENDIMIENTOS';
+    return '/Entrepreneurships';
   }
   getHomePage(): string {
     return 'emprendimientos';

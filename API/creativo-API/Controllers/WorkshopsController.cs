@@ -14,44 +14,44 @@ using creativo_API.Models;
 namespace creativo_API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class AdminsController : ApiController
+    public class WorkshopsController : ApiController
     {
         private creativoDBEntity db = new creativoDBEntity();
 
-        // GET: api/Admins
-        public IQueryable<Admin> GetAdmins()
+        // GET: api/Workshops
+        public IQueryable<Workshop> GetWorkshops()
         {
-            return db.Admins;
+            return db.Workshops;
         }
 
-        // GET: api/Admins/5
-        [ResponseType(typeof(Admin))]
-        public IHttpActionResult GetAdmin(int id)
+        // GET: api/Workshops/5
+        [ResponseType(typeof(Workshop))]
+        public IHttpActionResult GetWorkshop(string id)
         {
-            Admin admin = db.Admins.Find(id);
-            if (admin == null)
+            Workshop workshop = db.Workshops.Find(id);
+            if (workshop == null)
             {
                 return NotFound();
             }
 
-            return Ok(admin);
+            return Ok(workshop);
         }
 
-        // PUT: api/Admins/5
+        // PUT: api/Workshops/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAdmin(int id, Admin admin)
+        public IHttpActionResult PutWorkshop(string id, Workshop workshop)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != admin.IdAdmin)
+            if (id != workshop.Name)
             {
                 return BadRequest();
             }
 
-            db.Entry(admin).State = EntityState.Modified;
+            db.Entry(workshop).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace creativo_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AdminExists(id))
+                if (!WorkshopExists(id))
                 {
                     return NotFound();
                 }
@@ -72,16 +72,16 @@ namespace creativo_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Admins
-        [ResponseType(typeof(Admin))]
-        public IHttpActionResult PostAdmin(Admin admin)
+        // POST: api/Workshops
+        [ResponseType(typeof(Workshop))]
+        public IHttpActionResult PostWorkshop(Workshop workshop)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Admins.Add(admin);
+            db.Workshops.Add(workshop);
 
             try
             {
@@ -89,7 +89,7 @@ namespace creativo_API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (AdminExists(admin.IdAdmin))
+                if (WorkshopExists(workshop.Name))
                 {
                     return Conflict();
                 }
@@ -99,23 +99,23 @@ namespace creativo_API.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = admin.IdAdmin }, admin);
+            return CreatedAtRoute("DefaultApi", new { id = workshop.Name }, workshop);
         }
 
-        // DELETE: api/Admins/5
-        [ResponseType(typeof(Admin))]
-        public IHttpActionResult DeleteAdmin(int id)
+        // DELETE: api/Workshops/5
+        [ResponseType(typeof(Workshop))]
+        public IHttpActionResult DeleteWorkshop(string id)
         {
-            Admin admin = db.Admins.Find(id);
-            if (admin == null)
+            Workshop workshop = db.Workshops.Find(id);
+            if (workshop == null)
             {
                 return NotFound();
             }
 
-            db.Admins.Remove(admin);
+            db.Workshops.Remove(workshop);
             db.SaveChanges();
 
-            return Ok(admin);
+            return Ok(workshop);
         }
 
         protected override void Dispose(bool disposing)
@@ -127,9 +127,9 @@ namespace creativo_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool AdminExists(int id)
+        private bool WorkshopExists(string id)
         {
-            return db.Admins.Count(e => e.IdAdmin == id) > 0;
+            return db.Workshops.Count(e => e.Name == id) > 0;
         }
     }
 }

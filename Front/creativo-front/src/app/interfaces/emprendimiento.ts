@@ -1,31 +1,32 @@
 export interface EmprendimientoInterface {
-    IdEmprendimiento:number;
-    Usuario:string;
-    Pass:string;
-    Tipo:string;
-    Nombre:string;
-    Correo:string;
+    IdEntrepreneurship:number;
+    Username:string;
+    Password:string;
+    Type:string;
+    Name:string;
+    Email:string;
     Sinpe:string;
-    Telefono:string;
-    Provincia:string;
+    Phone:string;
+    Province:string;
     Canton:string;
-    Distrito:string;
-    Estado:string;
+    District:string;
+    State:string;
 }
 
 
 export class Emprendimiento implements EmprendimientoInterface{
-    IdEmprendimiento!: number;
-    Usuario!: string;
-    Pass!: string;
-    Tipo!: string;
-    Nombre!: string;
-    Correo!: string;
+    IdEntrepreneurship!: number;
+    Username!: string;
+    Password!: string;
+    Type!: string;
+    Name!: string;
+    Email!: string;
     Sinpe!: string;
-    Telefono!: string;
-    Provincia!: string;
+    Phone!: string;
+    Province!: string;
     Canton!: string;
-    Distrito!: string;
-    Estado!: string;
+    District!: string;
+    State!: string;
+    
 
 }

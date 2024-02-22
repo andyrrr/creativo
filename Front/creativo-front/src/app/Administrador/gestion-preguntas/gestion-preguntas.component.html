@@ -31,13 +31,13 @@
                 <li class="list-group-item">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <strong>Pregunta:</strong> {{obj.Pregunta1}}
+                            <strong>Pregunta:</strong> {{obj.Question1}}
                             <br>
-                            <strong>Respuesta:</strong> {{obj.Respuesta}}
+                            <strong>Respuesta:</strong> {{obj.Answer}}
                         </div>
                         <div>
-                            <button type="button" class="editar-bttn" [routerLink]="['/actualizar-pregunta',obj.IdPreguntas]">Editar</button>
-                            <button type="button" class="rechazar-bttn" (click) = "eliminarPregunta(obj.IdPreguntas)">Eliminar</button>
+                            <button type="button" class="editar-bttn" [routerLink]="['/actualizar-pregunta',obj.IdQuestion]">Editar</button>
+                            <button type="button" class="rechazar-bttn" (click) = "eliminarPregunta(obj.IdQuestion)">Eliminar</button>
                         </div>
                     </div>
                 </li>

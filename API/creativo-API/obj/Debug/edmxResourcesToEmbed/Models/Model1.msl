@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="creativoDBModelStoreContainer" CdmEntityContainer="creativoDBEntity">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="creativoDBModel.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cantons">
+      <EntityTypeMapping TypeName="creativoDBModel.Canton">
+        <MappingFragment StoreEntitySet="Canton">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="creativoDBModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="District" ColumnName="District" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Delivery_Persons">
+      <EntityTypeMapping TypeName="creativoDBModel.Delivery_Person">
+        <MappingFragment StoreEntitySet="Delivery_Person">
+          <ScalarProperty Name="IdDeliveryPerson" ColumnName="IdDeliveryPerson" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districs">
+      <EntityTypeMapping TypeName="creativoDBModel.Distric">
+        <MappingFragment StoreEntitySet="Distric">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entrepreneurships">
+      <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship">
+        <MappingFragment StoreEntitySet="Entrepreneurship">
+          <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sinpe" ColumnName="Sinpe" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="creativoDBModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="IdDeliveryPerson" ColumnName="IdDeliveryPerson" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="creativoDBModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="creativoDBModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+          <ScalarProperty Name="Question1" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="creativoDBModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workshops">
+      <EntityTypeMapping TypeName="creativoDBModel.Workshop">
+        <MappingFragment StoreEntitySet="Workshop">
+          <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workshop_Photos">
+      <EntityTypeMapping TypeName="creativoDBModel.Workshop_Photos">
+        <MappingFragment StoreEntitySet="Workshop_Photos">
+          <ScalarProperty Name="Workshop" ColumnName="Workshop" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Workshop_Client" TypeName="creativoDBModel.Workshop_Client" StoreEntitySet="Workshop_Client">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+      </EndProperty>
+      <EndProperty Name="Workshop">
+        <ScalarProperty Name="Name" ColumnName="Workshop" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

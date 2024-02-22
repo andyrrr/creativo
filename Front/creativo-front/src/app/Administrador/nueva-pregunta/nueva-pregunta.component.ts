@@ -33,7 +33,7 @@ export class NuevaPreguntaComponent {
 
   guardar(){
     if (this.editMode){
-      this.service.update(this.objeto.IdPreguntas, this.objeto).subscribe({
+      this.service.update(this.objeto.IdQuestion, this.objeto).subscribe({
         next:(data) => {
           this.redirigir("/gestion-preguntas")
         }, error:(err) => {

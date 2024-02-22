@@ -12,10 +12,19 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PREGUNTA
+    public partial class Entrepreneurship
     {
-        public int IdPreguntas { get; set; }
-        public string Pregunta1 { get; set; }
-        public string Respuesta { get; set; }
+        public int IdEntrepreneurship { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Sinpe { get; set; }
+        public string Phone { get; set; }
+        public string Province { get; set; }
+        public string Canton { get; set; }
+        public string District { get; set; }
+        public string State { get; set; }
     }
 }

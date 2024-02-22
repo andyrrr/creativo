@@ -12,12 +12,13 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class Workshop
     {
-        public int IdAdmin { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public Nullable<int> IdEntrepreneurship { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public string Description { get; set; }
+        public string Link { get; set; }
+        public string Type { get; set; }
     }
 }

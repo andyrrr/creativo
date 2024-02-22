@@ -27,14 +27,14 @@
             <ng-template ngFor let-obj [ngForOf]="solicitudes" ; let-i="index">
                 <div class="card">
                     <div class="bloque">
-                        <div class="texto">Emprendimiento: {{obj.Nombre}}</div>
-                        <div class="texto">Lugar: {{obj.Distrito}}, {{obj.Canton}}, {{obj.Provincia}}</div>
-                        <div class="texto">Tipo de negocio: {{obj.Tipo}}</div>
+                        <div class="texto">Emprendimiento: {{obj.Name}}</div>
+                        <div class="texto">Lugar: {{obj.District}}, {{obj.Canton}}, {{obj.Province}}</div>
+                        <div class="texto">Tipo de negocio: {{obj.Type}}</div>
                     </div>
                     <div class="bloque">
-                        <div class="texto">Teléfono: {{obj.Telefono}}</div>
+                        <div class="texto">Teléfono: {{obj.Phone}}</div>
                         <div class="texto">SINPE: {{obj.Sinpe}}</div>
-                        <div class="texto">Correo: {{obj.Correo}}</div>
+                        <div class="texto">Correo: {{obj.Email}}</div>
                     </div>
                     <div class="bloque">
                         <button class="aceptar-bttn" (click)="aceptarSolicitud(obj)"> Aceptar </button>

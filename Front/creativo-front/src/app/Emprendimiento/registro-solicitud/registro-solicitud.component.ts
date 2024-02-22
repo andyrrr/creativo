@@ -16,7 +16,7 @@ export class RegistroSolicitudComponent {
 
 
   guardar(){
-    this.objeto.Estado = "Pendiente"
+    this.objeto.State = "Pendiente"
     this.service.add(this.objeto).subscribe({
       next:(data) =>{
         console.log(data);
