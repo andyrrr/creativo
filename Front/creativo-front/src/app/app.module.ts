@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './General/inicio/inicio.component';
 import { GestionPreguntasComponent } from './Administrador/gestion-preguntas/gestion-preguntas.component';
 import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pregunta.component';
-import { LoginComponent } from './General/login/login.component';
 import { NavBarComponent } from './General/nav-bar/nav-bar.component';
+import { LoginComponent } from './General/login/login.component';
 
 
 
@@ -41,7 +41,8 @@ import { NavBarComponent } from './General/nav-bar/nav-bar.component';
       {path: "registrarse", component:RegistroSolicitudComponent},
       {path: "gestion-preguntas", component:GestionPreguntasComponent},
       {path: "nueva-pregunta", component:NuevaPreguntaComponent},
-      {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent}
+      {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent},
+      {path: "ingresar", component:LoginComponent}
     ]),
     FormsModule,
     HttpClientModule

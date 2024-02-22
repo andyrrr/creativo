@@ -28,8 +28,12 @@ export abstract class ConexionService<T> {
     return this.httpClient.get<T[]>(this.getRuta() + "/" + atributo);
   }
 
-  get(id: string | number) {
-    console.log(this.getRuta())
+  get(id: string | number, id2?: string|number) {
+    
+    if (id2){
+      id = id + "/" + id2
+    }
+    console.log(this.getRuta()+ "/" + id)
     return this.httpClient.get<T>(this.getRuta() + "/" + id);
   }
 
