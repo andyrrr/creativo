@@ -14,7 +14,7 @@
 
 
 .barra{
-    position: relative;
+    position: static;
     height: 80px;
     width: 100%;
     display: flex;
@@ -88,7 +88,7 @@ button {
     justify-content: space-around;
     margin-bottom: 1%;
     padding: 0% 4%;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 

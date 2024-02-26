@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Role } from 'src/app/interfaces/role';
 import { RoleService } from 'src/app/services/role.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,16 @@ export class LoginComponent {
   pass:string="";
   rol:Role = new Role;
 
-  constructor(private service:RoleService){
-
+  constructor(private service:RoleService, private cookieService: CookieService){
+    if (cookieService.get("cookieADMIN") !="") {
+      this.redirigir("/solicitudes")
+    } else if (cookieService.get("cookieEMPRENDIMIENTO") !="") {
+      this.redirigir("/?")
+    } else if (cookieService.get("cookieCLIENTE") !="") {
+      this.redirigir("/?")
+    } else if (cookieService.get("cookieREPARTIDOR") !="") {
+      this.redirigir("/?")
+    }
   }
 
   redirigir(url:string) {
@@ -26,6 +35,8 @@ export class LoginComponent {
         next:(data) => {
           this.rol = data
           console.log(this.rol)
+          this.cookieService.set('cookie' + this.rol.Type, this.rol.Username);
+          window.location.reload()
         }, 
         error:(err) => {
           console.log(err.error.Message)

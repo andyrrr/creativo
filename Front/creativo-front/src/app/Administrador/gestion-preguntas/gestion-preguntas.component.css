@@ -4,17 +4,26 @@ body {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: 93vh;
     background: #DC93E5;
+}
+
+.titulo {
+    margin-top: 15%;
+}
+
+.contenido{
+    overflow-y: scroll;
 }
 
 
 .list-group{
+    position: relative;
     justify-content:space-between;
     height: 100%;
-    padding: 2% 10%;
-    overflow-y: scroll;
+    padding: 2% 15%;
     margin-top: 1%;
+    margin-bottom: 3%;
 }
 
 button{
