@@ -63,6 +63,11 @@ namespace creativo_API.Controllers
                 return Ok(rol);
 
             };
+            if (db.Delivery_Persons.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)
+            {
+                return Ok(rol);
+
+            };
 
             return BadRequest("Contraseña Incorrecta");
         }

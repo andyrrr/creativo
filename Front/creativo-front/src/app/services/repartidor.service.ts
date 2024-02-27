@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClienteInterface } from '../interfaces/cliente';
+import { RepartidorInterface } from '../interfaces/repartidor';
 import { ConexionService } from './conexion.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService extends ConexionService<ClienteInterface> {
+export class RepartidorService extends ConexionService<RepartidorInterface> {
   getResourceURL(): string {
-    return '/Clients';
+    return '/Delivery_Person';
   }
   getHomePage(): string {
-    return 'cliente-perfil';
+    return 'repartidor-perfil';
   }
   getNombre(): string {
-    return 'Cliente';
+    return 'Repartidor';
   }
 
   constructor(

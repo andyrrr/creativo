@@ -20,6 +20,7 @@ import { FormularioRepartidorComponent } from './General/formulario-repartidor/f
 import { FormularioAdministradorComponent } from './Administrador/formulario-administrador/formulario-administrador.component';
 import { EmprendimientoPerfilComponent } from './Emprendimiento/emprendimiento-perfil/emprendimiento-perfil.component';
 import { ClientePerfilComponent } from './Cliente/cliente-perfil/cliente-perfil.component';
+import { RepartidorPerfilComponent } from './Repartidor/repartidor-perfil/repartidor-perfil.component';
 
 
 
@@ -39,7 +40,8 @@ import { ClientePerfilComponent } from './Cliente/cliente-perfil/cliente-perfil.
     FormularioEmprendimientoComponent,
     FormularioClienteComponent,
     FormularioRepartidorComponent,
-    FormularioAdministradorComponent
+    FormularioAdministradorComponent,
+    RepartidorPerfilComponent
   ],
   imports: [
     BrowserModule, 
@@ -56,7 +58,8 @@ import { ClientePerfilComponent } from './Cliente/cliente-perfil/cliente-perfil.
       {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent},
       {path: "ingresar", component:LoginComponent},
       {path: "emprendimiento-perfil", component:EmprendimientoPerfilComponent},
-      {path: "cliente-perfil", component:ClientePerfilComponent}
+      {path: "cliente-perfil", component:ClientePerfilComponent},
+      {path: "repartidor-perfil", component:RepartidorPerfilComponent}
     ]),
     FormsModule,
     HttpClientModule

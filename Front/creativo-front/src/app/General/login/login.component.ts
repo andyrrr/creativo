@@ -21,7 +21,7 @@ export class LoginComponent {
     } else if (cookieService.get("cookieCLIENTE") !="") {
       this.redirigir("/cliente-perfil")
     } else if (cookieService.get("cookieREPARTIDOR") !="") {
-      this.redirigir("/?")
+      this.redirigir("/repartidor-perfil")
     }
 
   }

@@ -46,7 +46,6 @@
     <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__IdDelive__4AB81AF0" FromRole="Delivery_Person" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Distric">
     <Key>

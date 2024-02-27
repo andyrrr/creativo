@@ -12,7 +12,7 @@ export class EmprendimientoService extends ConexionService<EmprendimientoInterfa
     return '/Entrepreneurships';
   }
   getHomePage(): string {
-    return 'emprendimientos';
+    return 'emprendimiento-perfil';
   }
   getNombre(): string {
     return 'emprendimiento';

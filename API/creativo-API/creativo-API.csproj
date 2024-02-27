@@ -182,6 +182,7 @@
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\CantonsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\Delivery_PersonController.cs" />
     <Compile Include="Controllers\DistricsController.cs" />
     <Compile Include="Controllers\EntrepreneurshipsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
