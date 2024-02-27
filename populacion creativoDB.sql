@@ -23,7 +23,7 @@ VALUES
 -- Insert into ENTREPRENEURSHIP
 INSERT INTO ENTREPRENEURSHIP (IdEntrepreneurship, Username, Password, Type, Name, Email, Sinpe, Phone, Province, Canton, District, State)
 VALUES
-    (8293471, 'e1', '1234', 'Arte', 'Galería Creativa', 'galeria@example.com', '87649076', '87650938', 'San José', 'Escazú', 'Distrito1', 'Pendiente'),
+    (8293401, 'e7', '1234', 'Arte', 'Galería Creativa', 'galeria@example.com', '87649076', '87650938', 'San José', 'Escazú', 'Distrito1', 'Pendiente'),
     (2342355, 'e2', '1234', 'Cocina', 'Sabores Innovadores', 'sabores@example.com', '289648375', '89765903', 'Heredia', 'Belén', 'Distrito2', 'Pendiente'),
     (2346236, 'e3', '1234', 'Manualidades', 'Hecho a Mano', 'hechoamano@example.com', '70986345', '72348593', 'Cartago', 'Cartago', 'Distrito3', 'Pendiente'),
     (2356346, 'e4', '1234', 'Moda', 'Estilo Creativo', 'estilo@example.com', '88769504', '70987345', 'Alajuela', 'Alajuela', 'Distrito4', 'Pendiente'),

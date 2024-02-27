@@ -1,7 +1,25 @@
 <body>
     <div class="contenido">
         <div class="titulo">
-            Administradores
+            Administradores Activos
+        </div>
+        <div class="admins">
+            <ng-template ngFor let-obj [ngForOf]="admins" ; let-i="index">
+                <div class="card">
+                    <div class="bloque">
+                        <div class="texto">Cédula: {{obj.IdAdmin}}</div>
+                        <div class="texto">UserName: {{obj.Username}}</div>
+                    </div>
+                    <div class="bloque">
+                        <div class="texto">Nombre: {{obj.FirstName}}</div>
+                        <div class="texto">Apellido: {{obj.LastName}}</div>
+                    </div>
+                    <div class="bloque">
+                        <button type="button" class="rechazar-bttn" (click) = "eliminarPregunta(obj.IdAdmin)">Eliminar</button>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
+    
 </body>

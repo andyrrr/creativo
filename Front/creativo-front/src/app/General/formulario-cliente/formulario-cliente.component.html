@@ -1,0 +1,48 @@
+<body>
+    <div class="titulo">Registro de Emprendimiento</div>
+    <div class="campo">
+      <label for="IdCliente" class="texto">Número de Cédula:</label>
+      <input type="number" id="IdCliente" name="IdCliente" [(ngModel)] = "objeto.IdClient"/>
+    </div>
+    <div class="campo">
+      <label for="Usuario" class="texto">Usuario:</label>
+      <input type="text" id="Usuario" name="Usuario" [(ngModel)] = "objeto.Username" required>
+    </div>
+  
+    <div class="campo">
+      <label for="Pass" class="texto">Contraseña:</label>
+      <input type="password" id="Pass" name="Pass" [(ngModel)] = "objeto.Password" required>
+    </div>
+  
+    <div class="campo">
+      <label for="Nombre" class="texto">Nombre:</label>
+      <input type="text" id="Nombre" name="Nombre" [(ngModel)] = "objeto.FirstName" required>
+    </div>
+    <div class="campo">
+        <label for="Telefono" class="texto">Teléfono:</label>
+        <input type="tel" id="Telefono" name="Telefono" [(ngModel)] = "objeto.Phone" required>
+      </div>
+  
+    <div class="campo">
+      <label for="Apellido" class="texto">Apellido:</label>
+      <input type="text" id="Apellido" name="Apellido" [(ngModel)] = "objeto.LastName" required>
+    </div>
+      
+    <div class="campo">
+      <label for="Provincia" class="texto">Provincia:</label>
+      <input type="text" id="Provincia" name="Provincia" [(ngModel)] = "objeto.Province" required>
+    </div>
+    <div class="campo">
+      <label for="Canton" class="texto">Cantón:</label>
+      <input type="text" id="Canton" name="Canton" [(ngModel)] = "objeto.Canton" required>
+    </div>
+    <div class="campo">
+      <label for="Distrito" class="texto">Distrito:</label>
+      <input type="text" id="Distrito" name="Distrito" [(ngModel)] = "objeto.District" required>
+    </div>
+  
+    <div class="buton">
+      <button type="submit" class= "aceptar-bttn" (click)="guardar()">Enviar</button>
+  </div>
+  </body>
+  

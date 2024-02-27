@@ -23,6 +23,7 @@ export class LoginComponent {
     } else if (cookieService.get("cookieREPARTIDOR") !="") {
       this.redirigir("/?")
     }
+
   }
 
   redirigir(url:string) {

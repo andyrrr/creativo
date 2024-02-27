@@ -14,6 +14,11 @@ import { GestionPreguntasComponent } from './Administrador/gestion-preguntas/ges
 import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pregunta.component';
 import { NavBarComponent } from './General/nav-bar/nav-bar.component';
 import { LoginComponent } from './General/login/login.component';
+import { NuevoRegistroComponent } from './General/nuevo-registro/nuevo-registro.component';
+import { FormularioEmprendimientoComponent } from './General/formulario-emprendimiento/formulario-emprendimiento.component';
+import { FormularioClienteComponent } from './General/formulario-cliente/formulario-cliente.component';
+import { FormularioRepartidorComponent } from './General/formulario-repartidor/formulario-repartidor.component';
+import { FormularioAdministradorComponent } from './Administrador/formulario-administrador/formulario-administrador.component';
 
 
 
@@ -29,6 +34,11 @@ import { LoginComponent } from './General/login/login.component';
     NuevaPreguntaComponent,
     LoginComponent,
     NavBarComponent,
+    NuevoRegistroComponent,
+    FormularioEmprendimientoComponent,
+    FormularioClienteComponent,
+    FormularioRepartidorComponent,
+    FormularioAdministradorComponent,
   ],
   imports: [
     BrowserModule, 
@@ -38,7 +48,7 @@ import { LoginComponent } from './General/login/login.component';
       {path: "preguntas", component:PreguntasFrecuentesComponent},
       {path: "solicitudes", component:GestionSolicitudesComponent},
       {path: "administradores", component:GestionAdministradoresComponent},
-      {path: "registrarse", component:RegistroSolicitudComponent},
+      {path: "registrarse", component:NuevoRegistroComponent},
       {path: "gestion-preguntas", component:GestionPreguntasComponent},
       {path: "nueva-pregunta", component:NuevaPreguntaComponent},
       {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent},

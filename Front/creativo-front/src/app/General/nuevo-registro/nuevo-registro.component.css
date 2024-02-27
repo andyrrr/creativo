@@ -1,0 +1,51 @@
+body {
+  position: relative;
+  background: #ff681d;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 93vh;
+}
+
+.leftbar {
+  grid-area: 1 / 1 / 5 / 2;
+}
+.radio-cards {
+  background-color: #ff681d;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10%;
+}
+
+.card {
+  border: 4px solid #ccc;
+  border-radius: 40px;
+  cursor: pointer;
+  padding: 5%;
+  margin: 0% 10%;
+  align-items: center;
+  font-family: "Noto";
+}
+
+.card:hover {
+  background-color: #f0f0f0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .card {
+  border-color: rgb(8, 117, 50);
+}
+
+.formulario {
+  grid-area: 1 / 2 / 5 / 5;
+  background-color: #ff681d;
+  overflow:scroll;
+}

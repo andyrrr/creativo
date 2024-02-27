@@ -30,8 +30,15 @@ export class NavBarComponent {
     } else {
       this.unregistered = true;
     }
+    
+    const currentPath = window.location.pathname;
+    if (currentPath === '/ingresar') {
+      this.unregistered = false; 
+    }
   }
   redirigir(url:string) {
     window.location.href = url;
   }
+
+  
 }
