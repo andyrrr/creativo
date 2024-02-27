@@ -13,6 +13,11 @@
     <label for="Pass" class="texto">Contraseña:</label>
     <input type="password" id="Pass" name="Pass" [(ngModel)] = "objeto.Password" required>
   </div>
+  <div class="campo">
+    <label for="Pass" class="texto">Confirmar Contraseña:</label>
+    <input type="password" id="Pass" name="Pass" [(ngModel)] = "confirm" required>
+  </div>
+  <div class="campo" *ngIf="confirm && objeto.Password !== confirm">Las contraseñas no coinciden</div>
 
   <div class="campo">
     <label for="Tipo" class="texto">Tipo:</label>
@@ -41,15 +46,27 @@
 
   <div class="campo">
     <label for="Provincia" class="texto">Provincia:</label>
-    <input type="text" id="Provincia" name="Provincia" [(ngModel)] = "objeto.Province" required>
+    <select class="form-select" id="provincia" [(ngModel)]="objeto.Province" name="provincia" (click)="selected()">
+      <ng-template ngFor let-obj [ngForOf] = "provincias"; let-i="index">
+        <option [value] ="obj.Name">{{obj.Name}}</option>
+      </ng-template>
+    </select>
   </div>
   <div class="campo">
     <label for="Canton" class="texto">Cantón:</label>
-    <input type="text" id="Canton" name="Canton" [(ngModel)] = "objeto.Canton" required>
+    <select class="form-select" id="canton" [(ngModel)]="objeto.Canton" name="Canton" (click)="selectedcant()">
+      <ng-template ngFor let-obj [ngForOf] = "cantones"; let-i="index">
+        <option [value] ="obj.Name">{{obj.Name}}</option>
+      </ng-template>
+    </select>
   </div>
   <div class="campo">
     <label for="Distrito" class="texto">Distrito:</label>
-    <input type="text" id="Distrito" name="Distrito" [(ngModel)] = "objeto.District" required>
+    <select class="form-select" id="Distrito" [(ngModel)]="objeto.District" name="distrito">
+      <ng-template ngFor let-obj [ngForOf] = "distritos"; let-i="index">
+        <option [value] ="obj.Name">{{obj.Name}}</option>
+      </ng-template>
+    </select>
   </div>
 
   <div class="buton">

@@ -57,6 +57,13 @@ namespace creativo_API.Controllers
 
             };
 
+
+            if (db.Clients.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)
+            {
+                return Ok(rol);
+
+            };
+
             return BadRequest("Contraseña Incorrecta");
         }
 

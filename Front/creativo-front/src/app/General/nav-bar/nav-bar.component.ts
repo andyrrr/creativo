@@ -40,5 +40,13 @@ export class NavBarComponent {
     window.location.href = url;
   }
 
+  logOut(){
+    this.cookieService.delete("cookieREPARTIDOR");
+    this.cookieService.delete("cookieCLIENTE");
+    this.cookieService.delete("cookieEMPRENDIMIENTO");
+    this.cookieService.delete("cookieADMIN");
+    this.redirigir("/inicio");
+  }
+
   
 }

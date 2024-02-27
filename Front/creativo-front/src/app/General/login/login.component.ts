@@ -17,9 +17,9 @@ export class LoginComponent {
     if (cookieService.get("cookieADMIN") !="") {
       this.redirigir("/solicitudes")
     } else if (cookieService.get("cookieEMPRENDIMIENTO") !="") {
-      this.redirigir("/?")
+      this.redirigir("/emprendimiento-perfil")
     } else if (cookieService.get("cookieCLIENTE") !="") {
-      this.redirigir("/?")
+      this.redirigir("/cliente-perfil")
     } else if (cookieService.get("cookieREPARTIDOR") !="") {
       this.redirigir("/?")
     }

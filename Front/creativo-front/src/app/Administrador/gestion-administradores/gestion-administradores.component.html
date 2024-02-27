@@ -3,6 +3,8 @@
         <div class="titulo">
             Administradores Activos
         </div>
+        <button class="info-button" (click)="redirigir('/nuevo-admin')"> Agregar Nuevo Administrador</button>
+
         <div class="admins">
             <ng-template ngFor let-obj [ngForOf]="admins" ; let-i="index">
                 <div class="card">

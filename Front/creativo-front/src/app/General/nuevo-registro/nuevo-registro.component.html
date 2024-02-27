@@ -32,5 +32,11 @@
     <ng-container *ngIf="opcionSeleccionada === 'Emprendimiento'">
         <app-formulario-emprendimiento></app-formulario-emprendimiento>
     </ng-container>
+    <ng-container *ngIf="opcionSeleccionada === 'Cliente'">
+      <app-formulario-cliente></app-formulario-cliente>
+  </ng-container>
+  <ng-container *ngIf="opcionSeleccionada === 'Repartidor'">
+    <app-formulario-repartidor></app-formulario-repartidor>
+</ng-container>
   </div>
 </body>

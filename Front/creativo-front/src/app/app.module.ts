@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GestionAdministradoresComponent } from './Administrador/gestion-administradores/gestion-administradores.component';
 import { GestionSolicitudesComponent } from './Administrador/gestion-solicitudes/gestion-solicitudes.component';
-import { RegistroSolicitudComponent } from './Emprendimiento/registro-solicitud/registro-solicitud.component';
 import { PreguntasFrecuentesComponent } from './General/preguntas-frecuentes/preguntas-frecuentes.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +18,9 @@ import { FormularioEmprendimientoComponent } from './General/formulario-emprendi
 import { FormularioClienteComponent } from './General/formulario-cliente/formulario-cliente.component';
 import { FormularioRepartidorComponent } from './General/formulario-repartidor/formulario-repartidor.component';
 import { FormularioAdministradorComponent } from './Administrador/formulario-administrador/formulario-administrador.component';
+import { EmprendimientoPerfilComponent } from './Emprendimiento/emprendimiento-perfil/emprendimiento-perfil.component';
+import { ClientePerfilComponent } from './Cliente/cliente-perfil/cliente-perfil.component';
+
 
 
 
@@ -27,7 +29,6 @@ import { FormularioAdministradorComponent } from './Administrador/formulario-adm
     AppComponent,
     GestionAdministradoresComponent,
     GestionSolicitudesComponent,
-    RegistroSolicitudComponent,
     PreguntasFrecuentesComponent,
     InicioComponent,
     GestionPreguntasComponent,
@@ -38,7 +39,7 @@ import { FormularioAdministradorComponent } from './Administrador/formulario-adm
     FormularioEmprendimientoComponent,
     FormularioClienteComponent,
     FormularioRepartidorComponent,
-    FormularioAdministradorComponent,
+    FormularioAdministradorComponent
   ],
   imports: [
     BrowserModule, 
@@ -49,10 +50,13 @@ import { FormularioAdministradorComponent } from './Administrador/formulario-adm
       {path: "solicitudes", component:GestionSolicitudesComponent},
       {path: "administradores", component:GestionAdministradoresComponent},
       {path: "registrarse", component:NuevoRegistroComponent},
+      {path: "nuevo-admin", component:FormularioAdministradorComponent},
       {path: "gestion-preguntas", component:GestionPreguntasComponent},
       {path: "nueva-pregunta", component:NuevaPreguntaComponent},
       {path: "actualizar-pregunta/:id", component:NuevaPreguntaComponent},
-      {path: "ingresar", component:LoginComponent}
+      {path: "ingresar", component:LoginComponent},
+      {path: "emprendimiento-perfil", component:EmprendimientoPerfilComponent},
+      {path: "cliente-perfil", component:ClientePerfilComponent}
     ]),
     FormsModule,
     HttpClientModule
