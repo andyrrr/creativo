@@ -76,6 +76,23 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(Admin))]
         public IHttpActionResult PostAdmin(Admin admin)
         {
+            if (AnyAttributeEmpty(admin))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (AdminExists(admin.IdAdmin))
+            {
+                return BadRequest("Número de cédula en uso");
+            }
+
+            if (UserExists(admin.Username))
+            {
+                return BadRequest("Nombre de Usuario en uso");
+            }
+
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -100,6 +117,14 @@ namespace creativo_API.Controllers
             }
 
             return CreatedAtRoute("DefaultApi", new { id = admin.IdAdmin }, admin);
+        }
+
+        private bool AnyAttributeEmpty(Admin admin)
+        {
+            return string.IsNullOrEmpty(admin.Username) ||
+                   string.IsNullOrEmpty(admin.Password) ||
+                   string.IsNullOrEmpty(admin.FirstName) ||
+                   string.IsNullOrEmpty(admin.LastName);
         }
 
         // DELETE: api/Admins/5
@@ -129,7 +154,19 @@ namespace creativo_API.Controllers
 
         private bool AdminExists(int id)
         {
-            return db.Admins.Count(e => e.IdAdmin == id) > 0;
+            return db.Admins.Count(e => e.IdAdmin == id) > 0 ||
+                db.Clients.Count(e => e.IdClient == id) > 0 ||
+                db.Entrepreneurships.Count(e => e.IdEntrepreneurship == id) > 0 ||
+                db.Delivery_Persons.Count(e => e.IdDeliveryPerson == id) > 0;
+        }
+
+        private bool UserExists(string user)
+        {
+            return db.Admins.Count(e => e.Username == user) > 0 ||
+               db.Clients.Count(e => e.Username == user) > 0 ||
+               db.Entrepreneurships.Count(e => e.Username == user) > 0 ||
+               db.Delivery_Persons.Count(e => e.Username == user) > 0;
+
         }
     }
 }

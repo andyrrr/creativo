@@ -8,6 +8,7 @@ import {
   DistritoService,
   ProvinciaService,
 } from 'src/app/services/lugares.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-emprendimiento',
@@ -33,18 +34,30 @@ export class FormularioEmprendimientoComponent {
   confirm = '';
 
   guardar() {
-    if (this.confirm === this.objeto.Password) {
-      this.objeto.State = 'Pendiente';
-      this.service.add(this.objeto).subscribe({
-        next: (data) => {
-          console.log(data);
-          this.redirigir('/inicio');
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-    }
+    Swal.fire({
+      title: "¿Quieres registrarte en Club Creativo como Emprendedor?",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (this.confirm === this.objeto.Password) {
+          this.objeto.State = 'Pendiente';
+          this.service.add(this.objeto).subscribe({
+            next:(data) =>{
+              this.service.successMessage("Registro exitoso", "/ingresar");
+            }, error:(err) =>{
+              console.log(err)
+              this.service.errorMessage(err.error.Message)
+            }
+          })
+        } else {
+          this.service.errorMessage("Las contraseñas no coinciden")
+        }
+      }
+    });
   }
 
   selected() {

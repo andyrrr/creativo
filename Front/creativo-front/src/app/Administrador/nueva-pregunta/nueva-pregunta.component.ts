@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Pregunta } from 'src/app/interfaces/pregunta';
 import { PreguntasService } from 'src/app/services/preguntas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nueva-pregunta',
@@ -28,28 +29,50 @@ export class NuevaPreguntaComponent {
   }
 
   redirigir(url:string) {
-    window.location.href = url;
+    Swal.fire({
+      title: "¿Quieres dejar de editar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Salir!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = url;
+      }
+    });
   }
 
   guardar(){
-    if (this.editMode){
-      this.service.update(this.objeto.IdQuestion, this.objeto).subscribe({
-        next:(data) => {
-          this.redirigir("/gestion-preguntas")
-        }, error:(err) => {
-          console.log(err)
-        } 
-      })
-    } else {
-      this.service.add(this.objeto).subscribe({
-        next:(data) => {
-          this.redirigir("/gestion-preguntas")
-        }, error:(err) => {
-          console.log(err)
-        } 
-      })
-    }
-
+    
+      Swal.fire({
+        title: "¿Quieres añadir esta pregunta?",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.editMode){
+            this.service.update(this.objeto.IdQuestion, this.objeto).subscribe({
+              next:(data) => {
+                this.service.successMessage("Pregunta correctamente modificada", "/gestion-preguntas");
+              }, error:(err) => {
+                this.service.errorMessage(err.error.Message);
+              } 
+            })
+          } else {
+            this.service.add(this.objeto).subscribe({
+              next:(data) => {
+                this.service.successMessage("Pregunta correctamente añadida", "/gestion-preguntas");
+              }, error:(err) => {
+                this.service.errorMessage(err.error.Message);
+              } 
+            })
+          }
+        }
+      });
   }
 
 }

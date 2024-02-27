@@ -41,6 +41,21 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutQuestion(int id, Question question)
         {
+            if (AnyAttributeEmpty(question))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (question.Question1?.Length > 250)
+            {
+                return BadRequest("La pregunta ha superado los 250 Caracteres");
+            }
+
+            if (question.Answer?.Length > 250)
+            {
+                return BadRequest("La respuesta ha superado los 250 Caracteres");
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -61,7 +76,7 @@ namespace creativo_API.Controllers
             {
                 if (!QuestionExists(id))
                 {
-                    return NotFound();
+                    return BadRequest("No se ha encontrado la Pregunta");
                 }
                 else
                 {
@@ -76,6 +91,23 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(Question))]
         public IHttpActionResult PostQuestion(Question question)
         {
+            if (AnyAttributeEmpty(question))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (question.Question1?.Length > 250)
+            {
+                return BadRequest("La pregunta ha superado los 250 Caracteres");
+            }
+
+            if (question.Answer?.Length > 250)
+            {
+                return BadRequest("La respuesta ha superado los 250 Caracteres");
+            }
+
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -116,5 +148,16 @@ namespace creativo_API.Controllers
         {
             return db.Questions.Count(e => e.IdQuestion == id) > 0;
         }
+
+        private bool AnyAttributeEmpty(Question question)
+        {
+            // Verificar cada propiedad del objeto Question
+            // Devolver true si alguna propiedad es una cadena vacía, de lo contrario, devolver false
+            return string.IsNullOrEmpty(question.Question1) ||
+                   string.IsNullOrEmpty(question.Answer);
+        }
+
+        
+
     }
 }

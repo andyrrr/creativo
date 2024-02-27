@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,24 @@ export abstract class ConexionService<T> {
 
   delete(id: string | number) {
     return this.httpClient.delete<T[]>(this.getRuta() + "/" + id);
+  }
+
+
+  errorMessage(mensaje:string){
+    Swal.fire({
+      title: "Ha habido un problema!",
+      text: mensaje,
+      icon: "error",
+    });
+  }
+  successMessage(mensaje:string, url:string){
+    Swal.fire({
+      title: mensaje,
+      icon: "success",
+      didClose: () => {
+        window.location.href = url;
+      }
+    });
   }
 
 

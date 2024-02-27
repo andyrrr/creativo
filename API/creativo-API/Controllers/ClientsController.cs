@@ -76,6 +76,23 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(Client))]
         public IHttpActionResult PostClient(Client client)
         {
+
+            if (AnyAttributeEmpty(client))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (ClientExists(client.IdClient))
+            {
+                return BadRequest("Número de cédula en uso");
+            }
+
+            if (UserExists(client.Username))
+            {
+                return BadRequest("Nombre de Usuario en uso");
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -86,6 +103,20 @@ namespace creativo_API.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = client.IdClient }, client);
         }
+        private bool AnyAttributeEmpty(Client client)
+        {
+            // Verificar cada propiedad del objeto Client
+            // Devolver true si alguna propiedad es una cadena vacía, de lo contrario, devolver false
+            return string.IsNullOrEmpty(client.Username) ||
+                   string.IsNullOrEmpty(client.Password) ||
+                   string.IsNullOrEmpty(client.FirstName) ||
+                   string.IsNullOrEmpty(client.LastName) ||
+                   string.IsNullOrEmpty(client.Phone) ||
+                   string.IsNullOrEmpty(client.Province) ||
+                   string.IsNullOrEmpty(client.Canton) ||
+                   string.IsNullOrEmpty(client.District);
+        }
+
 
         // DELETE: api/Clients/5
         [ResponseType(typeof(Client))]
@@ -114,7 +145,19 @@ namespace creativo_API.Controllers
 
         private bool ClientExists(int id)
         {
-            return db.Clients.Count(e => e.IdClient == id) > 0;
+            return db.Admins.Count(e => e.IdAdmin == id) > 0 ||
+                db.Clients.Count(e => e.IdClient == id) > 0 ||
+                db.Entrepreneurships.Count(e => e.IdEntrepreneurship == id) > 0 ||
+                db.Delivery_Persons.Count(e => e.IdDeliveryPerson == id) > 0;
+        }
+
+        private bool UserExists(string user)
+        {
+            return db.Admins.Count(e => e.Username == user) > 0 ||
+               db.Clients.Count(e => e.Username == user) > 0 ||
+               db.Entrepreneurships.Count(e => e.Username == user) > 0 ||
+               db.Delivery_Persons.Count(e => e.Username == user) > 0;
+
         }
     }
 }

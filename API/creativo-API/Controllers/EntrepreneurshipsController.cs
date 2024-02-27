@@ -85,6 +85,23 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(Entrepreneurship))]
         public IHttpActionResult PostEntrepreneurship(Entrepreneurship entrepreneurship)
         {
+
+            if (AnyAttributeEmpty(entrepreneurship))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (EntrepreneurshipExists(entrepreneurship.IdEntrepreneurship))
+            {
+                return BadRequest("Número de cédula en uso");
+            }
+
+            if (UserExists(entrepreneurship.Username))
+            {
+                return BadRequest("Nombre de Usuario en uso");
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -138,7 +155,36 @@ namespace creativo_API.Controllers
 
         private bool EntrepreneurshipExists(int id)
         {
-            return db.Entrepreneurships.Count(e => e.IdEntrepreneurship == id) > 0;
+            return db.Admins.Count(e => e.IdAdmin == id) > 0 ||
+                db.Clients.Count(e => e.IdClient == id) > 0 ||
+                db.Entrepreneurships.Count(e => e.IdEntrepreneurship == id) > 0 ||
+                db.Delivery_Persons.Count(e => e.IdDeliveryPerson == id) > 0;
         }
+
+        private bool UserExists(string user)
+        {
+            return db.Admins.Count(e => e.Username == user) > 0 ||
+               db.Clients.Count(e => e.Username == user) > 0 ||
+               db.Entrepreneurships.Count(e => e.Username == user) > 0 ||
+               db.Delivery_Persons.Count(e => e.Username == user) > 0;
+
+        }
+        private bool AnyAttributeEmpty(Entrepreneurship entrepreneurship)
+        {
+            // Verificar cada propiedad del objeto Entrepreneurship
+            // Devolver true si alguna propiedad es una cadena vacía, de lo contrario, devolver false
+            return string.IsNullOrEmpty(entrepreneurship.Username) ||
+                   string.IsNullOrEmpty(entrepreneurship.Password) ||
+                   string.IsNullOrEmpty(entrepreneurship.Type) ||
+                   string.IsNullOrEmpty(entrepreneurship.Name) ||
+                   string.IsNullOrEmpty(entrepreneurship.Email) ||
+                   string.IsNullOrEmpty(entrepreneurship.Sinpe) ||
+                   string.IsNullOrEmpty(entrepreneurship.Phone) ||
+                   string.IsNullOrEmpty(entrepreneurship.Province) ||
+                   string.IsNullOrEmpty(entrepreneurship.Canton) ||
+                   string.IsNullOrEmpty(entrepreneurship.District) ||
+                   string.IsNullOrEmpty(entrepreneurship.State);
+        }
+
     }
 }

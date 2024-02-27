@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/interfaces/cliente';
 import { Province, Canton, Distrito } from 'src/app/interfaces/lugares';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ProvinciaService, CantonService, DistritoService } from 'src/app/services/lugares.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-cliente',
@@ -31,16 +32,29 @@ provincias: Province[] = [];
 
 
 guardar(){
-  if (this.confirm === this.objeto.Password){
-    this.service.add(this.objeto).subscribe({
-      next:(data) =>{
-        console.log(data);
-        this.redirigir("/inicio");
-      }, error:(err) =>{
-        console.log(err)
+  Swal.fire({
+    title: "¿Quieres registrarte en Club Creativo como Cliente?",
+    icon: "success",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Aceptar!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      if (this.confirm === this.objeto.Password) {
+        this.service.add(this.objeto).subscribe({
+          next:(data) =>{
+            this.service.successMessage("Registro exitoso", "/ingresar");
+          }, error:(err) =>{
+            console.log(err)
+            this.service.errorMessage(err.error.Message)
+          }
+        })
+      } else {
+        this.service.errorMessage("Las contraseñas no coinciden")
       }
-    })
-  }
+    }
+  });
   
 }
 

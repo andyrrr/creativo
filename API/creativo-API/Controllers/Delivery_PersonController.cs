@@ -76,6 +76,23 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(Delivery_Person))]
         public IHttpActionResult PostDelivery_Person(Delivery_Person delivery_Person)
         {
+
+            if (AnyAttributeEmpty(delivery_Person))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (Delivery_PersonExists(delivery_Person.IdDeliveryPerson))
+            {
+                return BadRequest("Número de cédula en uso");
+            }
+
+            if (UserExists(delivery_Person.Username))
+            {
+                return BadRequest("Nombre de Usuario en uso");
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -129,7 +146,34 @@ namespace creativo_API.Controllers
 
         private bool Delivery_PersonExists(int id)
         {
-            return db.Delivery_Persons.Count(e => e.IdDeliveryPerson == id) > 0;
+            return db.Admins.Count(e => e.IdAdmin == id) > 0 ||
+                db.Clients.Count(e => e.IdClient == id) > 0 ||
+                db.Entrepreneurships.Count(e => e.IdEntrepreneurship == id) > 0 ||
+                db.Delivery_Persons.Count(e => e.IdDeliveryPerson == id) > 0;
         }
+
+        private bool UserExists(string user)
+        {
+            return db.Admins.Count(e => e.Username == user) > 0 ||
+               db.Clients.Count(e => e.Username == user) > 0 ||
+               db.Entrepreneurships.Count(e => e.Username == user) > 0 ||
+               db.Delivery_Persons.Count(e => e.Username == user) > 0;
+
+        }
+        private bool AnyAttributeEmpty(Delivery_Person deliveryPerson)
+        {
+            // Verificar cada propiedad del objeto DeliveryPerson
+            // Devolver true si alguna propiedad es una cadena vacía, de lo contrario, devolver false
+            return string.IsNullOrEmpty(deliveryPerson.Username) ||
+                   string.IsNullOrEmpty(deliveryPerson.Password) ||
+                   string.IsNullOrEmpty(deliveryPerson.Firstname) ||
+                   string.IsNullOrEmpty(deliveryPerson.Lastname) ||
+                   string.IsNullOrEmpty(deliveryPerson.State) ||
+                   string.IsNullOrEmpty(deliveryPerson.Province) ||
+                   string.IsNullOrEmpty(deliveryPerson.Canton) ||
+                   string.IsNullOrEmpty(deliveryPerson.District) ||
+                   string.IsNullOrEmpty(deliveryPerson.Phone);
+        }
+
     }
 }

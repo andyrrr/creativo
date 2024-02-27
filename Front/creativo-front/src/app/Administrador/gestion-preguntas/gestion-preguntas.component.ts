@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pregunta } from 'src/app/interfaces/pregunta';
 import { PreguntasService } from 'src/app/services/preguntas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-preguntas',
@@ -24,14 +25,25 @@ export class GestionPreguntasComponent {
   }
 
   eliminarPregunta(id:number){
-    this.service.delete(id).subscribe({
-      next:(data)=>{
-        console.log("eliminado");
-        window.location.reload();
-      }, error:(err) => {
-        console.log(err)
+    Swal.fire({
+      title: "¿Quieres eliminar esta Pregunta?",
+      text: "No lo vas a poder revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.delete(id).subscribe({
+          next:(data)=>{
+            this.service.successMessage("La pregunta se ha eliminado correctamente", "/gestion-preguntas");
+          }, error:(err) => {
+            this.service.errorMessage(err.error.Message);
+          }
+        })
       }
-    })
+    });
   }
 
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Administrador } from 'src/app/interfaces/administrador';
 import { AdministradorService } from 'src/app/services/administrador.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-administradores',
@@ -29,15 +30,26 @@ export class GestionAdministradoresComponent {
     window.location.href = url;
   }
 
-  eliminarPregunta(id:number){
-    this.service.delete(id).subscribe({
-      next:(data)=>{
-        console.log("eliminado");
-        window.location.reload();
-      }, error:(err) => {
-        console.log(err)
+  eliminarAdministrador(id:number){
+    Swal.fire({
+      title: "¿Quieres eliminar este Administrador?",
+      text: "No lo vas a poder revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.delete(id).subscribe({
+          next:(data)=>{
+            this.service.successMessage("El administrador se ha eliminado correctamente", "/administradores");
+          }, error:(err) => {
+            this.service.errorMessage(err.error.Message);
+          }
+        })
       }
-    })
+    });
   }
 
 }
