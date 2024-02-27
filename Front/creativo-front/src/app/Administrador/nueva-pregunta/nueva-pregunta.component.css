@@ -8,14 +8,20 @@ body {
     background: #DC93E5;
 }
 
+.card-formulario{
+    width: 80%;
+    padding: 5% 5%;
+}
 
 
-input{
+
+textarea{
     width: 100%;
+    padding: 2%;
     border-radius: 43px;
     text-align: center;
 }
 
-#respuestaInput{
+#respuestaInput, #preguntaInput{
     aspect-ratio: 1/1;
 }
