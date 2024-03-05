@@ -174,7 +174,6 @@ namespace creativo_API.Controllers
             // Verificar cada propiedad del objeto Entrepreneurship
             // Devolver true si alguna propiedad es una cadena vacía, de lo contrario, devolver false
             return string.IsNullOrEmpty(entrepreneurship.Username) ||
-                   string.IsNullOrEmpty(entrepreneurship.Password) ||
                    string.IsNullOrEmpty(entrepreneurship.Type) ||
                    string.IsNullOrEmpty(entrepreneurship.Name) ||
                    string.IsNullOrEmpty(entrepreneurship.Email) ||

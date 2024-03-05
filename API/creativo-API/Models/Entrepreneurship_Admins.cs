@@ -12,11 +12,13 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Workshop_Photos
+    public partial class Entrepreneurship_Admins
     {
-        public int IdWorkshop { get; set; }
-        public string Photo { get; set; }
+        public int IdEntrepreneurship { get; set; }
+        public int IdClient { get; set; }
+        public string state { get; set; }
     
-        public virtual Workshop Workshop { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Entrepreneurship Entrepreneurship { get; set; }
     }
 }

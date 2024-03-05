@@ -61,7 +61,6 @@
     </Key>
     <Property Name="IdEntrepreneurship" Type="int" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="50" />
-    <Property Name="Password" Type="varchar" MaxLength="50" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
@@ -71,6 +70,15 @@
     <Property Name="Canton" Type="varchar" MaxLength="50" />
     <Property Name="District" Type="varchar" MaxLength="50" />
     <Property Name="State" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Entrepreneurship_Admins">
+    <Key>
+      <PropertyRef Name="IdEntrepreneurship" />
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdEntrepreneurship" Type="int" Nullable="false" />
+    <Property Name="IdClient" Type="int" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -105,10 +113,11 @@
   </EntityType>
   <EntityType Name="Workshop">
     <Key>
-      <PropertyRef Name="Name" />
+      <PropertyRef Name="IdWorkshop" />
     </Key>
     <Property Name="IdEntrepreneurship" Type="int" />
-    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdWorkshop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
     <Property Name="Description" Type="text" />
     <Property Name="Link" Type="varchar" MaxLength="255" />
@@ -116,21 +125,45 @@
   </EntityType>
   <EntityType Name="Workshop_Client">
     <Key>
-      <PropertyRef Name="Workshop" />
+      <PropertyRef Name="IdWorkshop" />
       <PropertyRef Name="IdClient" />
     </Key>
-    <Property Name="Workshop" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdWorkshop" Type="int" Nullable="false" />
     <Property Name="IdClient" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Workshop_Photos">
     <Key>
-      <PropertyRef Name="Workshop" />
+      <PropertyRef Name="IdWorkshop" />
       <PropertyRef Name="Photo" />
     </Key>
-    <Property Name="Workshop" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdWorkshop" Type="int" Nullable="false" />
     <Property Name="Photo" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Orders__IdClient__4BAC3F29">
+  <Association Name="FK__Entrepren__IdCli__5CD6CB2B">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Entrepreneurship_Admins" Type="Self.Entrepreneurship_Admins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Entrepreneurship_Admins">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Entrepren__IdEnt__5BE2A6F2">
+    <End Role="Entrepreneurship" Type="Self.Entrepreneurship" Multiplicity="1" />
+    <End Role="Entrepreneurship_Admins" Type="Self.Entrepreneurship_Admins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrepreneurship">
+        <PropertyRef Name="IdEntrepreneurship" />
+      </Principal>
+      <Dependent Role="Entrepreneurship_Admins">
+        <PropertyRef Name="IdEntrepreneurship" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__IdClient__4E88ABD4">
     <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +175,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__IdDelive__4AB81AF0">
+  <Association Name="FK__Orders__IdDelive__4D94879B">
     <End Role="Delivery_Person" Type="Self.Delivery_Person" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +187,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Workshop___IdCli__45F365D3">
+  <Association Name="FK__Workshop___IdCli__46E78A0C">
     <End Role="Client" Type="Self.Client" Multiplicity="1" />
     <End Role="Workshop_Client" Type="Self.Workshop_Client" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,31 +199,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Workshop___Works__4222D4EF">
+  <Association Name="FK__Workshop___IdWor__4316F928">
     <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
     <End Role="Workshop_Photos" Type="Self.Workshop_Photos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Workshop">
-        <PropertyRef Name="Name" />
+        <PropertyRef Name="IdWorkshop" />
       </Principal>
       <Dependent Role="Workshop_Photos">
-        <PropertyRef Name="Workshop" />
+        <PropertyRef Name="IdWorkshop" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Workshop___Works__44FF419A">
+  <Association Name="FK__Workshop___IdWor__45F365D3">
     <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
     <End Role="Workshop_Client" Type="Self.Workshop_Client" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Workshop">
-        <PropertyRef Name="Name" />
+        <PropertyRef Name="IdWorkshop" />
       </Principal>
       <Dependent Role="Workshop_Client">
-        <PropertyRef Name="Workshop" />
+        <PropertyRef Name="IdWorkshop" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Workshop__IdEntr__3D5E1FD2">
+  <Association Name="FK__Workshop__IdEntr__403A8C7D">
     <End Role="Entrepreneurship" Type="Self.Entrepreneurship" Multiplicity="0..1" />
     <End Role="Workshop" Type="Self.Workshop" Multiplicity="*" />
     <ReferentialConstraint>
@@ -209,6 +242,7 @@
     <EntitySet Name="Delivery_Person" EntityType="Self.Delivery_Person" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Distric" EntityType="Self.Distric" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Entrepreneurship" EntityType="Self.Entrepreneurship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entrepreneurship_Admins" EntityType="Self.Entrepreneurship_Admins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
@@ -216,27 +250,35 @@
     <EntitySet Name="Workshop" EntityType="Self.Workshop" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workshop_Client" EntityType="Self.Workshop_Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workshop_Photos" EntityType="Self.Workshop_Photos" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Orders__IdClient__4BAC3F29" Association="Self.FK__Orders__IdClient__4BAC3F29">
+    <AssociationSet Name="FK__Entrepren__IdCli__5CD6CB2B" Association="Self.FK__Entrepren__IdCli__5CD6CB2B">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Entrepreneurship_Admins" EntitySet="Entrepreneurship_Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Entrepren__IdEnt__5BE2A6F2" Association="Self.FK__Entrepren__IdEnt__5BE2A6F2">
+      <End Role="Entrepreneurship" EntitySet="Entrepreneurship" />
+      <End Role="Entrepreneurship_Admins" EntitySet="Entrepreneurship_Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__IdClient__4E88ABD4" Association="Self.FK__Orders__IdClient__4E88ABD4">
       <End Role="Client" EntitySet="Client" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__IdDelive__4AB81AF0" Association="Self.FK__Orders__IdDelive__4AB81AF0">
+    <AssociationSet Name="FK__Orders__IdDelive__4D94879B" Association="Self.FK__Orders__IdDelive__4D94879B">
       <End Role="Delivery_Person" EntitySet="Delivery_Person" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Workshop___IdCli__45F365D3" Association="Self.FK__Workshop___IdCli__45F365D3">
+    <AssociationSet Name="FK__Workshop___IdCli__46E78A0C" Association="Self.FK__Workshop___IdCli__46E78A0C">
       <End Role="Client" EntitySet="Client" />
       <End Role="Workshop_Client" EntitySet="Workshop_Client" />
     </AssociationSet>
-    <AssociationSet Name="FK__Workshop___Works__4222D4EF" Association="Self.FK__Workshop___Works__4222D4EF">
+    <AssociationSet Name="FK__Workshop___IdWor__4316F928" Association="Self.FK__Workshop___IdWor__4316F928">
       <End Role="Workshop" EntitySet="Workshop" />
       <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
     </AssociationSet>
-    <AssociationSet Name="FK__Workshop___Works__44FF419A" Association="Self.FK__Workshop___Works__44FF419A">
+    <AssociationSet Name="FK__Workshop___IdWor__45F365D3" Association="Self.FK__Workshop___IdWor__45F365D3">
       <End Role="Workshop" EntitySet="Workshop" />
       <End Role="Workshop_Client" EntitySet="Workshop_Client" />
     </AssociationSet>
-    <AssociationSet Name="FK__Workshop__IdEntr__3D5E1FD2" Association="Self.FK__Workshop__IdEntr__3D5E1FD2">
+    <AssociationSet Name="FK__Workshop__IdEntr__403A8C7D" Association="Self.FK__Workshop__IdEntr__403A8C7D">
       <End Role="Entrepreneurship" EntitySet="Entrepreneurship" />
       <End Role="Workshop" EntitySet="Workshop" />
     </AssociationSet>

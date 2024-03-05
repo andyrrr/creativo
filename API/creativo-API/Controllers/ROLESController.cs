@@ -51,11 +51,11 @@ namespace creativo_API.Controllers
 
             };
 
-            if (db.Entrepreneurships.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)
-            {
-                return Ok(rol);
+            //if (db.Entrepreneurships.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)
+            //{
+            //    return Ok(rol);
 
-            };
+            //};
 
 
             if (db.Clients.FirstOrDefault(obj => obj.Username == usuario && obj.Password == pass) != null)

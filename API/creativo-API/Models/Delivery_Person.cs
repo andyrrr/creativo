@@ -14,6 +14,12 @@ namespace creativo_API.Models
     
     public partial class Delivery_Person
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Delivery_Person()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int IdDeliveryPerson { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -24,5 +30,8 @@ namespace creativo_API.Models
         public string Canton { get; set; }
         public string District { get; set; }
         public string Phone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -14,6 +14,14 @@ namespace creativo_API.Models
     
     public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.Orders = new HashSet<Order>();
+            this.Workshops = new HashSet<Workshop>();
+            this.Entrepreneurship_Admins = new HashSet<Entrepreneurship_Admins>();
+        }
+    
         public int IdClient { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -23,5 +31,12 @@ namespace creativo_API.Models
         public string Province { get; set; }
         public string Canton { get; set; }
         public string District { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Workshop> Workshops { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Entrepreneurship_Admins> Entrepreneurship_Admins { get; set; }
     }
 }

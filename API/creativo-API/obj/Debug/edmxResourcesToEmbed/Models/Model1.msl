@@ -35,7 +35,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Delivery_Persons">
+    <EntitySetMapping Name="Delivery_Person">
       <EntityTypeMapping TypeName="creativoDBModel.Delivery_Person">
         <MappingFragment StoreEntitySet="Delivery_Person">
           <ScalarProperty Name="IdDeliveryPerson" ColumnName="IdDeliveryPerson" />
@@ -64,7 +64,6 @@
         <MappingFragment StoreEntitySet="Entrepreneurship">
           <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
           <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -116,6 +115,7 @@
       <EntityTypeMapping TypeName="creativoDBModel.Workshop">
         <MappingFragment StoreEntitySet="Workshop">
           <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
+          <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -127,7 +127,7 @@
     <EntitySetMapping Name="Workshop_Photos">
       <EntityTypeMapping TypeName="creativoDBModel.Workshop_Photos">
         <MappingFragment StoreEntitySet="Workshop_Photos">
-          <ScalarProperty Name="Workshop" ColumnName="Workshop" />
+          <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -137,8 +137,17 @@
         <ScalarProperty Name="IdClient" ColumnName="IdClient" />
       </EndProperty>
       <EndProperty Name="Workshop">
-        <ScalarProperty Name="Name" ColumnName="Workshop" />
+        <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Entrepreneurship_Admins">
+      <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Admins">
+        <MappingFragment StoreEntitySet="Entrepreneurship_Admins">
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

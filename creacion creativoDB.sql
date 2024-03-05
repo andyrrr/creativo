@@ -9,6 +9,95 @@ CREATE TABLE Question (
     Answer VARCHAR(255)
 );
 
+
+-- Create the table ENTREPRENEURSHIP ***************************
+CREATE TABLE Entrepreneurship (
+	IdEntrepreneurship INT PRIMARY KEY,
+	Username VARCHAR(50),
+	Type VARCHAR(50),
+	Name VARCHAR(100),
+	Email VARCHAR(100),
+	Sinpe VARCHAR(20),
+	Phone VARCHAR(20),
+	Province VARCHAR(50),
+	Canton VARCHAR(50),
+	District VARCHAR(50),
+	State VARCHAR(50)
+);
+
+
+
+
+-- Create the table Client
+CREATE TABLE Client (
+	IdClient INT IDENTITY(1,1) PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(50),
+	FirstName VARCHAR(100),
+	LastName VARCHAR(100),
+	Phone VARCHAR(20),
+	Province VARCHAR(50),
+	Canton VARCHAR(50),
+	District VARCHAR(50)
+);
+
+
+
+-- Create the table ENTREPRENEURSHIP ADMINS
+CREATE TABLE Entrepreneurship_Admins (
+	IdEntrepreneurship INT, 
+	IdClient INT, 
+	state VARCHAR(50),
+	PRIMARY KEY (IdEntrepreneurship, IdClient),
+	FOREIGN KEY (IdEntrepreneurship) REFERENCES Entrepreneurship(IdEntrepreneurship), 
+	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
+	);
+
+
+
+-- Create the table WORKSHOP
+CREATE TABLE Workshop (
+	IdEntrepreneurship INT,
+	IdWorkshop INT IDENTITY(1,1) PRIMARY KEY,
+	Name VARCHAR(100),
+	Price DECIMAL(10, 2),
+	Description TEXT,
+	Link VARCHAR(255),
+	Type VARCHAR(50),
+	FOREIGN KEY (IdEntrepreneurship) REFERENCES EntrepreneurshiP(IdEntrepreneurship)
+);
+
+
+
+
+-- Create the table WORKSHOP_PHOTOS
+CREATE TABLE Workshop_Photos (
+	IdWorkshop INT,
+	Photo VARCHAR(255),
+	PRIMARY KEY (IdWorkshop, Photo),
+	FOREIGN KEY (IdWorkshop) REFERENCES Workshop(IdWorkshop)
+);
+
+
+-- Create the table WORKSHOP_CLIENT
+CREATE TABLE Workshop_Client (
+	IdWorkshop INT,
+	IdClient INT,
+	PRIMARY KEY (IdWorkshop, IdClient),
+	FOREIGN KEY (IdWorkshop) REFERENCES Workshop(IdWorkshop),
+	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
+);
+
+
+-- Create the table ADMIN
+CREATE TABLE Admins (
+	IdAdmin INT PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(50),
+	FirstName VARCHAR(100),
+	LastName VARCHAR(100)
+);
+
 -- Create the table DELIVERY_PERSON
 CREATE TABLE Delivery_Person (
 	IdDeliveryPerson INT PRIMARY KEY,
@@ -23,77 +112,6 @@ CREATE TABLE Delivery_Person (
 	Phone VARCHAR(20)
 );
 
--- Create the table ENTREPRENEURSHIP
-CREATE TABLE Entrepreneurship (
-	IdEntrepreneurship INT PRIMARY KEY,
-	Username VARCHAR(50),
-	Password VARCHAR(50),
-	Type VARCHAR(50),
-	Name VARCHAR(100),
-	Email VARCHAR(100),
-	Sinpe VARCHAR(20),
-	Phone VARCHAR(20),
-	Province VARCHAR(50),
-	Canton VARCHAR(50),
-	District VARCHAR(50),
-	State VARCHAR(50)
-);
-
-
--- Create the table WORKSHOP
-CREATE TABLE Workshop (
-	IdEntrepreneurship INT,
-	Name VARCHAR(100) PRIMARY KEY,
-	Price DECIMAL(10, 2),
-	Description TEXT,
-	Link VARCHAR(255),
-	Type VARCHAR(50),
-	FOREIGN KEY (IdEntrepreneurship) REFERENCES EntrepreneurshiP(IdEntrepreneurship)
-);
-
-
--- Create the table CLIENT
-CREATE TABLE Client (
-	IdClient INT IDENTITY(1,1) PRIMARY KEY,
-	Username VARCHAR(50),
-	Password VARCHAR(50),
-	FirstName VARCHAR(100),
-	LastName VARCHAR(100),
-	Phone VARCHAR(20),
-	Province VARCHAR(50),
-	Canton VARCHAR(50),
-	District VARCHAR(50)
-);
-
-
--- Create the table WORKSHOP_PHOTOS
-CREATE TABLE Workshop_Photos (
-	Workshop VARCHAR(100),
-	Photo VARCHAR(255),
-	PRIMARY KEY (Workshop, Photo),
-	FOREIGN KEY (Workshop) REFERENCES Workshop(Name)
-);
-
-
--- Create the table WORKSHOP_CLIENT
-CREATE TABLE Workshop_Client (
-	Workshop VARCHAR(100),
-	IdClient INT,
-	PRIMARY KEY (Workshop, IdClient),
-	FOREIGN KEY (Workshop) REFERENCES Workshop(Name),
-	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
-);
-
-
--- Create the table ADMIN
-CREATE TABLE Admins (
-	IdAdmin INT PRIMARY KEY,
-	Username VARCHAR(50),
-	Password VARCHAR(50),
-	FirstName VARCHAR(100),
-	LastName VARCHAR(100)
-);
-
 
 -- Create the table ORDER
 CREATE TABLE Orders (
@@ -103,8 +121,10 @@ CREATE TABLE Orders (
 	IdDeliveryPerson INT,
 	IdClient INT,
 	FOREIGN KEY (IdDeliveryPerson) REFERENCES Delivery_Person(IdDeliveryPerson),
-	FOREIGN KEY (IdClient) REFERENCES CLIENT(IdClient)
+	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
 );
+
+
 
 
 
@@ -136,14 +156,7 @@ BEGIN
     INSERT INTO Role(Username, Type) SELECT Username, 'ADMIN' FROM inserted;
 END
 
-
-CREATE TRIGGER add_emprendimiento_rol ON Entrepreneurship FOR INSERT AS 
-BEGIN 
-    INSERT INTO Role(Username, Type) SELECT Username, 'EMPRENDIMIENTO' FROM inserted;
-END
-
-
-CREATE TRIGGER add_cliente_rol ON Client FOR INSERT AS 
+CREATE TRIGGER add_client_rol ON Client FOR INSERT AS 
 BEGIN 
     INSERT INTO Role(Username, Type) SELECT Username, 'CLIENTE' FROM inserted;
 END
