@@ -1,39 +1,34 @@
 <body>
   <div class="titulo">Registro de Emprendimiento</div>
   <div class="campo">
-    <label for="IdEmprendimiento" class="texto">Cédula Jurídica:</label>
-    <input type="number" id="IdEmprendimiento" name="IdEmprendimiento" [(ngModel)] = "objeto.IdEntrepreneurship"/>
+    <label for="Nombre" class="texto">Nombre:</label>
+    <input type="text" id="Nombre" name="Nombre" [(ngModel)] = "objeto.Name" required>
   </div>
+  
+
   <div class="campo">
     <label for="Usuario" class="texto">Nombre de Usuario:</label>
     <input type="text" id="Usuario" name="Usuario" [(ngModel)] = "objeto.Username" required>
   </div>
 
+  
+
   <div class="campo">
-    <label for="Pass" class="texto">Contraseña:</label>
-    <input type="password" id="Pass" name="Pass" [(ngModel)] = "objeto.Password" required>
+    <label for="IdEmprendimiento" class="texto">Cédula Jurídica:</label>
+    <input type="number" id="IdEmprendimiento" name="IdEmprendimiento" [(ngModel)] = "objeto.IdEntrepreneurship"/>
   </div>
-  <div class="campo">
-    <label for="Pass" class="texto">Confirmar Contraseña:</label>
-    <input type="password" id="Pass" name="Pass" [(ngModel)] = "confirm" required>
-  </div>
-  <div class="campo" *ngIf="confirm && objeto.Password !== confirm">Las contraseñas no coinciden</div>
 
   <div class="campo">
     <label for="Tipo" class="texto">Tipo:</label>
     <input type="text" id="Tipo" name="Tipo" [(ngModel)] = "objeto.Type" required>
   </div>
 
-  <div class="campo">
-    <label for="Nombre" class="texto">Nombre:</label>
-    <input type="text" id="Nombre" name="Nombre" [(ngModel)] = "objeto.Name" required>
-  </div>
 
+  
   <div class="campo">
     <label for="Correo" class="texto">Correo:</label>
     <input type="email" id="Correo" name="Correo" [(ngModel)] = "objeto.Email" required>
   </div>
-
   <div class="campo">
     <label for="Sinpe" class="texto">Sinpe:</label>
     <input type="text" id="Sinpe" name="Sinpe" [(ngModel)] = "objeto.Sinpe" required>

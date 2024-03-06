@@ -35,7 +35,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Delivery_Person">
+    <EntitySetMapping Name="Delivery_Persons">
       <EntityTypeMapping TypeName="creativoDBModel.Delivery_Person">
         <MappingFragment StoreEntitySet="Delivery_Person">
           <ScalarProperty Name="IdDeliveryPerson" ColumnName="IdDeliveryPerson" />

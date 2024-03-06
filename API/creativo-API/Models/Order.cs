@@ -19,8 +19,5 @@ namespace creativo_API.Models
         public string State { get; set; }
         public Nullable<int> IdDeliveryPerson { get; set; }
         public Nullable<int> IdClient { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Delivery_Person Delivery_Person { get; set; }
     }
 }

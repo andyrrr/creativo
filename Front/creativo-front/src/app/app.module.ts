@@ -14,13 +14,14 @@ import { NuevaPreguntaComponent } from './Administrador/nueva-pregunta/nueva-pre
 import { NavBarComponent } from './General/nav-bar/nav-bar.component';
 import { LoginComponent } from './General/login/login.component';
 import { NuevoRegistroComponent } from './General/nuevo-registro/nuevo-registro.component';
-import { FormularioEmprendimientoComponent } from './General/formulario-emprendimiento/formulario-emprendimiento.component';
+import { FormularioEmprendimientoComponent } from './Cliente/formulario-emprendimiento/formulario-emprendimiento.component';
 import { FormularioClienteComponent } from './General/formulario-cliente/formulario-cliente.component';
 import { FormularioRepartidorComponent } from './General/formulario-repartidor/formulario-repartidor.component';
 import { FormularioAdministradorComponent } from './Administrador/formulario-administrador/formulario-administrador.component';
 import { EmprendimientoPerfilComponent } from './Emprendimiento/emprendimiento-perfil/emprendimiento-perfil.component';
 import { ClientePerfilComponent } from './Cliente/cliente-perfil/cliente-perfil.component';
 import { RepartidorPerfilComponent } from './Repartidor/repartidor-perfil/repartidor-perfil.component';
+import { ClienteEmprendimientosComponent } from './Cliente/cliente-emprendimientos/cliente-emprendimientos.component';
 
 
 
@@ -41,7 +42,8 @@ import { RepartidorPerfilComponent } from './Repartidor/repartidor-perfil/repart
     FormularioClienteComponent,
     FormularioRepartidorComponent,
     FormularioAdministradorComponent,
-    RepartidorPerfilComponent
+    RepartidorPerfilComponent,
+    ClienteEmprendimientosComponent
   ],
   imports: [
     BrowserModule, 
@@ -59,7 +61,9 @@ import { RepartidorPerfilComponent } from './Repartidor/repartidor-perfil/repart
       {path: "ingresar", component:LoginComponent},
       {path: "emprendimiento-perfil", component:EmprendimientoPerfilComponent},
       {path: "cliente-perfil", component:ClientePerfilComponent},
-      {path: "repartidor-perfil", component:RepartidorPerfilComponent}
+      {path: "cliente-emprendimientos", component:ClienteEmprendimientosComponent},
+      {path: "repartidor-perfil", component:RepartidorPerfilComponent},
+      {path: "nuevo-emprendimiento", component:FormularioEmprendimientoComponent}
     ]),
     FormsModule,
     HttpClientModule

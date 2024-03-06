@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Emprendimiento } from 'src/app/interfaces/emprendimiento';
+import { CookieService } from 'ngx-cookie-service';
+import { Emprendimiento, EmprendimientoAdmin } from 'src/app/interfaces/emprendimiento';
 import { Canton, Distrito, Province } from 'src/app/interfaces/lugares';
-import { EmprendimientoService } from 'src/app/services/emprendimiento.service';
+import { EmprendimientoAdminService, EmprendimientoService } from 'src/app/services/emprendimiento.service';
 import {
   CantonService,
   DistritoService,
@@ -22,6 +23,8 @@ export class FormularioEmprendimientoComponent {
     private provinciaService: ProvinciaService,
     private cantonService: CantonService,
     private distritoService: DistritoService,
+    private adminsService: EmprendimientoAdminService, 
+    private cookieService: CookieService,  
     private route: Router,
     private rou: ActivatedRoute
   ) {
@@ -32,6 +35,7 @@ export class FormularioEmprendimientoComponent {
   cantones: Canton[] = [];
   distritos: Distrito[] = [];
   confirm = '';
+  temp:EmprendimientoAdmin = new EmprendimientoAdmin;
 
   guardar() {
     Swal.fire({
@@ -43,19 +47,23 @@ export class FormularioEmprendimientoComponent {
       confirmButtonText: "Aceptar!"
     }).then((result) => {
       if (result.isConfirmed) {
-        if (this.confirm === this.objeto.Password) {
           this.objeto.State = 'Pendiente';
           this.service.add(this.objeto).subscribe({
             next:(data) =>{
-              this.service.successMessage("Registro exitoso", "/ingresar");
+              this.temp.IdClient = this.cookieService.get("cookieCLIENTE");
+              this.temp.IdEntrepreneurship = this.objeto.Username;
+              this.temp.state = "Aceptado"
+              this.adminsService.add(this.temp).subscribe({
+                next: (data) =>{
+                  console.log("Añadido");
+                  this.service.successMessage("Registro exitoso", "/ingresar");
+                }
+              })
             }, error:(err) =>{
               console.log(err)
               this.service.errorMessage(err.error.Message)
             }
           })
-        } else {
-          this.service.errorMessage("Las contraseñas no coinciden")
-        }
       }
     });
   }

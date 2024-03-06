@@ -1,12 +1,7 @@
 <body>
   <div class="leftbar">
     <div class="radio-cards">
-      <label>
-        <input type="radio" name="card" value="Emprendimiento" [(ngModel)]="opcionSeleccionada" />
-        <div class="card">
-          <h3>Emprendimiento</h3>
-        </div>
-      </label>
+      
       <label>
         <input type="radio" name="card" value="Cliente" [(ngModel)]="opcionSeleccionada" />
         <div class="card">
@@ -28,9 +23,6 @@
       <div class="titulo">
         Selecciona un Rol para Registrarte
       </div>
-    </ng-container>
-    <ng-container *ngIf="opcionSeleccionada === 'Emprendimiento'">
-        <app-formulario-emprendimiento></app-formulario-emprendimiento>
     </ng-container>
     <ng-container *ngIf="opcionSeleccionada === 'Cliente'">
       <app-formulario-cliente></app-formulario-cliente>

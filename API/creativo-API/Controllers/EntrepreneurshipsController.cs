@@ -96,11 +96,6 @@ namespace creativo_API.Controllers
                 return BadRequest("Número de cédula en uso");
             }
 
-            if (UserExists(entrepreneurship.Username))
-            {
-                return BadRequest("Nombre de Usuario en uso");
-            }
-
 
             if (!ModelState.IsValid)
             {
@@ -161,14 +156,6 @@ namespace creativo_API.Controllers
                 db.Delivery_Persons.Count(e => e.IdDeliveryPerson == id) > 0;
         }
 
-        private bool UserExists(string user)
-        {
-            return db.Admins.Count(e => e.Username == user) > 0 ||
-               db.Clients.Count(e => e.Username == user) > 0 ||
-               db.Entrepreneurships.Count(e => e.Username == user) > 0 ||
-               db.Delivery_Persons.Count(e => e.Username == user) > 0;
-
-        }
         private bool AnyAttributeEmpty(Entrepreneurship entrepreneurship)
         {
             // Verificar cada propiedad del objeto Entrepreneurship

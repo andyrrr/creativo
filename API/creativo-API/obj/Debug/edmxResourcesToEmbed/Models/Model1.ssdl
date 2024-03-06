@@ -76,8 +76,8 @@
       <PropertyRef Name="IdEntrepreneurship" />
       <PropertyRef Name="IdClient" />
     </Key>
-    <Property Name="IdEntrepreneurship" Type="int" Nullable="false" />
-    <Property Name="IdClient" Type="int" Nullable="false" />
+    <Property Name="IdEntrepreneurship" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdClient" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="state" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders">
@@ -139,30 +139,6 @@
     <Property Name="IdWorkshop" Type="int" Nullable="false" />
     <Property Name="Photo" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Entrepren__IdCli__5CD6CB2B">
-    <End Role="Client" Type="Self.Client" Multiplicity="1" />
-    <End Role="Entrepreneurship_Admins" Type="Self.Entrepreneurship_Admins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Client">
-        <PropertyRef Name="IdClient" />
-      </Principal>
-      <Dependent Role="Entrepreneurship_Admins">
-        <PropertyRef Name="IdClient" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Entrepren__IdEnt__5BE2A6F2">
-    <End Role="Entrepreneurship" Type="Self.Entrepreneurship" Multiplicity="1" />
-    <End Role="Entrepreneurship_Admins" Type="Self.Entrepreneurship_Admins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Entrepreneurship">
-        <PropertyRef Name="IdEntrepreneurship" />
-      </Principal>
-      <Dependent Role="Entrepreneurship_Admins">
-        <PropertyRef Name="IdEntrepreneurship" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Orders__IdClient__4E88ABD4">
     <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -250,14 +226,6 @@
     <EntitySet Name="Workshop" EntityType="Self.Workshop" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workshop_Client" EntityType="Self.Workshop_Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workshop_Photos" EntityType="Self.Workshop_Photos" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Entrepren__IdCli__5CD6CB2B" Association="Self.FK__Entrepren__IdCli__5CD6CB2B">
-      <End Role="Client" EntitySet="Client" />
-      <End Role="Entrepreneurship_Admins" EntitySet="Entrepreneurship_Admins" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Entrepren__IdEnt__5BE2A6F2" Association="Self.FK__Entrepren__IdEnt__5BE2A6F2">
-      <End Role="Entrepreneurship" EntitySet="Entrepreneurship" />
-      <End Role="Entrepreneurship_Admins" EntitySet="Entrepreneurship_Admins" />
-    </AssociationSet>
     <AssociationSet Name="FK__Orders__IdClient__4E88ABD4" Association="Self.FK__Orders__IdClient__4E88ABD4">
       <End Role="Client" EntitySet="Client" />
       <End Role="Orders" EntitySet="Orders" />

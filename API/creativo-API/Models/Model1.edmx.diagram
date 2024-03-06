@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d7f710959fda418091e9a46cc262a1f3" Name="Diagram1" ZoomLevel="51">
+      <Diagram DiagramId="d7f710959fda418091e9a46cc262a1f3" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="creativoDBModel.Admin" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="creativoDBModel.Canton" Width="1.5" PointX="2.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="creativoDBModel.Client" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
@@ -22,10 +22,8 @@
         <AssociationConnector Association="creativoDBModel.FK__Workshop__IdEntr__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="creativoDBModel.FK__Workshop___IdWor__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="creativoDBModel.Workshop_Client" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship_Admins" Width="1.5" PointX="6" PointY="1.5" />
-        <AssociationConnector Association="creativoDBModel.FK__Entrepren__IdCli__5CD6CB2B" />
-        <AssociationConnector Association="creativoDBModel.FK__Entrepren__IdEnt__5BE2A6F2" />
-      </Diagram>
+        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship_Admins" Width="1.5" PointX="9.375" PointY="10.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

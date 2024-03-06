@@ -14,13 +14,6 @@ namespace creativo_API.Models
     
     public partial class Entrepreneurship
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Entrepreneurship()
-        {
-            this.Workshops = new HashSet<Workshop>();
-            this.Entrepreneurship_Admins = new HashSet<Entrepreneurship_Admins>();
-        }
-    
         public int IdEntrepreneurship { get; set; }
         public string Username { get; set; }
         public string Type { get; set; }
@@ -32,10 +25,5 @@ namespace creativo_API.Models
         public string Canton { get; set; }
         public string District { get; set; }
         public string State { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Workshop> Workshops { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entrepreneurship_Admins> Entrepreneurship_Admins { get; set; }
     }
 }

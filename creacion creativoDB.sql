@@ -45,12 +45,10 @@ CREATE TABLE Client (
 
 -- Create the table ENTREPRENEURSHIP ADMINS
 CREATE TABLE Entrepreneurship_Admins (
-	IdEntrepreneurship INT, 
-	IdClient INT, 
+	IdEntrepreneurship VARCHAR(50), 
+	IdClient VARCHAR(50), 
 	state VARCHAR(50),
-	PRIMARY KEY (IdEntrepreneurship, IdClient),
-	FOREIGN KEY (IdEntrepreneurship) REFERENCES Entrepreneurship(IdEntrepreneurship), 
-	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
+	PRIMARY KEY (IdEntrepreneurship, IdClient)
 	);
 
 

@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Delivery_PersonController.cs" />
     <Compile Include="Controllers\DistricsController.cs" />
     <Compile Include="Controllers\EntrepreneurshipsController.cs" />
+    <Compile Include="Controllers\Entrepreneurship_AdminsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
@@ -332,6 +333,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Entrepreneurship_Admins\Create.cshtml" />
+    <Content Include="Views\Entrepreneurship_Admins\Delete.cshtml" />
+    <Content Include="Views\Entrepreneurship_Admins\Details.cshtml" />
+    <Content Include="Views\Entrepreneurship_Admins\Edit.cshtml" />
+    <Content Include="Views\Entrepreneurship_Admins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

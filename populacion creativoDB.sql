@@ -29,7 +29,21 @@ VALUES
     (2356346, 'e4', 'Moda', 'Estilo Creativo', 'estilo@example.com', '88769504', '70987345', 'Alajuela', 'Alajuela', 'Distrito4', 'Pendiente'),
     (3452323, 'e5', 'Fotografía', 'Capturas Creativas', 'capturas@example.com', '61897658', '89764903', 'Puntarenas', 'Puntarenas', 'Distrito5', 'Pendiente');
 
+-- Insertar usuario 1
+INSERT INTO Client (Username, Password, FirstName, LastName, Phone, Province, Canton, District)
+VALUES 
+	('u1', '1234', 'Nombre1', 'Apellido1', '123456789', 'San José', 'San José', 'San José'),
+	('u2', '1234', 'Nombre2', 'Apellido2', '987654321', 'Heredia', 'Heredia', 'Heredia');
 
+-- Insertar una fila en Entrepreneurship_Admins
+INSERT INTO Entrepreneurship_Admins (IdEntrepreneurship, IdClient, state)
+VALUES 
+	('e5', 'u1', 'Aceptado'),
+	('e2', 'u1', 'Pendiente'),
+	('e3', 'u1', 'Pendiente'),
+	('e7', 'u1', 'Aceptado'),
+	('e2', 'u2', 'Aceptado'),
+	('e5', 'u2', 'Pendiente');
 
 -- Insertar datos en la tabla Province
 INSERT INTO Province (Name) VALUES 

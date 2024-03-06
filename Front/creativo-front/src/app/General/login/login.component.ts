@@ -37,10 +37,10 @@ export class LoginComponent {
           this.rol = data
           console.log(this.rol)
           this.cookieService.set('cookie' + this.rol.Type, this.rol.Username);
-          window.location.reload()
+          this.service.successMessage("¡Bienvenido a tu cuenta!", "/ingresar")
         }, 
         error:(err) => {
-          console.log(err.error.Message)
+          this.service.errorMessage(err.error.Message)
         }
       })
     }

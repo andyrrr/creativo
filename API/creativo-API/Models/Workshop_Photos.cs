@@ -16,7 +16,5 @@ namespace creativo_API.Models
     {
         public int IdWorkshop { get; set; }
         public string Photo { get; set; }
-    
-        public virtual Workshop Workshop { get; set; }
     }
 }

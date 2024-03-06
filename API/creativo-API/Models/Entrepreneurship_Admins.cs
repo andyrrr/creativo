@@ -14,11 +14,8 @@ namespace creativo_API.Models
     
     public partial class Entrepreneurship_Admins
     {
-        public int IdEntrepreneurship { get; set; }
-        public int IdClient { get; set; }
+        public string IdEntrepreneurship { get; set; }
+        public string IdClient { get; set; }
         public string state { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Entrepreneurship Entrepreneurship { get; set; }
     }
 }

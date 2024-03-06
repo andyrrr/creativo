@@ -14,13 +14,6 @@ namespace creativo_API.Models
     
     public partial class Workshop
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Workshop()
-        {
-            this.Workshop_Photos = new HashSet<Workshop_Photos>();
-            this.Clients = new HashSet<Client>();
-        }
-    
         public Nullable<int> IdEntrepreneurship { get; set; }
         public int IdWorkshop { get; set; }
         public string Name { get; set; }
@@ -28,11 +21,5 @@ namespace creativo_API.Models
         public string Description { get; set; }
         public string Link { get; set; }
         public string Type { get; set; }
-    
-        public virtual Entrepreneurship Entrepreneurship { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Workshop_Photos> Workshop_Photos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Clients { get; set; }
     }
 }

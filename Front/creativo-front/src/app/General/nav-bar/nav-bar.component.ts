@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Role } from 'src/app/interfaces/role';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nav-bar',
@@ -40,12 +41,44 @@ export class NavBarComponent {
     window.location.href = url;
   }
 
+  volverCuenta(){
+
+    Swal.fire({
+      title: "¿Quieres cambiar a tu cuenta de Cliente?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Cambiar de cuenta!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cookieService.delete("cookieEMPRENDIMIENTO");
+        this.redirigir("/cliente-emprendimientos");
+      }
+    });
+    
+  }
+
   logOut(){
-    this.cookieService.delete("cookieREPARTIDOR");
-    this.cookieService.delete("cookieCLIENTE");
-    this.cookieService.delete("cookieEMPRENDIMIENTO");
-    this.cookieService.delete("cookieADMIN");
-    this.redirigir("/inicio");
+    Swal.fire({
+      title: "¿Quieres salir de tu cuenta en Club Creativo?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Salir!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cookieService.delete("cookieREPARTIDOR");
+        this.cookieService.delete("cookieCLIENTE");
+        this.cookieService.delete("cookieEMPRENDIMIENTO");
+        this.cookieService.delete("cookieADMIN");
+        this.redirigir("/inicio");
+      }
+    });
+
+
+    
   }
 
   

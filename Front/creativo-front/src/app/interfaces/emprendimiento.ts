@@ -1,7 +1,6 @@
 export interface EmprendimientoInterface {
     IdEntrepreneurship:number;
     Username:string;
-    Password:string;
     Type:string;
     Name:string;
     Email:string;
@@ -17,7 +16,6 @@ export interface EmprendimientoInterface {
 export class Emprendimiento implements EmprendimientoInterface{
     IdEntrepreneurship!: number;
     Username!: string;
-    Password!: string;
     Type!: string;
     Name!: string;
     Email!: string;
@@ -27,6 +25,16 @@ export class Emprendimiento implements EmprendimientoInterface{
     Canton!: string;
     District!: string;
     State!: string;
-    
+}
 
+export interface EmprendimientoAdminInterface {
+    IdEntrepreneurship:string;
+    IdClient:string;
+    state:string;
+}
+
+export class EmprendimientoAdmin implements EmprendimientoAdminInterface{
+    IdEntrepreneurship!: string;
+    IdClient!: string;
+    state!: string;
 }

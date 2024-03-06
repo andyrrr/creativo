@@ -31,9 +31,6 @@
     <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__IdClient__4E88ABD4" FromRole="Client" ToRole="Orders" />
-    <NavigationProperty Name="Workshops" Relationship="Self.Workshop_Client" FromRole="Client" ToRole="Workshop" />
-    <NavigationProperty Name="Entrepreneurship_Admins" Relationship="creativoDBModel.FK__Entrepren__IdCli__5CD6CB2B" FromRole="Client" ToRole="Entrepreneurship_Admins" />
   </EntityType>
   <EntityType Name="Delivery_Person">
     <Key>
@@ -49,7 +46,6 @@
     <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__IdDelive__4D94879B" FromRole="Delivery_Person" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Distric">
     <Key>
@@ -74,8 +70,6 @@
     <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Workshops" Relationship="Self.FK__Workshop__IdEntr__403A8C7D" FromRole="Entrepreneurship" ToRole="Workshop" />
-    <NavigationProperty Name="Entrepreneurship_Admins" Relationship="creativoDBModel.FK__Entrepren__IdEnt__5BE2A6F2" FromRole="Entrepreneurship" ToRole="Entrepreneurship_Admins" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -86,8 +80,6 @@
     <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="IdDeliveryPerson" Type="Int32" />
     <Property Name="IdClient" Type="Int32" />
-    <NavigationProperty Name="Client" Relationship="Self.FK__Orders__IdClient__4E88ABD4" FromRole="Orders" ToRole="Client" />
-    <NavigationProperty Name="Delivery_Person" Relationship="Self.FK__Orders__IdDelive__4D94879B" FromRole="Orders" ToRole="Delivery_Person" />
   </EntityType>
   <EntityType Name="Province">
     <Key>
@@ -121,9 +113,6 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Entrepreneurship" Relationship="Self.FK__Workshop__IdEntr__403A8C7D" FromRole="Workshop" ToRole="Entrepreneurship" />
-    <NavigationProperty Name="Workshop_Photos" Relationship="Self.FK__Workshop___IdWor__4316F928" FromRole="Workshop" ToRole="Workshop_Photos" />
-    <NavigationProperty Name="Clients" Relationship="Self.Workshop_Client" FromRole="Workshop" ToRole="Client" />
   </EntityType>
   <EntityType Name="Workshop_Photos">
     <Key>
@@ -132,7 +121,6 @@
     </Key>
     <Property Name="IdWorkshop" Type="Int32" Nullable="false" />
     <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Workshop" Relationship="Self.FK__Workshop___IdWor__4316F928" FromRole="Workshop_Photos" ToRole="Workshop" />
   </EntityType>
   <Association Name="FK__Orders__IdClient__4E88ABD4">
     <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
@@ -190,7 +178,7 @@
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Cantons" EntityType="Self.Canton" />
     <EntitySet Name="Clients" EntityType="Self.Client" />
-    <EntitySet Name="Delivery_Person" EntityType="Self.Delivery_Person" />
+    <EntitySet Name="Delivery_Persons" EntityType="Self.Delivery_Person" />
     <EntitySet Name="Districs" EntityType="Self.Distric" />
     <EntitySet Name="Entrepreneurships" EntityType="Self.Entrepreneurship" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
@@ -204,7 +192,7 @@
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK__Orders__IdDelive__4D94879B" Association="Self.FK__Orders__IdDelive__4D94879B">
-      <End Role="Delivery_Person" EntitySet="Delivery_Person" />
+      <End Role="Delivery_Person" EntitySet="Delivery_Persons" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK__Workshop__IdEntr__403A8C7D" Association="Self.FK__Workshop__IdEntr__403A8C7D">
@@ -220,48 +208,14 @@
       <End Role="Workshop" EntitySet="Workshops" />
     </AssociationSet>
     <EntitySet Name="Entrepreneurship_Admins" EntityType="creativoDBModel.Entrepreneurship_Admins" />
-    <AssociationSet Name="FK__Entrepren__IdCli__5CD6CB2B" Association="creativoDBModel.FK__Entrepren__IdCli__5CD6CB2B">
-      <End Role="Client" EntitySet="Clients" />
-      <End Role="Entrepreneurship_Admins" EntitySet="Entrepreneurship_Admins" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Entrepren__IdEnt__5BE2A6F2" Association="creativoDBModel.FK__Entrepren__IdEnt__5BE2A6F2">
-      <End Role="Entrepreneurship" EntitySet="Entrepreneurships" />
-      <End Role="Entrepreneurship_Admins" EntitySet="Entrepreneurship_Admins" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Entrepreneurship_Admins">
     <Key>
       <PropertyRef Name="IdEntrepreneurship" />
       <PropertyRef Name="IdClient" />
     </Key>
-    <Property Name="IdEntrepreneurship" Type="Int32" Nullable="false" />
-    <Property Name="IdClient" Type="Int32" Nullable="false" />
+    <Property Name="IdEntrepreneurship" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdClient" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Client" Relationship="creativoDBModel.FK__Entrepren__IdCli__5CD6CB2B" FromRole="Entrepreneurship_Admins" ToRole="Client" />
-    <NavigationProperty Name="Entrepreneurship" Relationship="creativoDBModel.FK__Entrepren__IdEnt__5BE2A6F2" FromRole="Entrepreneurship_Admins" ToRole="Entrepreneurship" />
   </EntityType>
-  <Association Name="FK__Entrepren__IdCli__5CD6CB2B">
-    <End Type="creativoDBModel.Client" Role="Client" Multiplicity="1" />
-    <End Type="creativoDBModel.Entrepreneurship_Admins" Role="Entrepreneurship_Admins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Client">
-        <PropertyRef Name="IdClient" />
-      </Principal>
-      <Dependent Role="Entrepreneurship_Admins">
-        <PropertyRef Name="IdClient" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Entrepren__IdEnt__5BE2A6F2">
-    <End Type="creativoDBModel.Entrepreneurship" Role="Entrepreneurship" Multiplicity="1" />
-    <End Type="creativoDBModel.Entrepreneurship_Admins" Role="Entrepreneurship_Admins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Entrepreneurship">
-        <PropertyRef Name="IdEntrepreneurship" />
-      </Principal>
-      <Dependent Role="Entrepreneurship_Admins">
-        <PropertyRef Name="IdEntrepreneurship" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

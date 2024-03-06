@@ -41,7 +41,7 @@ namespace creativo_API.Controllers
 
             if (rol == null)
             {
-                return BadRequest("Usuario no encontrado requeridos");
+                return BadRequest("Usuario no encontrado");
             }
 
 

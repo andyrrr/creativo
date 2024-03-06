@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 92vh;
+    background: #DC93E5;
+}
+.titulo {
+    padding: 2% 0%;
+    margin-top: 10%;
+}
+
+.admins {
+    position: relative;
+    padding: 0% 2%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 15%;
+    padding-top: 3%;
+}
+.contenido{
+    overflow-y: scroll;
+}
+
+
+.card {
+    padding: 1% 7%;
+    width: 100%;
+    min-height: 40%;
+    aspect-ratio: 1/0.15;
+    border: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1%;
+    border-radius: 43px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.bloque {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    gap: 1%;
+}
+
+.texto {
+    font-family: 'Roboto';
+    position: relative;
+    text-align: center;
+}
+
+
+button{
+    padding: 3% 10%;
+    width: 100%;
+    margin: 3% 3%;
+}
+
+
+.info-button {
+    border-radius: 43px;
+    background: #A4CDFF;
+    color: white;
+    font-family: 'Roboto';
+    border: 0px;
+    width: fit-content;
+    padding: 1% 10%;
+    align-self: center;
+    margin: 0 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.aceptar-bttn, .rechazar-bttn {
+    border-radius: 43px;
+    font-family: 'Roboto';
+    border: 0px;
+    width: fit-content;
+    padding: 1% 10%;
+    align-self: center;
+    margin: 0 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
