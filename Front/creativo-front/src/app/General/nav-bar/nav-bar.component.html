@@ -30,7 +30,7 @@
   <div class="botones">
     <div class="boton" (click)="redirigir('/inicio')">Inicio</div>
     <div class="boton" (click)="redirigir('/emprendimiento-perfil')">Perfil</div>
-    <div class="boton" >Mis talleres</div>
+    <div class="boton" (click)="redirigir('/emprendimiento-admins')">Administradores</div>
     <div class="boton" (click)="volverCuenta()">Volver a Cliente</div>
   </div>
 </div>
@@ -42,8 +42,7 @@
     <div class="botones">
       <div class="boton" (click)="redirigir('/inicio')">Inicio</div>
       <div class="boton" (click)="redirigir('/cliente-perfil')">Perfil</div>
-      <div class="boton" >Pedidos</div>
-      <div class="boton" >Talleres</div>
+      <div class="boton" (click)="redirigir('/preguntas')">Preguntas</div>
       <div class="boton" (click)="redirigir('/cliente-emprendimientos')">Tus Emprendimientos</div>
       <div class="boton" (click)="logOut()">Salir</div>
     </div>

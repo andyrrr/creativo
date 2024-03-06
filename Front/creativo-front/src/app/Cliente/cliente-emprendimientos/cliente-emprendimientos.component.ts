@@ -15,7 +15,7 @@ export class ClienteEmprendimientosComponent {
   admin:EmprendimientoAdmin = new EmprendimientoAdmin;
 
   constructor(private service: EmprendimientoAdminService, private cookieService: CookieService){
-    this.service.getSelectedList(this.cookieService.get("cookieCLIENTE")).subscribe({
+    this.service.getSelectedList("byClient" + "/" + this.cookieService.get("cookieCLIENTE")).subscribe({
       next:(data) => {
         this.emprendimientos = data;
         console.log(this.emprendimientos)

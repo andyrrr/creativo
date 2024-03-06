@@ -22,6 +22,7 @@ import { EmprendimientoPerfilComponent } from './Emprendimiento/emprendimiento-p
 import { ClientePerfilComponent } from './Cliente/cliente-perfil/cliente-perfil.component';
 import { RepartidorPerfilComponent } from './Repartidor/repartidor-perfil/repartidor-perfil.component';
 import { ClienteEmprendimientosComponent } from './Cliente/cliente-emprendimientos/cliente-emprendimientos.component';
+import { EmprendimientoAdminsComponent } from './Emprendimiento/emprendimiento-admins/emprendimiento-admins.component';
 
 
 
@@ -43,7 +44,8 @@ import { ClienteEmprendimientosComponent } from './Cliente/cliente-emprendimient
     FormularioRepartidorComponent,
     FormularioAdministradorComponent,
     RepartidorPerfilComponent,
-    ClienteEmprendimientosComponent
+    ClienteEmprendimientosComponent,
+    EmprendimientoAdminsComponent
   ],
   imports: [
     BrowserModule, 
@@ -63,7 +65,10 @@ import { ClienteEmprendimientosComponent } from './Cliente/cliente-emprendimient
       {path: "cliente-perfil", component:ClientePerfilComponent},
       {path: "cliente-emprendimientos", component:ClienteEmprendimientosComponent},
       {path: "repartidor-perfil", component:RepartidorPerfilComponent},
-      {path: "nuevo-emprendimiento", component:FormularioEmprendimientoComponent}
+      {path: "nuevo-emprendimiento", component:FormularioEmprendimientoComponent},
+      {path: "emprendimiento-admins", component:EmprendimientoAdminsComponent}
+
+      
     ]),
     FormsModule,
     HttpClientModule

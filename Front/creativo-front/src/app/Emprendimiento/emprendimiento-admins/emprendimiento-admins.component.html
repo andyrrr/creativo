@@ -1,0 +1,28 @@
+<body>
+    <div class="contenido">
+        <div class="titulo">
+            Gestión de Administradores
+        </div>
+        <input type="text" id="Nombre" name="Nombre" [(ngModel)] = "this.adminNuevo" required>
+        <button type="button" class="aceptar-bttn" (click) = "enviarSolicitud()">Agregar Administrador</button>
+        <div class="admins">
+            <ng-template ngFor let-obj [ngForOf]="admins" ; let-i="index">
+                <div class="card">
+                    <div class="bloque">
+                        <div class="texto">Usuario: {{obj.IdClient}}</div>
+                    </div>
+                    <div class="bloque" *ngIf="obj.state =='Aceptado'">
+                        <button type="button" class="rechazar-bttn" (click) = "quitarAcceso(obj.IdClient)">Quitar Acceso</button>
+                    </div>
+                    <div class="bloque" *ngIf="obj.state =='Pendiente'">
+                        <div class="texto">Solicitud en espera de aprobación</div>
+                    </div>
+                    <div class="bloque" *ngIf="obj.state =='Rechazado'">
+                        <button type="button" class="info-button" (click) = "ReenviarSolicitud(obj.IdClient)">Invitar de Nuevo</button>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    
+</body>

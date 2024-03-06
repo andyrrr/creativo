@@ -25,15 +25,28 @@ namespace creativo_API.Controllers
             return db.Entrepreneurship_Admins;
         }
 
-        // GET: api/Entrepreneurship_Admins/{client_user}
+        // GET: api/Entrepreneurship_Admins/byClient/{client_user}
         [HttpGet]
-        [Route("api/Entrepreneurship_Admins/{client_user}")]
+        [Route("api/Entrepreneurship_Admins/byClient/{client_user}")]
         public IQueryable<Entrepreneurship_Admins> GetEntrepreneurship_by_client(string client_user)
         {
 
             return db.Entrepreneurship_Admins
                 .Where(e => e.IdClient == client_user && (e.state == "Aceptado" || e.state == "Pendiente"))
                 .OrderBy(c => c.state == "Pendiente" ? 0 : 1);
+        }
+
+
+        // GET: api/Entrepreneurship_Admins/byClient/{client_user}
+        [HttpGet]
+        [Route("api/Entrepreneurship_Admins/byEntre/{entre_user}")]
+        public IQueryable<Entrepreneurship_Admins> GetEntrepreneurship_by_entre(string entre_user)
+        {
+
+            return db.Entrepreneurship_Admins
+                .Where(e => e.IdEntrepreneurship == entre_user)
+                .OrderBy(c => c.state == "Aceptado" ? 0 : (c.state == "Pendiente" ? 1 : 2))
+                .ThenBy(c => c.state);
         }
 
         // GET: api/Entrepreneurship_Admins/5
