@@ -4,26 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d7f710959fda418091e9a46cc262a1f3" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="creativoDBModel.Admin" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Canton" Width="1.5" PointX="2.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Client" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Delivery_Person" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Distric" Width="1.5" PointX="4.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Order" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Province" Width="1.5" PointX="6.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Question" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Role" Width="1.5" PointX="8.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Workshop" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="creativoDBModel.Workshop_Photos" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+      <Diagram DiagramId="7ee360942b5644ab841b960148eb4db0" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="creativoDBModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Canton" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Delivery_Person" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Distric" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship_Admins" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Order" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Province" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Question" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Role" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Workshop" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Workshop_Client" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="creativoDBModel.Workshop_Photos" Width="1.5" PointX="5" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="creativoDBModel.FK__Orders__IdClient__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="creativoDBModel.FK__Orders__IdDelive__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="creativoDBModel.FK__Workshop__IdEntr__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="creativoDBModel.FK__Workshop___IdWor__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="creativoDBModel.Workshop_Client" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="creativoDBModel.Entrepreneurship_Admins" Width="1.5" PointX="9.375" PointY="10.75" />
-        </Diagram>
+        <AssociationConnector Association="creativoDBModel.FK__Workshop___IdWor__0E6E26BF" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

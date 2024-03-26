@@ -1,0 +1,70 @@
+
+    <form class="newsletter-form">
+        <input type="text" class="form-control" placeholder="Nombre" name="Nombre" [(ngModel)]="objeto.FirstName" required>
+        <button class="texto" for="Nombre" type="submit">Nombre:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <input type="text" class="form-control" placeholder="Apellido" name="Apellido" [(ngModel)]="objeto.LastName" required>
+        <button class="texto" for="Apellido" type="submit">Apellido:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <input type="number" class="form-control" placeholder="Número de Cédula" name="IdCliente" [(ngModel)]="objeto.IdClient">
+        <button class="texto" for="IdCliente" type="submit">Número de Cédula:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <input type="text" class="form-control" placeholder="Nombre de Usuario" name="Usuario" [(ngModel)]="objeto.Username" required>
+        <button class="texto" for="Usuario" type="submit">Nombre de Usuario:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <input type="tel" class="form-control" placeholder="Teléfono" name="Telefono" [(ngModel)]="objeto.Phone" required>
+        <button class="texto" for="Telefono" type="submit">Teléfono:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <input type="password" class="form-control" placeholder="Contraseña" name="Pass" [(ngModel)]="objeto.Password" required>
+        <button class="texto" for="Pass" type="submit">Contraseña:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <input type="password" class="form-control" placeholder="Confirmar Contraseña" name="ConfirmarPass" [(ngModel)]="confirm" required>
+        <button class="texto" for="ConfirmarPass" type="submit">Confirmar Contraseña:</button>
+    </form>
+    
+    <form class="newsletter-form">
+        <button class="texto" for="Provincia" type="submit">Provincia:</button>
+        <select class="form-control" placeholder="Selecciona una provincia" id="provincia" [(ngModel)]="objeto.Province" name="provincia" (click)="selected()">
+            <ng-template ngFor let-obj [ngForOf]="provincias" let-i="index">
+                <option [value]="obj.Name">{{obj.Name}}</option>
+            </ng-template>
+        </select>
+    </form>
+    
+    <form class="newsletter-form">
+        <button class="texto" for="Cantón" type="submit">Cantón:</button>
+        <select class="form-control" id="canton" [(ngModel)]="objeto.Canton" name="Canton" (click)="selectedcant()">
+            <ng-template ngFor let-obj [ngForOf]="cantones" let-i="index">
+                <option [value]="obj.Name">{{obj.Name}}</option>
+            </ng-template>
+        </select>
+    </form>
+
+    <form class="newsletter-form">
+        <button class="texto" for="Distrito" type="submit">Distrito:</button>
+        <select class="form-control" id="distrito" [(ngModel)]="objeto.District" name="distrito">
+            <ng-template ngFor let-obj [ngForOf]="distritos" let-i="index">
+                <option [value]="obj.Name">{{obj.Name}}</option>
+            </ng-template>
+        </select>
+    </form>
+    
+    
+
+
+    <div class="banner-btn">
+        <a (click)="guardar()">Agregar</a>
+        <a (click)="redirigir('/dashboard-cliente')">Cancelar</a>
+    </div>

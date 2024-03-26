@@ -55,14 +55,13 @@ CREATE TABLE Entrepreneurship_Admins (
 
 -- Create the table WORKSHOP
 CREATE TABLE Workshop (
-	IdEntrepreneurship INT,
+	IdEntrepreneurship VARCHAR(50),
 	IdWorkshop INT IDENTITY(1,1) PRIMARY KEY,
 	Name VARCHAR(100),
 	Price DECIMAL(10, 2),
-	Description TEXT,
+	Description VARCHAR(255),
 	Link VARCHAR(255),
-	Type VARCHAR(50),
-	FOREIGN KEY (IdEntrepreneurship) REFERENCES EntrepreneurshiP(IdEntrepreneurship)
+	Type VARCHAR(50)
 );
 
 
@@ -80,10 +79,8 @@ CREATE TABLE Workshop_Photos (
 -- Create the table WORKSHOP_CLIENT
 CREATE TABLE Workshop_Client (
 	IdWorkshop INT,
-	IdClient INT,
-	PRIMARY KEY (IdWorkshop, IdClient),
-	FOREIGN KEY (IdWorkshop) REFERENCES Workshop(IdWorkshop),
-	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
+	IdClient VARCHAR(50),
+	PRIMARY KEY (IdWorkshop, IdClient)
 );
 
 

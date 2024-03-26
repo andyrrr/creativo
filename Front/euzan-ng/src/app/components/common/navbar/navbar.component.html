@@ -1,0 +1,99 @@
+<nav
+    class="navbar navbar-expand-lg navbar-light bg-light"
+    [class.active]="classApplied"
+    [ngClass]="{'sticky': isSticky}"
+>
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">
+            <img src="assets/img/Club Creativo Logo Blanco.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" (click)="toggleClass()">
+            <span class="burger-menu">
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="unregistered">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','about')">Sobre Nosotros</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','preguntas')">Preguntas</span></li>
+            </ul>
+            <ul class="navbar-nav ms-auto for-responsive">
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/inicio','about')">Sobre Nosotros</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/inicio','preguntas')">Preguntas</span></li>
+            </ul>
+            <div class="navbar-btn">
+                <a (click)="redirigir('/ingresar')">Ingresar</a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="this.rol.Type == 'ADMIN'">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-admin', 'solicitudes')">Solicitudes</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-admin','preguntas')">Preguntas</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-admin','administradores')">Administradores</span></li>
+            </ul>
+            <ul class="navbar-nav ms-auto for-responsive">
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-admin','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-admin','solicitudes')">Solicitudes</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-admin','preguntas')">Preguntas</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-admin','administradores')">Administradores</span></li>
+            </ul>
+            <div class="navbar-btn">
+                <a (click)="logOut()">Salir</a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="this.rol.Type == 'EMPRENDIMIENTO'">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-emprendimiento','home')">Perfil</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-emprendimiento','talleres')">Talleres</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-emprendimiento','administradores')">Administradores</span></li>
+            </ul>
+            <ul class="navbar-nav ms-auto for-responsive">
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-emprendimiento','home')">Perfil</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-emprendimiento','talleres')">Talleres</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-emprendimiento','administradores')">Administradores</span></li>
+            </ul>
+            <div class="navbar-btn">
+                <a (click)="volverCuenta()">Volver a Cliente</a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="this.rol.Type == 'CLIENTE'">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-cliente','home')">Perfil</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-cliente','talleres')">Talleres</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-cliente','emprendimientos')">Emprendimientos</span></li>
+            </ul>
+            <ul class="navbar-nav ms-auto for-responsive">
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-cliente','home')">Perfil</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-cliente','talleres')">Talleres</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-cliente','emprendimientos')">Emprendimientos</span></li>
+            </ul>
+            <div class="navbar-btn">
+                <a (click)="logOut()">Salir</a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="this.rol.Type == 'REPARTIDOR'">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-repartidor','about')">Perfil</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="onClick('/dashboard-repartidor','pricing')">Pedidos</span></li>
+            </ul>
+            <ul class="navbar-nav ms-auto for-responsive">
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/inicio','home')">Inicio</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-repartidor','about')">Perfil</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('/dashboard-repartidor','pricing')">Pedidos</span></li>
+            </ul> 
+            <div class="navbar-btn">
+                <a (click)="logOut()" >Salir</a>
+            </div>
+        </div>
+    </div>
+</nav>

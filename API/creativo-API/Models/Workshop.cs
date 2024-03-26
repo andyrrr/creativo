@@ -14,7 +14,7 @@ namespace creativo_API.Models
     
     public partial class Workshop
     {
-        public Nullable<int> IdEntrepreneurship { get; set; }
+        public string IdEntrepreneurship { get; set; }
         public int IdWorkshop { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> Price { get; set; }

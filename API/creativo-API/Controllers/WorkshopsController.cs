@@ -26,7 +26,7 @@ namespace creativo_API.Controllers
 
         // GET: api/Workshops/5
         [ResponseType(typeof(Workshop))]
-        public IHttpActionResult GetWorkshop(string id)
+        public IHttpActionResult GetWorkshop(int id)
         {
             Workshop workshop = db.Workshops.Find(id);
             if (workshop == null)
@@ -36,17 +36,39 @@ namespace creativo_API.Controllers
 
             return Ok(workshop);
         }
+        // GET: api/Workshops/byEntre/{entre_user}
+        [HttpGet]
+        [Route("api/Workshops/byEntre/{entre_user}")]
+        public IQueryable<Workshop> GetWorkshop_by_entre(string entre_user)
+        {
+
+            return db.Workshops.Where(e => e.IdEntrepreneurship == entre_user);
+        }
 
         // PUT: api/Workshops/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutWorkshop(string id, Workshop workshop)
+        public IHttpActionResult PutWorkshop(int id, Workshop workshop)
         {
+            if (AnyAttributeEmpty(workshop))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (workshop.Description?.Length > 250)
+            {
+                return BadRequest("La descripción ha superado los 250 Caracteres");
+            }
+
+            if (workshop.Link?.Length > 250)
+            {
+                return BadRequest("El link ha superado los 250 Caracteres");
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != workshop.Name)
+            if (id != workshop.IdWorkshop)
             {
                 return BadRequest();
             }
@@ -76,35 +98,36 @@ namespace creativo_API.Controllers
         [ResponseType(typeof(Workshop))]
         public IHttpActionResult PostWorkshop(Workshop workshop)
         {
+            if (AnyAttributeEmpty(workshop))
+            {
+                return BadRequest("Hay espacios en blanco");
+            }
+
+            if (workshop.Description?.Length > 250)
+            {
+                return BadRequest("La descripción ha superado los 250 Caracteres");
+            }
+
+            if (workshop.Link?.Length > 250)
+            {
+                return BadRequest("El link ha superado los 250 Caracteres");
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             db.Workshops.Add(workshop);
+            db.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (WorkshopExists(workshop.Name))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = workshop.Name }, workshop);
+            return CreatedAtRoute("DefaultApi", new { id = workshop.IdWorkshop }, workshop);
         }
 
         // DELETE: api/Workshops/5
         [ResponseType(typeof(Workshop))]
-        public IHttpActionResult DeleteWorkshop(string id)
+        public IHttpActionResult DeleteWorkshop(int id)
         {
             Workshop workshop = db.Workshops.Find(id);
             if (workshop == null)
@@ -127,9 +150,20 @@ namespace creativo_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool WorkshopExists(string id)
+        private bool WorkshopExists(int id)
         {
-            return db.Workshops.Count(e => e.Name == id) > 0;
+            return db.Workshops.Count(e => e.IdWorkshop == id) > 0;
+        }
+
+        private bool AnyAttributeEmpty(Workshop workshop)
+        {
+            return string.IsNullOrEmpty(workshop.IdEntrepreneurship) ||
+                   workshop.IdWorkshop == 0 ||
+                   string.IsNullOrEmpty(workshop.Name) ||
+                   workshop.Price == null ||
+                   string.IsNullOrEmpty(workshop.Description) ||
+                   string.IsNullOrEmpty(workshop.Link) ||
+                   string.IsNullOrEmpty(workshop.Type);
         }
     }
 }

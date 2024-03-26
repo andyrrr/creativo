@@ -115,11 +115,11 @@
     <Key>
       <PropertyRef Name="IdWorkshop" />
     </Key>
-    <Property Name="IdEntrepreneurship" Type="int" />
+    <Property Name="IdEntrepreneurship" Type="varchar" MaxLength="50" />
     <Property Name="IdWorkshop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
-    <Property Name="Description" Type="text" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
     <Property Name="Link" Type="varchar" MaxLength="255" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -129,7 +129,7 @@
       <PropertyRef Name="IdClient" />
     </Key>
     <Property Name="IdWorkshop" Type="int" Nullable="false" />
-    <Property Name="IdClient" Type="int" Nullable="false" />
+    <Property Name="IdClient" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Workshop_Photos">
     <Key>
@@ -163,19 +163,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Workshop___IdCli__46E78A0C">
-    <End Role="Client" Type="Self.Client" Multiplicity="1" />
-    <End Role="Workshop_Client" Type="Self.Workshop_Client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Client">
-        <PropertyRef Name="IdClient" />
-      </Principal>
-      <Dependent Role="Workshop_Client">
-        <PropertyRef Name="IdClient" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Workshop___IdWor__4316F928">
+  <Association Name="FK__Workshop___IdWor__0E6E26BF">
     <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
     <End Role="Workshop_Photos" Type="Self.Workshop_Photos" Multiplicity="*" />
     <ReferentialConstraint>
@@ -184,30 +172,6 @@
       </Principal>
       <Dependent Role="Workshop_Photos">
         <PropertyRef Name="IdWorkshop" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Workshop___IdWor__45F365D3">
-    <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
-    <End Role="Workshop_Client" Type="Self.Workshop_Client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Workshop">
-        <PropertyRef Name="IdWorkshop" />
-      </Principal>
-      <Dependent Role="Workshop_Client">
-        <PropertyRef Name="IdWorkshop" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Workshop__IdEntr__403A8C7D">
-    <End Role="Entrepreneurship" Type="Self.Entrepreneurship" Multiplicity="0..1" />
-    <End Role="Workshop" Type="Self.Workshop" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Entrepreneurship">
-        <PropertyRef Name="IdEntrepreneurship" />
-      </Principal>
-      <Dependent Role="Workshop">
-        <PropertyRef Name="IdEntrepreneurship" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -234,21 +198,9 @@
       <End Role="Delivery_Person" EntitySet="Delivery_Person" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Workshop___IdCli__46E78A0C" Association="Self.FK__Workshop___IdCli__46E78A0C">
-      <End Role="Client" EntitySet="Client" />
-      <End Role="Workshop_Client" EntitySet="Workshop_Client" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Workshop___IdWor__4316F928" Association="Self.FK__Workshop___IdWor__4316F928">
+    <AssociationSet Name="FK__Workshop___IdWor__0E6E26BF" Association="Self.FK__Workshop___IdWor__0E6E26BF">
       <End Role="Workshop" EntitySet="Workshop" />
       <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Workshop___IdWor__45F365D3" Association="Self.FK__Workshop___IdWor__45F365D3">
-      <End Role="Workshop" EntitySet="Workshop" />
-      <End Role="Workshop_Client" EntitySet="Workshop_Client" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Workshop__IdEntr__403A8C7D" Association="Self.FK__Workshop__IdEntr__403A8C7D">
-      <End Role="Entrepreneurship" EntitySet="Entrepreneurship" />
-      <End Role="Workshop" EntitySet="Workshop" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

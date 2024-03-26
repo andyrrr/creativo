@@ -1,0 +1,86 @@
+<div id="home" class="main-banner banner-style-three banner-bg-five">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="banner-text">
+                            <h1>REgistro de nuevo Administrador</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="newsletter-form">
+                            <input type="text" class="form-control" placeholder="Nombre" name="Nombre" [(ngModel)]="objeto.Name" required>
+                            <button class="texto" for="Nombre" type="submit">Nombre:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <input type="text" class="form-control" placeholder="Nombre de Usuario" name="Usuario" [(ngModel)]="objeto.Username" required>
+                            <button class="texto" for="Usuario" type="submit">Nombre de Usuario:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <input type="number" class="form-control" placeholder="Cédula Jurídica" name="IdEmprendimiento" [(ngModel)]="objeto.IdEntrepreneurship">
+                            <button class="texto" for="IdEmprendimiento" type="submit">Cédula Jurídica:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <input type="text" class="form-control" placeholder="Tipo" name="Tipo" [(ngModel)]="objeto.Type" required>
+                            <button class="texto" for="Tipo" type="submit">Tipo:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <input type="email" class="form-control" placeholder="Correo" name="Correo" [(ngModel)]="objeto.Email" required>
+                            <button class="texto" for="Correo" type="submit">Correo:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <input type="text" class="form-control" placeholder="Sinpe" name="Sinpe" [(ngModel)]="objeto.Sinpe" required>
+                            <button class="texto" for="Sinpe" type="submit">Sinpe:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <input type="tel" class="form-control" placeholder="Teléfono" name="Telefono" [(ngModel)]="objeto.Phone" required>
+                            <button class="texto" for="Telefono" type="submit">Teléfono:</button>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <button class="texto" for="Provincia" type="submit">Provincia:</button>
+                            <select class="form-control" placeholder="Selecciona una provincia" id="provincia" [(ngModel)]="objeto.Province" name="provincia" (click)="selected()">
+                                <ng-template ngFor let-obj [ngForOf]="provincias" let-i="index">
+                                    <option [value]="obj.Name">{{obj.Name}}</option>
+                                </ng-template>
+                            </select>
+                        </form>
+                        
+                        <form class="newsletter-form">
+                            <button class="texto" for="Cantón" type="submit">Cantón:</button>
+                            <select class="form-control" id="canton" [(ngModel)]="objeto.Canton" name="Canton" (click)="selectedcant()">
+                                <ng-template ngFor let-obj [ngForOf]="cantones" let-i="index">
+                                    <option [value]="obj.Name">{{obj.Name}}</option>
+                                </ng-template>
+                            </select>
+                        </form>
+
+                        <form class="newsletter-form">
+                            <button class="texto" for="Distrito" type="submit">Distrito:</button>
+                            <select class="form-control" id="distrito" [(ngModel)]="objeto.District" name="distrito">
+                                <ng-template ngFor let-obj [ngForOf]="distritos" let-i="index">
+                                    <option [value]="obj.Name">{{obj.Name}}</option>
+                                </ng-template>
+                            </select>
+                        </form>
+                        
+                    
+    
+                        <div class="banner-btn">
+                            <a (click)="guardar()">Agregar</a>
+                            <a (click)="redirigir('/dashboard-cliente')">Cancelar</a>
+                        </div>
+
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

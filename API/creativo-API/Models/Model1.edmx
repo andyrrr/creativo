@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="creativoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="creativoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="IdAdmin" />
@@ -120,11 +120,11 @@
           <Key>
             <PropertyRef Name="IdWorkshop" />
           </Key>
-          <Property Name="IdEntrepreneurship" Type="int" />
+          <Property Name="IdEntrepreneurship" Type="varchar" MaxLength="50" />
           <Property Name="IdWorkshop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Description" Type="text" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
           <Property Name="Link" Type="varchar" MaxLength="255" />
           <Property Name="Type" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -134,7 +134,7 @@
             <PropertyRef Name="IdClient" />
           </Key>
           <Property Name="IdWorkshop" Type="int" Nullable="false" />
-          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Workshop_Photos">
           <Key>
@@ -168,19 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Workshop___IdCli__46E78A0C">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="Workshop_Client" Type="Self.Workshop_Client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="IdClient" />
-            </Principal>
-            <Dependent Role="Workshop_Client">
-              <PropertyRef Name="IdClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Workshop___IdWor__4316F928">
+        <Association Name="FK__Workshop___IdWor__0E6E26BF">
           <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
           <End Role="Workshop_Photos" Type="Self.Workshop_Photos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,30 +177,6 @@
             </Principal>
             <Dependent Role="Workshop_Photos">
               <PropertyRef Name="IdWorkshop" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Workshop___IdWor__45F365D3">
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
-          <End Role="Workshop_Client" Type="Self.Workshop_Client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workshop">
-              <PropertyRef Name="IdWorkshop" />
-            </Principal>
-            <Dependent Role="Workshop_Client">
-              <PropertyRef Name="IdWorkshop" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Workshop__IdEntr__403A8C7D">
-          <End Role="Entrepreneurship" Type="Self.Entrepreneurship" Multiplicity="0..1" />
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrepreneurship">
-              <PropertyRef Name="IdEntrepreneurship" />
-            </Principal>
-            <Dependent Role="Workshop">
-              <PropertyRef Name="IdEntrepreneurship" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,24 +203,13 @@
             <End Role="Delivery_Person" EntitySet="Delivery_Person" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Workshop___IdCli__46E78A0C" Association="Self.FK__Workshop___IdCli__46E78A0C">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="Workshop_Client" EntitySet="Workshop_Client" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Workshop___IdWor__4316F928" Association="Self.FK__Workshop___IdWor__4316F928">
+          <AssociationSet Name="FK__Workshop___IdWor__0E6E26BF" Association="Self.FK__Workshop___IdWor__0E6E26BF">
             <End Role="Workshop" EntitySet="Workshop" />
             <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Workshop___IdWor__45F365D3" Association="Self.FK__Workshop___IdWor__45F365D3">
-            <End Role="Workshop" EntitySet="Workshop" />
-            <End Role="Workshop_Client" EntitySet="Workshop_Client" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Workshop__IdEntr__403A8C7D" Association="Self.FK__Workshop__IdEntr__403A8C7D">
-            <End Role="Entrepreneurship" EntitySet="Entrepreneurship" />
-            <End Role="Workshop" EntitySet="Workshop" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="creativoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -331,6 +284,15 @@
           <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Entrepreneurship_Admins">
+          <Key>
+            <PropertyRef Name="IdEntrepreneurship" />
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdEntrepreneurship" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdClient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="IdOrder" />
@@ -366,13 +328,21 @@
           <Key>
             <PropertyRef Name="IdWorkshop" />
           </Key>
-          <Property Name="IdEntrepreneurship" Type="Int32" />
+          <Property Name="IdEntrepreneurship" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdWorkshop" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Workshop_Client">
+          <Key>
+            <PropertyRef Name="IdWorkshop" />
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdWorkshop" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Workshop_Photos">
           <Key>
@@ -406,19 +376,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Workshop__IdEntr__403A8C7D">
-          <End Role="Entrepreneurship" Type="Self.Entrepreneurship" Multiplicity="0..1" />
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrepreneurship">
-              <PropertyRef Name="IdEntrepreneurship" />
-            </Principal>
-            <Dependent Role="Workshop">
-              <PropertyRef Name="IdEntrepreneurship" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Workshop___IdWor__4316F928">
+        <Association Name="FK__Workshop___IdWor__0E6E26BF">
           <End Role="Workshop" Type="Self.Workshop" Multiplicity="1" />
           <End Role="Workshop_Photos" Type="Self.Workshop_Photos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -430,10 +388,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Workshop_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="creativoDBEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Cantons" EntityType="Self.Canton" />
@@ -441,11 +395,13 @@
           <EntitySet Name="Delivery_Persons" EntityType="Self.Delivery_Person" />
           <EntitySet Name="Districs" EntityType="Self.Distric" />
           <EntitySet Name="Entrepreneurships" EntityType="Self.Entrepreneurship" />
+          <EntitySet Name="Entrepreneurship_Admins" EntityType="Self.Entrepreneurship_Admins" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Provinces" EntityType="Self.Province" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Workshops" EntityType="Self.Workshop" />
+          <EntitySet Name="Workshop_Client" EntityType="Self.Workshop_Client" />
           <EntitySet Name="Workshop_Photos" EntityType="Self.Workshop_Photos" />
           <AssociationSet Name="FK__Orders__IdClient__4E88ABD4" Association="Self.FK__Orders__IdClient__4E88ABD4">
             <End Role="Client" EntitySet="Clients" />
@@ -455,30 +411,12 @@
             <End Role="Delivery_Person" EntitySet="Delivery_Persons" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Workshop__IdEntr__403A8C7D" Association="Self.FK__Workshop__IdEntr__403A8C7D">
-            <End Role="Entrepreneurship" EntitySet="Entrepreneurships" />
-            <End Role="Workshop" EntitySet="Workshops" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Workshop___IdWor__4316F928" Association="Self.FK__Workshop___IdWor__4316F928">
+          <AssociationSet Name="FK__Workshop___IdWor__0E6E26BF" Association="Self.FK__Workshop___IdWor__0E6E26BF">
             <End Role="Workshop" EntitySet="Workshops" />
             <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
           </AssociationSet>
-          <AssociationSet Name="Workshop_Client" Association="Self.Workshop_Client">
-            <End Role="Client" EntitySet="Clients" />
-            <End Role="Workshop" EntitySet="Workshops" />
-          </AssociationSet>
-          <EntitySet Name="Entrepreneurship_Admins" EntityType="creativoDBModel.Entrepreneurship_Admins" />
-          </EntityContainer>
-        <EntityType Name="Entrepreneurship_Admins">
-          <Key>
-            <PropertyRef Name="IdEntrepreneurship" />
-            <PropertyRef Name="IdClient" />
-          </Key>
-          <Property Name="IdEntrepreneurship" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdClient" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        </Schema>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -559,6 +497,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Entrepreneurship_Admins">
+            <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Admins">
+              <MappingFragment StoreEntitySet="Entrepreneurship_Admins">
+                <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="creativoDBModel.Order">
               <MappingFragment StoreEntitySet="Orders">
@@ -607,28 +554,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Workshop_Client">
+            <EntityTypeMapping TypeName="creativoDBModel.Workshop_Client">
+              <MappingFragment StoreEntitySet="Workshop_Client">
+                <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Workshop_Photos">
             <EntityTypeMapping TypeName="creativoDBModel.Workshop_Photos">
               <MappingFragment StoreEntitySet="Workshop_Photos">
                 <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="Workshop_Client" TypeName="creativoDBModel.Workshop_Client" StoreEntitySet="Workshop_Client">
-            <EndProperty Name="Client">
-              <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-            </EndProperty>
-            <EndProperty Name="Workshop">
-              <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Entrepreneurship_Admins">
-            <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Admins">
-              <MappingFragment StoreEntitySet="Entrepreneurship_Admins">
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

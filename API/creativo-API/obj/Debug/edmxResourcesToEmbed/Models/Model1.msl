@@ -76,6 +76,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Entrepreneurship_Admins">
+      <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Admins">
+        <MappingFragment StoreEntitySet="Entrepreneurship_Admins">
+          <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="creativoDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
@@ -124,28 +133,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Workshop_Client">
+      <EntityTypeMapping TypeName="creativoDBModel.Workshop_Client">
+        <MappingFragment StoreEntitySet="Workshop_Client">
+          <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Workshop_Photos">
       <EntityTypeMapping TypeName="creativoDBModel.Workshop_Photos">
         <MappingFragment StoreEntitySet="Workshop_Photos">
           <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="Workshop_Client" TypeName="creativoDBModel.Workshop_Client" StoreEntitySet="Workshop_Client">
-      <EndProperty Name="Client">
-        <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-      </EndProperty>
-      <EndProperty Name="Workshop">
-        <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <EntitySetMapping Name="Entrepreneurship_Admins">
-      <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Admins">
-        <MappingFragment StoreEntitySet="Entrepreneurship_Admins">
-          <ScalarProperty Name="state" ColumnName="state" />
-          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-          <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
