@@ -6,14 +6,11 @@
                     <div class="col-lg-6">
                         <div class="banner-text">
                             <h1>Escoje tu de qué forma quieres crear una cuenta:</h1>
-                            <div class="radio-cards">
-                                <button type="button" class="card" [class.selected]="opcionSeleccionada === 'Cliente'" (click)="opcionSeleccionada = 'Cliente'">
-                                    <h3>Cliente</h3>
-                                </button>
-                                <button type="button" class="card" [class.selected]="opcionSeleccionada === 'Repartidor'" (click)="opcionSeleccionada = 'Repartidor'">
-                                    <h3>Repartidor</h3>
-                                </button>
-                            </div>
+                            
+                            <select class="form-control" id="rol" [(ngModel)]="opcionSeleccionada" name="rol">
+                                <option value='Cliente'>Cliente</option>
+                                <option value='Repartidor'>Repartidor</option>
+                            </select>
                             </div>
                         </div>
                     <div class="col-lg-6">

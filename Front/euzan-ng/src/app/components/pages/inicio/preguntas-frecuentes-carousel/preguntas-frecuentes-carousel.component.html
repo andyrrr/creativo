@@ -11,7 +11,7 @@
                         <ng-template ngFor let-obj [ngForOf]="preguntas" ; let-i="index">
                         <ng-template carouselSlide>
                                 <div class="tsetimonial-card">
-                                    <img src="assets/img/pregunta.png" alt="client image">
+                                    <img src="assets/img/pregunta{{i % 3}}.png" alt="client image">
                                     <h3>{{obj.Question1}}</h3>
                                     <p>{{obj.Answer}}</p>
                                 </div>

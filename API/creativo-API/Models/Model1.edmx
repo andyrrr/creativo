@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="creativoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="creativoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="IdAdmin" />
@@ -75,6 +75,7 @@
           <Property Name="Canton" Type="varchar" MaxLength="50" />
           <Property Name="District" Type="varchar" MaxLength="50" />
           <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="IdType" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Entrepreneurship_Admins">
           <Key>
@@ -84,6 +85,12 @@
           <Property Name="IdEntrepreneurship" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IdClient" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="state" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Entrepreneurship_Type">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -188,6 +195,7 @@
           <EntitySet Name="Distric" EntityType="Self.Distric" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrepreneurship" EntityType="Self.Entrepreneurship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrepreneurship_Admins" EntityType="Self.Entrepreneurship_Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrepreneurship_Type" EntityType="Self.Entrepreneurship_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
@@ -208,8 +216,7 @@
             <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="creativoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -283,6 +290,7 @@
           <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Entrepreneurship_Admins">
           <Key>
@@ -415,7 +423,14 @@
             <End Role="Workshop" EntitySet="Workshops" />
             <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
           </AssociationSet>
+          <EntitySet Name="Entrepreneurship_Type" EntityType="creativoDBModel.Entrepreneurship_Type" />
         </EntityContainer>
+        <EntityType Name="Entrepreneurship_Type">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -483,6 +498,7 @@
           <EntitySetMapping Name="Entrepreneurships">
             <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship">
               <MappingFragment StoreEntitySet="Entrepreneurship">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
                 <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -567,6 +583,13 @@
               <MappingFragment StoreEntitySet="Workshop_Photos">
                 <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrepreneurship_Type">
+            <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Type">
+              <MappingFragment StoreEntitySet="Entrepreneurship_Type">
+                <ScalarProperty Name="type" ColumnName="type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -22,7 +22,12 @@ CREATE TABLE Entrepreneurship (
 	Province VARCHAR(50),
 	Canton VARCHAR(50),
 	District VARCHAR(50),
-	State VARCHAR(50)
+	State VARCHAR(50), 
+	IdType VARCHAR(50)
+);
+
+CREATE TABLE Entrepreneurship_Type (
+    type VARCHAR(50) PRIMARY KEY
 );
 
 
@@ -118,6 +123,9 @@ CREATE TABLE Orders (
 	FOREIGN KEY (IdDeliveryPerson) REFERENCES Delivery_Person(IdDeliveryPerson),
 	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
 );
+
+
+
 
 
 

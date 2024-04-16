@@ -3,8 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Emprendimiento, EmprendimientoAdmin } from 'src/app/interfaces/emprendimiento';
 import { Province, Canton, Distrito } from 'src/app/interfaces/lugares';
+import { Tipos } from 'src/app/interfaces/tipos';
 import { EmprendimientoService, EmprendimientoAdminService } from 'src/app/services/emprendimiento.service';
 import { ProvinciaService, CantonService, DistritoService } from 'src/app/services/lugares.service';
+import { TiposService } from 'src/app/services/tipos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,16 +22,26 @@ export class AgregarEmprendimientoComponent {
     private cantonService: CantonService,
     private distritoService: DistritoService,
     private adminsService: EmprendimientoAdminService, 
+    private tiposService:TiposService,
     private cookieService: CookieService,  
     private route: Router,
     private rou: ActivatedRoute
   ) {
     this.getProvincias();
+    this.objeto.IdType = "Fisica"
+    this.tiposService.getList().subscribe({
+      next:(data) =>{
+        this.tipos = data
+        console.log(this.tipos)
+      }
+    })
+
   }
 
   provincias: Province[] = [];
   cantones: Canton[] = [];
   distritos: Distrito[] = [];
+  tipos: Tipos[] = [];
   confirm = '';
   temp:EmprendimientoAdmin = new EmprendimientoAdmin;
 
@@ -40,7 +52,7 @@ export class AgregarEmprendimientoComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Aceptar!"
+      confirmButtonText: "Aceptar"
     }).then((result) => {
       if (result.isConfirmed) {
           this.objeto.State = 'Pendiente';
@@ -53,6 +65,9 @@ export class AgregarEmprendimientoComponent {
                 next: (data) =>{
                   console.log("Añadido");
                   this.service.successMessage("Registro exitoso", "/dashboard-cliente");
+                }, error:(err) => {
+                  console.log(err)
+                  this.service.errorMessage(err.error.Message)
                 }
               })
             }, error:(err) =>{

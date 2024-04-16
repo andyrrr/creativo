@@ -70,6 +70,7 @@
     <Property Name="Canton" Type="varchar" MaxLength="50" />
     <Property Name="District" Type="varchar" MaxLength="50" />
     <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="IdType" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Entrepreneurship_Admins">
     <Key>
@@ -79,6 +80,12 @@
     <Property Name="IdEntrepreneurship" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="IdClient" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="state" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Entrepreneurship_Type">
+    <Key>
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -183,6 +190,7 @@
     <EntitySet Name="Distric" EntityType="Self.Distric" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Entrepreneurship" EntityType="Self.Entrepreneurship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Entrepreneurship_Admins" EntityType="Self.Entrepreneurship_Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entrepreneurship_Type" EntityType="Self.Entrepreneurship_Type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />

@@ -33,12 +33,12 @@ export class GestionSolicitudesComponent {
   aceptarSolicitud(obj:Emprendimiento){
     Swal.fire({
       title: "¿Quieres Aceptar esta solicitud?",
-      text: "No lo vas a poder revertir!",
+      text: "¡No lo vas a poder revertir!",
       icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Aceptar!"
+      confirmButtonText: "Aceptar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.objeto = obj;
@@ -50,7 +50,7 @@ export class GestionSolicitudesComponent {
   rechazarSolicitud(obj:Emprendimiento){
     Swal.fire({
       title: "¿Quieres Rechazar esta solicitud?",
-      text: "No lo vas a poder revertir!",
+      text: "¡No lo vas a poder revertir!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

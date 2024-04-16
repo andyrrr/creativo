@@ -62,6 +62,7 @@
     <EntitySetMapping Name="Entrepreneurships">
       <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship">
         <MappingFragment StoreEntitySet="Entrepreneurship">
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
           <ScalarProperty Name="IdEntrepreneurship" ColumnName="IdEntrepreneurship" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Type" ColumnName="Type" />
@@ -146,6 +147,13 @@
         <MappingFragment StoreEntitySet="Workshop_Photos">
           <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entrepreneurship_Type">
+      <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Type">
+        <MappingFragment StoreEntitySet="Entrepreneurship_Type">
+          <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

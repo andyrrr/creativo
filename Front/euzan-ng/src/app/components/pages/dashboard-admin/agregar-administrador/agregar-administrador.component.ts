@@ -22,7 +22,7 @@ export class AgregarAdministradorComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Aceptar!"
+      confirmButtonText: "Aceptar"
     }).then((result) => {
       if (result.isConfirmed) {
         if (this.confirm === this.objeto.Password) {
@@ -51,7 +51,7 @@ export class AgregarAdministradorComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Salir!"
+      confirmButtonText: "Salir"
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = url;

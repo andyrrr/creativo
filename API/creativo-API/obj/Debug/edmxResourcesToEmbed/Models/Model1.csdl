@@ -70,6 +70,7 @@
     <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Entrepreneurship_Admins">
     <Key>
@@ -202,5 +203,12 @@
       <End Role="Workshop" EntitySet="Workshops" />
       <End Role="Workshop_Photos" EntitySet="Workshop_Photos" />
     </AssociationSet>
+    <EntitySet Name="Entrepreneurship_Type" EntityType="creativoDBModel.Entrepreneurship_Type" />
   </EntityContainer>
+  <EntityType Name="Entrepreneurship_Type">
+    <Key>
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

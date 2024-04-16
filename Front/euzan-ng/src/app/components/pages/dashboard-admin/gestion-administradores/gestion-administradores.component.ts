@@ -33,12 +33,12 @@ export class GestionAdministradoresComponent {
   eliminarAdministrador(id:number){
     Swal.fire({
       title: "¿Quieres eliminar este Administrador?",
-      text: "No lo vas a poder revertir!",
+      text: "¡No lo vas a poder revertir!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Eliminar!"
+      confirmButtonText: "Eliminar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.service.delete(id).subscribe({

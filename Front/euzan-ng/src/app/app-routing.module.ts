@@ -19,7 +19,7 @@ import { DashboardRepartidorComponent } from './components/pages/dashboard-repar
 import { AgregarTallerComponent } from './components/pages/dashboard-emprendimiento/agregar-taller/agregar-taller.component';
 
 const routes: Routes = [
-    {path: '', component:IngresarComponent},
+    {path: '', component:InicioComponent},
     {path: 'sass-landing-one', component: SassLandingOneComponent},
     {path: 'sass-landing-two', component: SassLandingTwoComponent},
     {path: 'app-landing', component: AppLandingComponent},

@@ -39,5 +39,6 @@ namespace creativo_API.Models
         public virtual DbSet<Workshop> Workshops { get; set; }
         public virtual DbSet<Workshop_Client> Workshop_Client { get; set; }
         public virtual DbSet<Workshop_Photos> Workshop_Photos { get; set; }
+        public virtual DbSet<Entrepreneurship_Type> Entrepreneurship_Type { get; set; }
     }
 }

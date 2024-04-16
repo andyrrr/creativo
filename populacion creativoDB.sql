@@ -29,6 +29,20 @@ VALUES
     (2356346, 'e4', 'Moda', 'Estilo Creativo', 'estilo@example.com', '88769504', '70987345', 'Alajuela', 'Alajuela', 'Distrito4', 'Pendiente'),
     (3452323, 'e5', 'Fotografía', 'Capturas Creativas', 'capturas@example.com', '61897658', '89764903', 'Puntarenas', 'Puntarenas', 'Distrito5', 'Pendiente');
 
+-- Ingreso de tipo de emprendimientos
+INSERT INTO Entrepreneurship_Type (type) VALUES 
+    ('Comida'),
+    ('Collares'),
+    ('Dibujo'),
+    ('Arte'),
+    ('Ropa'),
+    ('Decoración'),
+    ('Joyería'),
+    ('Tecnología'),
+    ('Fotografía'),
+    ('Manualidades');
+
+
 -- Insertar usuario 1
 INSERT INTO Client (Username, Password, FirstName, LastName, Phone, Province, Canton, District)
 VALUES 
@@ -45,16 +59,16 @@ VALUES
 	('e2', 'u2', 'Aceptado'),
 	('e5', 'u2', 'Pendiente');
 
--- Insertar datos en la tabla Province
-INSERT INTO Province (Name) VALUES 
-('Heredia');
+
 
 
 -- Insertar datos en la tabla Province
 INSERT INTO Province (Name) VALUES 
 ('San José');
 
-
+-- Insertar datos en la tabla Province
+INSERT INTO Province (Name) VALUES 
+('Heredia');
 
 -- Insertar datos en la tabla Canton
 INSERT INTO Canton (Name, Province) VALUES
@@ -235,3 +249,45 @@ INSERT INTO Distric (Name, Canton) VALUES
 ('La Colonia', 'León Cortés Castro'),
 ('San Antonio', 'León Cortés Castro'),
 ('San Isidro', 'León Cortés Castro');
+
+
+
+-- Insertar datos en la tabla Province
+INSERT INTO Province (Name) VALUES 
+('Cartago');
+
+-- Insertar datos en la tabla Canton
+INSERT INTO Canton (Name, Province) VALUES
+('Cartago', 'Cartago'),
+('Paraíso', 'Cartago'),
+('La Unión', 'Cartago'),
+('Jiménez', 'Cartago'),
+('Turrialba', 'Cartago');
+
+
+-- Insertar datos en la tabla District
+INSERT INTO Distric (Name, Canton) VALUES
+('Oriental', 'Cartago'),
+('Occidental', 'Cartago'),
+('Carmen', 'Cartago'),
+('San Nicolás', 'Cartago'),
+('Agua Caliente', 'Cartago'),
+('Guadalupe', 'Paraíso'),
+('Santa Lucía', 'Paraíso'),
+('Santa Lucía', 'Paraíso'),
+('Corralillo', 'Paraíso'),
+('Tierra Blanca', 'Paraíso'),
+('Cot', 'La Unión'),
+('Cipreses', 'La Unión'),
+('Santa Rosa', 'La Unión'),
+('Zurquí', 'La Unión'),
+('Pejibaye', 'Jiménez'),
+('Juan Viñas', 'Jiménez'),
+('Tucurrique', 'Jiménez'),
+('Pejibaye', 'Jiménez'),
+('Turrialba', 'Turrialba'),
+('La Suiza', 'Turrialba'),
+('Peralta', 'Turrialba'),
+('Santa Cruz', 'Turrialba'),
+('Santa Teresita', 'Turrialba');
+

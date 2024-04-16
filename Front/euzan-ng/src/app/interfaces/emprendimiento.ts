@@ -10,10 +10,12 @@ export interface EmprendimientoInterface {
     Canton:string;
     District:string;
     State:string;
+    IdType:string;
 }
 
 
 export class Emprendimiento implements EmprendimientoInterface{
+    IdType!: string;
     IdEntrepreneurship!: number;
     Username!: string;
     Type!: string;

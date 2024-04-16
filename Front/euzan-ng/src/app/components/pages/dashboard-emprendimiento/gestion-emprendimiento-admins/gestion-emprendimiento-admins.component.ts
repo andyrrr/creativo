@@ -20,6 +20,8 @@ export class GestionEmprendimientoAdminsComponent {
       next:(data) => {
         this.admins = data;
         console.log(this.admins)
+        this.admins = this.admins.filter(admin => admin.IdClient !== this.cookieService.get("cookieCLIENTE"));
+        console.log(this.admins)
       }, 
       error: (err) =>{
         console.log(err)
@@ -39,7 +41,7 @@ export class GestionEmprendimientoAdminsComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Enviar!"
+      confirmButtonText: "Enviar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.admin.IdClient = this.adminNuevo;
@@ -64,7 +66,7 @@ export class GestionEmprendimientoAdminsComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Quitar!"
+      confirmButtonText: "Quitar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.admin.IdClient = user
@@ -89,7 +91,7 @@ export class GestionEmprendimientoAdminsComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Reenviar!"
+      confirmButtonText: "Reenviar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.admin.IdClient = user;

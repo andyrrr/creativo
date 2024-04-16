@@ -36,7 +36,7 @@ export class AgregarTallerComponent {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Salir!"
+      confirmButtonText: "Salir"
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = url;
@@ -51,7 +51,7 @@ export class AgregarTallerComponent {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Aceptar!"
+        confirmButtonText: "Aceptar"
       }).then((result) => {
         if (result.isConfirmed) {
           console.log(this.objeto)

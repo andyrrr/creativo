@@ -82,7 +82,7 @@ export class NavbarComponent implements OnInit {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Salir!"
+          confirmButtonText: "Salir"
         }).then((result) => {
           if (result.isConfirmed) {
             this.cookieService.delete("cookieREPARTIDOR");

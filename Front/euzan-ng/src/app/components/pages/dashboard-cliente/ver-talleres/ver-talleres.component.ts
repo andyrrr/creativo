@@ -34,7 +34,7 @@ export class VerTalleresComponent {
   suscribirse(id:number){
     Swal.fire({
       title: "¿Quieres suscribirte a este taller?",
-      text: "No lo vas a poder revertir!",
+      text: "¡No lo vas a poder revertir!",
       icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

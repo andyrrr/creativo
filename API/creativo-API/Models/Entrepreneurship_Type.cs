@@ -12,19 +12,8 @@ namespace creativo_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Entrepreneurship
+    public partial class Entrepreneurship_Type
     {
-        public int IdEntrepreneurship { get; set; }
-        public string Username { get; set; }
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Sinpe { get; set; }
-        public string Phone { get; set; }
-        public string Province { get; set; }
-        public string Canton { get; set; }
-        public string District { get; set; }
-        public string State { get; set; }
-        public string IdType { get; set; }
+        public string type { get; set; }
     }
 }

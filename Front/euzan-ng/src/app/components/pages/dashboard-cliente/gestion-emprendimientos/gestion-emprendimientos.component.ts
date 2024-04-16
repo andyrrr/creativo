@@ -54,7 +54,7 @@ export class GestionEmprendimientosComponent{
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Aceptar!"
+      confirmButtonText: "Aceptar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.admin.IdClient = this.cookieService.get("cookieCLIENTE");
@@ -79,7 +79,7 @@ export class GestionEmprendimientosComponent{
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Rechazar!"
+      confirmButtonText: "Rechazar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.admin.IdClient = this.cookieService.get("cookieCLIENTE");

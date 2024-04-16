@@ -35,7 +35,7 @@ export class AgregarPreguntaComponent  {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Salir!"
+      confirmButtonText: "Salir"
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = url;
@@ -44,17 +44,16 @@ export class AgregarPreguntaComponent  {
   }
 
   guardar(){
-    
+    if (this.editMode){
       Swal.fire({
-        title: "¿Quieres añadir esta pregunta?",
+        title: "¿Quieres modificar esta pregunta?",
         icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Aceptar!"
+        confirmButtonText: "Aceptar"
       }).then((result) => {
         if (result.isConfirmed) {
-          if (this.editMode){
             this.service.update(this.objeto.IdQuestion, this.objeto).subscribe({
               next:(data) => {
                 this.service.successMessage("Pregunta correctamente modificada", "/dashboard-admin");
@@ -62,17 +61,30 @@ export class AgregarPreguntaComponent  {
                 this.service.errorMessage(err.error.Message);
               } 
             })
-          } else {
-            this.service.add(this.objeto).subscribe({
-              next:(data) => {
-                this.service.successMessage("Pregunta correctamente añadida", "/dashboard-admin");
-              }, error:(err) => {
-                this.service.errorMessage(err.error.Message);
-              } 
-            })
-          }
         }
       });
+    } else {
+      Swal.fire({
+        title: "¿Quieres añadir esta pregunta?",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.service.add(this.objeto).subscribe({
+            next:(data) => {
+              this.service.successMessage("Pregunta correctamente añadida", "/dashboard-admin");
+            }, error:(err) => {
+              this.service.errorMessage(err.error.Message);
+            } 
+          })
+        }
+      });
+    }
+    
+      
   }
 
 }

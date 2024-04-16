@@ -186,6 +186,7 @@
     <Compile Include="Controllers\DistricsController.cs" />
     <Compile Include="Controllers\EntrepreneurshipsController.cs" />
     <Compile Include="Controllers\Entrepreneurship_AdminsController.cs" />
+    <Compile Include="Controllers\Entrepreneurship_TypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
@@ -215,6 +216,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entrepreneurship_Admins.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entrepreneurship_Type.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
