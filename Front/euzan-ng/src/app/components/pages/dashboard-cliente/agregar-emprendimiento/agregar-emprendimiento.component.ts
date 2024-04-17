@@ -48,7 +48,6 @@ export class AgregarEmprendimientoComponent {
   guardar() {
     Swal.fire({
       title: "¿Quieres registrarte en Club Creativo como Emprendedor?",
-      icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",

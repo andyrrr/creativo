@@ -86,17 +86,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="creativoDBModel.Order">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="IdDeliveryPerson" ColumnName="IdDeliveryPerson" />
-          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Provinces">
       <EntityTypeMapping TypeName="creativoDBModel.Province">
         <MappingFragment StoreEntitySet="Province">
@@ -154,6 +143,17 @@
       <EntityTypeMapping TypeName="creativoDBModel.Entrepreneurship_Type">
         <MappingFragment StoreEntitySet="Entrepreneurship_Type">
           <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="creativoDBModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="IdDeliveryPerson" ColumnName="IdDeliveryPerson" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

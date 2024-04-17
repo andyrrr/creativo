@@ -35,11 +35,10 @@ export class VerTalleresComponent {
     Swal.fire({
       title: "¿Quieres suscribirte a este taller?",
       text: "¡No lo vas a poder revertir!",
-      icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Suscribirme!"
+      confirmButtonText: "Suscribirme"
     }).then((result) => {
       if (result.isConfirmed) {
         this.suscripcion.IdWorkshop = id;
@@ -49,7 +48,7 @@ export class VerTalleresComponent {
 
         this.suscripcionService.add(this.suscripcion).subscribe({
           next:(data)=>{
-            this.service.successMessage("Te has suscrito al taller con éxito", "/dashboard-cliente");
+            this.mensajeSuscripcion(id)
           }, error:(err) => {
             this.service.errorMessage(err.error.Message);
           }
@@ -57,4 +56,17 @@ export class VerTalleresComponent {
       }
     });
   }
+
+  mensajeSuscripcion(id:number){
+    if (this.talleres.find(taller => taller.IdWorkshop === id)?.Type == "Virtual"){
+      this.service.subMessage("Te has suscrito al taller con éxito", "Pronto un repartidor se pondrá en contacto contigo mediante tu número de teléfono para entregarte un paquete con los materiales necesarios para este taller. ¡Mantente atentx!", "/dashboard-cliente");
+    } else {
+      this.service.subMessage("Te has suscrito al taller con éxito", "Los materiales necesarios para este taller estarán esperando por ti en Club Creativo presencialmente.", "/dashboard-cliente");
+    }
+
+  }
+
+
+
+
 }

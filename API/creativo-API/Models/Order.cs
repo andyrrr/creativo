@@ -17,7 +17,7 @@ namespace creativo_API.Models
         public int IdOrder { get; set; }
         public string Address { get; set; }
         public string State { get; set; }
-        public Nullable<int> IdDeliveryPerson { get; set; }
-        public Nullable<int> IdClient { get; set; }
+        public string IdDeliveryPerson { get; set; }
+        public string IdClient { get; set; }
     }
 }

@@ -32,7 +32,6 @@ export class AgregarTallerComponent {
   redirigir(url:string) {
     Swal.fire({
       title: "¿Quieres dejar de editar?",
-      icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -47,7 +46,6 @@ export class AgregarTallerComponent {
   guardar(){
       Swal.fire({
         title: "¿Quieres añadir este Taller?",
-        icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",

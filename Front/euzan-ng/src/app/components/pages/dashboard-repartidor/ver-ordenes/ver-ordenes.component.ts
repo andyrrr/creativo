@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Emprendimiento } from 'src/app/interfaces/emprendimiento';
-import { EmprendimientoService } from 'src/app/services/emprendimiento.service';
+import { Ordenes } from 'src/app/interfaces/ordenes';
+import { OrdenesService } from 'src/app/services/ordenes.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-gestion-solicitudes',
-  templateUrl: './gestion-solicitudes.component.html',
-  styleUrl: './gestion-solicitudes.component.scss'
+  selector: 'app-ver-ordenes',
+  templateUrl: './ver-ordenes.component.html',
+  styleUrl: './ver-ordenes.component.scss'
 })
-export class GestionSolicitudesComponent {
+export class VerOrdenesComponent {
 
-  solicitudes:Emprendimiento[] = [];
-  objeto: Emprendimiento = new Emprendimiento();
+  ordenes:Ordenes[] = [];
+  objeto: Ordenes = new Ordenes();
 
-  constructor(private service: EmprendimientoService){
-    this.service.getSelectedList("Solicitudes").subscribe({
+  constructor(private service: OrdenesService, private cookieService: CookieService){
+    this.service.getSelectedList("byDelivery" + "/" + this.cookieService.get("cookieREPARTIDOR")).subscribe({
       next:(data) => {
-        this.solicitudes = data;
-        console.log(this.solicitudes)
+        this.ordenes = data;
+        console.log(this.ordenes)
       }, 
       error: (err) =>{
         console.log(err)
@@ -30,10 +32,9 @@ export class GestionSolicitudesComponent {
     window.location.href = url;
   }
 
-  aceptarSolicitud(obj:Emprendimiento){
+  iniciarOrden(obj:Ordenes){
     Swal.fire({
-      title: "¿Quieres Aceptar esta solicitud?",
-      text: "¡No lo vas a poder revertir!",
+      title: "¿Quieres empezar con esta entrega?",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -41,35 +42,31 @@ export class GestionSolicitudesComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.objeto = obj;
-        this.objeto.State = "Aceptada";
+        this.objeto.State = "En Camino";
         this.gestionarSolicitud();
       }
     });
   }
-  rechazarSolicitud(obj:Emprendimiento){
+
+
+  terminarOrden(obj:Ordenes){
     Swal.fire({
-      title: "¿Quieres Rechazar esta solicitud?",
-      text: "¡No lo vas a poder revertir!",
+      title: "¿Quieres terminar con esta entrega?",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Rechazar"
+      confirmButtonText: "Aceptar"
     }).then((result) => {
       if (result.isConfirmed) {
         this.objeto = obj;
-        this.objeto.State = "Rechazada"
+        this.objeto.State = "Terminada";
         this.gestionarSolicitud();
       }
     });
-
-
-
-
-    
   }
 
   gestionarSolicitud(){
-    this.service.update(this.objeto.IdEntrepreneurship, this.objeto).subscribe({
+    this.service.update(this.objeto.IdOrder, this.objeto).subscribe({
       next:(data) => {
         Swal.fire({
           title: this.objeto.State + "!",

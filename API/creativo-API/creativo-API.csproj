@@ -188,6 +188,7 @@
     <Compile Include="Controllers\Entrepreneurship_AdminsController.cs" />
     <Compile Include="Controllers\Entrepreneurship_TypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />

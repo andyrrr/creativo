@@ -37,7 +37,6 @@ export class GestionEmprendimientoAdminsComponent {
   enviarSolicitud(){
     Swal.fire({
       title: "¿Quieres enviar la solicitud de administración para este emprendimiento?",
-      icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -87,7 +86,6 @@ export class GestionEmprendimientoAdminsComponent {
   ReenviarSolicitud(user:string){
     Swal.fire({
       title: "¿Quieres reenviar la solicitud de administración para este emprendimiento?",
-      icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",

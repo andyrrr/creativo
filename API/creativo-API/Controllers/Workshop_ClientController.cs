@@ -72,6 +72,33 @@ namespace creativo_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        String SeleccionarRepartidor(Client cliente)
+        {
+            int maxPuntos = int.MinValue;
+            Delivery_Person repartidorSeleccionado = null;
+
+            foreach (var repartidor in db.Delivery_Persons)
+            {
+                int puntos = 0;
+
+                // Verificamos las condiciones de prioridad.
+                if (cliente.Province == repartidor.Province)
+                    puntos += 1;
+                if (cliente.Canton == repartidor.Canton)
+                    puntos += 2;
+                if (cliente.District == repartidor.District)
+                    puntos += 3;
+
+                // Actualizamos al repartidor seleccionado si tiene más puntos.
+                if (puntos > maxPuntos)
+                {
+                    maxPuntos = puntos;
+                    repartidorSeleccionado = repartidor;
+                }
+            }
+            return repartidorSeleccionado.Username;
+        }
+
         // POST: api/Workshop_Client
         [ResponseType(typeof(Workshop_Client))]
         public IHttpActionResult PostWorkshop_Client(Workshop_Client workshop_Client)
@@ -80,12 +107,32 @@ namespace creativo_API.Controllers
             {
                 return BadRequest(ModelState);
             }
+            Client client = db.Clients.SingleOrDefault(c => c.Username == workshop_Client.IdClient);
+
+            String direccion = client.Province + ", " + client.Canton + ", " + client.District;
+
+
+
+
+            Order order = new Order
+            {
+                IdOrder = 0,
+                Address = direccion,
+                State = "Asignada",
+                IdDeliveryPerson = SeleccionarRepartidor(client),
+                IdClient = client.Username
+            };
+
+
+
 
             db.Workshop_Client.Add(workshop_Client);
+            db.Orders.Add(order);
 
             try
             {
                 db.SaveChanges();
+                
             }
             catch (DbUpdateException)
             {
@@ -98,6 +145,8 @@ namespace creativo_API.Controllers
                     throw;
                 }
             }
+
+
 
             return CreatedAtRoute("DefaultApi", new { id = workshop_Client.IdWorkshop }, workshop_Client);
         }

@@ -74,6 +74,16 @@ export abstract class ConexionService<T> {
       }
     });
   }
+  subMessage(mensaje:string, sub:string, url:string){
+    Swal.fire({
+      title: mensaje,
+      text: sub,
+      icon: "success",
+      didClose: () => {
+        window.location.href = url;
+      }
+    });
+  }
 
 
   onEliminar(id:string | number, id2?: string|number, recargar?:boolean){

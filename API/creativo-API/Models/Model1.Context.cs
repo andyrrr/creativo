@@ -32,7 +32,6 @@ namespace creativo_API.Models
         public virtual DbSet<Distric> Districs { get; set; }
         public virtual DbSet<Entrepreneurship> Entrepreneurships { get; set; }
         public virtual DbSet<Entrepreneurship_Admins> Entrepreneurship_Admins { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
@@ -40,5 +39,6 @@ namespace creativo_API.Models
         public virtual DbSet<Workshop_Client> Workshop_Client { get; set; }
         public virtual DbSet<Workshop_Photos> Workshop_Photos { get; set; }
         public virtual DbSet<Entrepreneurship_Type> Entrepreneurship_Type { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

@@ -47,7 +47,6 @@ export class AgregarPreguntaComponent  {
     if (this.editMode){
       Swal.fire({
         title: "¿Quieres modificar esta pregunta?",
-        icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -66,7 +65,6 @@ export class AgregarPreguntaComponent  {
     } else {
       Swal.fire({
         title: "¿Quieres añadir esta pregunta?",
-        icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",

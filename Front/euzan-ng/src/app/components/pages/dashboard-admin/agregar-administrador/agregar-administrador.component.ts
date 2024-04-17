@@ -18,7 +18,6 @@ export class AgregarAdministradorComponent {
   guardar() {
     Swal.fire({
       title: "¿Quieres añadir este Administrador?",
-      icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -58,5 +57,4 @@ export class AgregarAdministradorComponent {
       }
     });
   }
-
 }

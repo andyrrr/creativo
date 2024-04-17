@@ -90,6 +90,8 @@ import { BannerRepartidorComponent } from './components/pages/dashboard-repartid
 import { AgregarTallerComponent } from './components/pages/dashboard-emprendimiento/agregar-taller/agregar-taller.component';
 import { GestionTalleresComponent } from './components/pages/dashboard-emprendimiento/gestion-talleres/gestion-talleres.component';
 import { VerTalleresComponent } from './components/pages/dashboard-cliente/ver-talleres/ver-talleres.component';
+import { VerOrdenesComponent } from './components/pages/dashboard-repartidor/ver-ordenes/ver-ordenes.component';
+import { MisPedidosComponent } from './components/pages/dashboard-cliente/mis-pedidos/mis-pedidos.component';
 
 @NgModule({
     declarations: [
@@ -174,7 +176,9 @@ import { VerTalleresComponent } from './components/pages/dashboard-cliente/ver-t
         BannerRepartidorComponent, 
         AgregarTallerComponent, 
         GestionTalleresComponent, 
-        VerTalleresComponent
+        VerTalleresComponent, 
+        VerOrdenesComponent, 
+        MisPedidosComponent
     ],
     imports: [
         BrowserModule,

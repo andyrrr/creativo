@@ -34,7 +34,6 @@ export class NuevoRepartidorComponent {
     guardar() {
       Swal.fire({
         title: "¿Quieres registrarte en Club Creativo como Repartidor?",
-        icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",

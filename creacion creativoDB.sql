@@ -118,10 +118,8 @@ CREATE TABLE Orders (
 	IdOrder INT IDENTITY(1,1) PRIMARY KEY,
 	Address VARCHAR(255),
 	State VARCHAR(50),
-	IdDeliveryPerson INT,
-	IdClient INT,
-	FOREIGN KEY (IdDeliveryPerson) REFERENCES Delivery_Person(IdDeliveryPerson),
-	FOREIGN KEY (IdClient) REFERENCES Client(IdClient)
+	IdDeliveryPerson VARCHAR(50),
+	IdClient VARCHAR(50)
 );
 
 
