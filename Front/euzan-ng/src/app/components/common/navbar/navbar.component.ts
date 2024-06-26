@@ -14,25 +14,31 @@ export class NavbarComponent implements OnInit {
 
     rol = new Role()
     unregistered = false;
+    logo:string = "assets/img/Club Creativo Logo Blanco.png"
 
     constructor(private viewportScroller: ViewportScroller, private cookieService: CookieService) {
         if (cookieService.get("cookieADMIN") !="") {
             this.rol.Type = "ADMIN"
             this.rol.Username = cookieService.get("cookieADMIN")
+            this.logo = "assets/img/Club Creativo Administrador.png"
       
           } else if (cookieService.get("cookieEMPRENDIMIENTO") !="") {
             this.rol.Type = "EMPRENDIMIENTO"
             this.rol.Username = cookieService.get("cookieEMPRENDIMIENTO")
+            this.logo = "assets/img/Club Creativo Emprendedor.png"
       
           } else if (cookieService.get("cookieCLIENTE") !="") {
             this.rol.Type = "CLIENTE"
             this.rol.Username = cookieService.get("cookieCLIENTE")
+            this.logo = "assets/img/Club Creativo Cliente.png"
       
           } else if (cookieService.get("cookieREPARTIDOR") !="") {
             this.rol.Type = "REPARTIDOR"
             this.rol.Username = cookieService.get("cookieREPARTIDOR")
+            this.logo = "assets/img/Club Creativo Repartidor.png"
           } else {
             this.unregistered = true;
+            this.logo = "assets/img/Club Creativo Logo Blanco.png"
           }
           
           const currentPath = window.location.pathname;

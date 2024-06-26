@@ -17,6 +17,13 @@ import { AgregarEmprendimientoComponent } from './components/pages/dashboard-cli
 import { NuevoRegistroComponent } from './components/pages/ingresar/nuevo-registro/nuevo-registro.component';
 import { DashboardRepartidorComponent } from './components/pages/dashboard-repartidor/dashboard-repartidor.component';
 import { AgregarTallerComponent } from './components/pages/dashboard-emprendimiento/agregar-taller/agregar-taller.component';
+import { clienteGuard } from './cliente.guard';
+import { emprendimientoGuard } from './emprendimiento.guard';
+import { repartidorGuard } from './repartidor.guard';
+import { adminGuard } from './admin.guard';
+import { GestionSolicitudesComponent } from './components/pages/dashboard-admin/gestion-solicitudes/gestion-solicitudes.component';
+import { GestionPreguntasComponent } from './components/pages/dashboard-admin/gestion-preguntas/gestion-preguntas.component';
+import { GestionAdministradoresComponent } from './components/pages/dashboard-admin/gestion-administradores/gestion-administradores.component';
 
 const routes: Routes = [
     {path: '', component:InicioComponent},
@@ -28,17 +35,27 @@ const routes: Routes = [
     {path: 'portfolio-landing', component: PortfolioLandingComponent},
     {path: 'inicio', component: InicioComponent},
     {path: 'ingresar', component:IngresarComponent},
-    {path: 'dashboard-admin', component:DashboardAdminComponent},
-    {path: 'dashboard-cliente', component:DashboardClienteComponent},
-    {path: 'dashboard-emprendimiento', component:DashboardEmprendimientoComponent},
-    {path: 'dashboard-repartidor', component:DashboardRepartidorComponent},
-    {path: 'agregar-administrador', component:AgregarAdministradorComponent}, 
-    {path: "actualizar-pregunta/:id", component:AgregarPreguntaComponent},
-    {path: "nueva-pregunta", component:AgregarPreguntaComponent},
-    {path: "nuevo-emprendimiento", component:AgregarEmprendimientoComponent},
+    {path: 'dashboard-admin', component:DashboardAdminComponent, canActivate: [adminGuard]},
+    {path: 'dashboard-cliente', component:DashboardClienteComponent, canActivate: [clienteGuard]},
+    {path: 'dashboard-emprendimiento', component:DashboardEmprendimientoComponent, canActivate: [emprendimientoGuard]},
+    {path: 'dashboard-repartidor', component:DashboardRepartidorComponent, canActivate: [repartidorGuard]},
+    {path: 'agregar-administrador', component:AgregarAdministradorComponent, canActivate: [adminGuard]},
+    {path: "actualizar-pregunta/:id", component:AgregarPreguntaComponent, canActivate: [adminGuard]},
+    {path: "nueva-pregunta", component:AgregarPreguntaComponent, canActivate: [adminGuard]},
+    {path: "nuevo-emprendimiento", component:AgregarEmprendimientoComponent, canActivate: [clienteGuard]},
     {path: "registrarse", component:NuevoRegistroComponent},
-    {path: "nuevo-taller", component:AgregarTallerComponent},
-    {path: "actualizar-taller/:id", component:AgregarTallerComponent}
+    {path: "nuevo-taller", component:AgregarTallerComponent, canActivate: [emprendimientoGuard]},
+    {path: "actualizar-taller/:id", component:AgregarTallerComponent, canActivate: [emprendimientoGuard]},
+
+    
+    {path: 'solicitudes', component:GestionSolicitudesComponent, canActivate: [adminGuard]},
+    {path: 'preguntas', component:GestionPreguntasComponent, canActivate: [adminGuard]},
+    {path: 'administradores', component:GestionAdministradoresComponent, canActivate: [adminGuard]}
+    
+
+
+
+
 ];
 
 @NgModule({

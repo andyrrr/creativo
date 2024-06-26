@@ -92,6 +92,7 @@ import { GestionTalleresComponent } from './components/pages/dashboard-emprendim
 import { VerTalleresComponent } from './components/pages/dashboard-cliente/ver-talleres/ver-talleres.component';
 import { VerOrdenesComponent } from './components/pages/dashboard-repartidor/ver-ordenes/ver-ordenes.component';
 import { MisPedidosComponent } from './components/pages/dashboard-cliente/mis-pedidos/mis-pedidos.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
     declarations: [
@@ -189,7 +190,7 @@ import { MisPedidosComponent } from './components/pages/dashboard-cliente/mis-pe
         CarouselModule,
         NgxScrollTopModule
     ],
-    providers: [],
+    providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
